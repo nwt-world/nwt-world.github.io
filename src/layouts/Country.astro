@@ -1,0 +1,175 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import YouTube from '../components/YouTube.astro';
+import LanguageBasedContent from "../components/LanguageBasedContent.svelte";
+import { getItinerariesByCountry } from '../lib/itinerary';
+
+type Props = CollectionEntry<'country'>['data'];
+
+const {
+	title,
+	tagline,
+	mainImage,
+	name,
+	videoId } = Astro.props;
+
+const itineraries_en = await getItinerariesByCountry(name, "en")
+const itineraries_es = await getItinerariesByCountry(name, "es")
+const itineraries_ru = await getItinerariesByCountry(name, "ru")
+
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={tagline} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.tagline {
+				max-width: 720px;
+				margin: 0.5em auto;
+				padding: 0em;
+				color: rgb(var(--gray-dark));
+				text-align: right;
+				font-style: italic;
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+			  .itineraries {
+    margin-top: 2em;
+  }
+
+  .itinerary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1em;
+  }
+
+  .itinerary-card {
+	padding: 1rem 1.25rem;
+
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .itinerary-card:hover {
+    background: #f9f9f9;
+  }
+
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<h1>{title}</h1>
+				<div class="tagline">{tagline}</div>
+				<div class="hero-image">
+					{mainImage && <Image width={1020} height={510} src={mainImage} loading="eager" alt="" />}
+				</div>
+
+				{videoId &&
+					<h2 style="text-align: center;">
+						<LanguageBasedContent client:load lang="en">
+							<div slot="en">Video from the country</div>
+							<div slot="es">Video del país</div>
+							<div slot="ru">Видео о стране</div>
+						</LanguageBasedContent>
+
+						</h2>
+					<YouTube id={videoId} />
+				}
+
+				<section class="context">
+					<slot />
+				</section>
+
+				<LanguageBasedContent client:load lang="en">
+					<div slot="en">
+						{itineraries_en.length > 0 && (
+							<section class="itineraries">
+								<h2>Itineraries</h2>
+								<div class="itinerary-grid">
+								{itineraries_en.map((it) => (
+									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
+									<h3 style="text-align: center;">{it.data.title}</h3>
+									{it.data.tagline && <p>{it.data.tagline}</p>}
+									</a>
+								))}
+								</div>
+
+							</section>
+						)}
+					</div>
+					<div slot="es">
+						{itineraries_es.length > 0 && (
+							<section class="itineraries">
+								<h2>Itinerarios</h2>
+								<div class="itinerary-grid">
+								{itineraries_es.map((it) => (
+									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
+									<h3 style="text-align: center;">{it.data.title}</h3>
+									{it.data.tagline && <p>{it.data.tagline}</p>}
+									</a>
+								))}
+								</div>
+
+							</section>
+						)}
+					</div>
+					<div slot="ru">
+						{itineraries_ru.length > 0 && (
+							<section class="itineraries">
+								<h2>Маршруты</h2>
+								<div class="itinerary-grid">
+								{itineraries_ru.map((it) => (
+									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
+									<h3 style="text-align: center;">{it.data.title}</h3>
+									{it.data.tagline && <p>{it.data.tagline}</p>}
+									</a>
+								))}
+								</div>
+
+							</section>
+						)}
+					</div>
+				</LanguageBasedContent>
+
+
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,130 @@
+---
+title: Maldives 🇲🇻
+tagline: perfect for just relaxing on the beach
+name: maldives
+order: 3
+mainImage: '../../assets/maldives_logo.jpg'
+videoId: jIvT1NRsdj4
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import PhotoAlbums from "../../components/PhotoAlbums.astro";
+import WhatToDo from "../../components/WhatToDo.astro";
+
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - world-class beaches
+    - exceptional snorkeling and marine life
+    - ideal destination for deep relaxation
+    - unmatched tranquility
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - extremely expensive
+    - limited activities beyond water sports
+  </div>
+</ProsCons>
+
+---
+
+<PhotoAlbums
+  albums={[
+    {
+      title: "Islands",
+      url: "https://www.instagram.com/p/Cej2MN4PQX8/",
+      platform: "instagram",
+    },
+    {
+      title: "Seaplane transfer",
+      url: "https://www.instagram.com/p/ChKVKbqonhT/",
+      platform: "instagram",
+    },
+    {
+      title: "Flying fox",
+      url: "https://www.instagram.com/p/CfXBJnkKykZ/",
+      platform: "instagram",
+    }
+  ]}
+/>
+
+---
+
+## ☑️ What to do
+<WhatToDo
+  items={[
+    { icon: "🤿", text: "snorkeling and diving" },
+    { icon: "🛶", text: "kayaking" },
+    { icon: "🎣", text: "fishing" },
+    { icon: "🚢", text: "cruises" },
+  ]}
+/>
+
+---
+
+## 📊 Country Rating
+
+<RatingTable
+  items={[
+    { category: "Nature", score: "10", notes: "one of the best reef and snorkeling destinations on Earth" },
+    { category: "Infrastructure", score: "8", notes: "excellent resort infrastructure; very limited options on local islands" },
+    { category: "Affordability", score: "1", notes: "one of the most expensive destinations" },
+    { category: "Safety", score: "10+", notes: "extremely safe and highly predictable resort environment" },
+    { category: "Friendliness", score: "10", notes: "very welcoming, hospitality-focused culture" },
+    { category: "Tranquility", score: "10+", notes: "among the most peaceful places in the world" },
+    { category: "Culture", score: "2", notes: "limited cultural attractions; mostly available only on local islands" },
+    { category: "Unique experiences", score: "10", notes: "isolated atolls, and a rare sense of complete tranquility" },
+    { category: "Weather", score: "9", notes: "warm and sunny year-round; seas can be rough during the rainy season" },
+    { category: "Long stay", score: "2", notes: "excellent for short vacations; long stays become repetitive and extremely expensive" }
+  ]}
+/>
+
+---
+
+## 📝 Notes
+
+### 🏝️ Local Islands vs Resort Islands
+Local (inhabited) islands can be surprisingly affordable compared to resort islands.
+They often offer:
+- good snorkeling
+- local guesthouses
+- lower food and transport costs
+
+However, they **lack the privacy, exclusivity, and tranquility** that resorts are known for. Resorts typically provide:
+- private beaches
+- pristine lagoons
+- better marine protection
+- significantly higher comfort
+
+For a *classic Maldives* experience, resorts remain unmatched.
+
+---
+
+### ✈️ Getting to Your Island (Transfers)
+Reaching your island usually requires one of the following modes of transportation:
+- **Boat transfer** – the cheapest option; works mainly for islands close to Malé. Seas can be rough during the rainy season.
+- **Domestic flight + short boat ride** – used for islands near regional airports. More expensive but faster and more reliable than speedboats, with beautiful aerial views of the atolls.
+- **Seaplane transfer** – the most scenic and iconic option, but also the most costly. Can be delayed or cancelled during bad weather, especially in monsoon season.
+
+Transfers make up a significant part of the total trip cost—often \$150–\$500+ per person one way.
+
+---
+
+### 🌤️ Best Time to Visit
+- **High season:** December–April
+  - best weather, calm seas, ideal snorkeling
+  - the most expensive months
+- **Shoulder season:** May–June and October–November
+  - good value, occasional rain
+  - fewer tourists; better chances to see manta rays in some regions
+- **Monsoon season:** July–September
+  - unpredictable weather, rougher seas
+  - lower prices but reduced water visibility
+
+---
+
+### 💡 Additional Tips
+- Alcohol is available **only** on resort islands or liveaboards.
+- Marine life is exceptional; many islands have house reefs accessible directly from the beach.

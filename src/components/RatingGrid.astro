@@ -1,0 +1,44 @@
+---
+const { ratings } = Astro.props;
+
+const labels = {
+  nature: 'Nature / Wow factor',
+  infrastructure: 'Infrastructure',
+  affordability: 'Affordability',
+  weather: 'Weather',
+  safety: 'Safety / Predictability',
+  friendliness: 'Friendliness',
+  tranquility: 'Tranquility',
+  ease_of_travel: 'Ease of travel',
+  long_stay: 'Long stay'
+};
+---
+
+<section class="ratings">
+  <h2>Specifics & Practicalities</h2>
+
+  <ul>
+    {Object.entries(labels).map(([key, label]) =>
+      ratings[key] !== undefined && (
+        <li>
+          <span>{label}</span>
+          <strong>{ratings[key].score}/10</strong>
+          {ratings[key].description && <p>{ratings[key].description}</p>}
+        </li>
+      )
+    )}
+  </ul>
+</section>
+
+<style>
+.ratings ul {
+  list-style: none;
+  padding: 0;
+}
+.ratings li {
+  display: flex;
+  justify-content: space-between;
+  padding: .4rem 0;
+  border-bottom: 1px solid #eee;
+}
+</style>

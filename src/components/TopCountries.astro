@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromId } from '../lib/lang';
+
+const {
+  title,
+  countrySlugs = [],
+  lang = 'en',
+} = Astro.props;
+
+const entries = await getCollection('country');
+
+const selected_countries = entries
+  .filter(
+    e =>
+      getLangFromId(e.id) === lang &&
+      countrySlugs.includes(e.data.name)
+  )
+  .sort(
+    (a, b) =>
+      countrySlugs.indexOf(a.data.name) -
+      countrySlugs.indexOf(b.data.name)
+  );
+---
+
+<section class="top-countries">
+  <h2>{title}</h2>
+
+  <ul class="country-grid">
+    {selected_countries.map(country => (
+      <li class="country-card">
+        <a href={`/country/${country.id}/`}>
+          <strong class="country-title">
+            {country.data.title}
+          </strong>
+
+          {country.data.tagline && (
+            <div class="tagline">
+              {country.data.tagline}
+            </div>
+          )}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+.top-countries {
+  margin: 2em 0;
+}
+
+.country-grid {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0 0;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(220px, 1fr)
+  );
+  gap: 1em;
+}
+
+.country-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1em;
+  background: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.country-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.country-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.country-title {
+  font-size: 1.05rem;
+  display: block;
+}
+
+.tagline {
+  margin-top: 0.4em;
+  font-size: 1rem;
+  color: #666;
+}
+</style>

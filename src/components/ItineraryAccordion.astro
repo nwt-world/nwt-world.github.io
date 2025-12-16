@@ -1,0 +1,75 @@
+---
+interface Day {
+  title: string;
+  content: string;
+}
+
+const { days } = Astro.props as {
+  days: Day[];
+};
+---
+
+<section class="itinerary">
+  <div class="accordion">
+    {days.map((day, index) => (
+      <details class="accordion-item" open={index === 0}>
+        <summary class="accordion-header">
+          <span>{day.title}</span>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="accordion-content">
+          <p set:html={day.content.replace(/\n/g, '<br />')} />
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+.itinerary {
+  max-width: 100%;
+}
+
+.itinerary-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.accordion-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  background: #fff;
+}
+
+.accordion-header {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-content {
+  padding: 0 1.25rem 1.25rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+}
+
+details[open] .chevron {
+  transform: rotate(180deg);
+}
+</style>

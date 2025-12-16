@@ -1,0 +1,34 @@
+---
+const { items = [] } = Astro.props;
+---
+
+<div class="activities-grid">
+  {items.map(item => (
+    <div class="activity">
+      {item.icon && <span class="icon">{item.icon}</span>}
+      <span>{item.text}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1em;
+    margin: 1.5em 0 2em;
+  }
+
+  .activity {
+    display: flex;
+    gap: 0.6em;
+    padding: 0.9em 1.1em;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+  }
+
+  .icon {
+    flex-shrink: 0;
+  }
+</style>

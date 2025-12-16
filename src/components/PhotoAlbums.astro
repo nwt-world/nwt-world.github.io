@@ -1,0 +1,98 @@
+---
+import { Image } from 'astro:assets';
+import LanguageBasedContent from "./LanguageBasedContent.svelte";
+
+
+import instagramIcon from "../assets/icons/instagram.svg";
+import googlePhotosIcon from "../assets/icons/google-photos.svg";
+import flickrIcon from "../assets/icons/flickr.svg";
+
+/*
+albums: [
+  { title: string, url: string, platform: "instagram" | "google" | "flickr" }
+]
+*/
+
+const { albums = [] } = Astro.props;
+
+const platformIcons = {
+  instagram: instagramIcon,
+  google: googlePhotosIcon,
+  flickr: flickrIcon,
+};
+---
+
+<div class="albums-section">
+  <div class="albums-header">
+    <LanguageBasedContent client:load lang="en">
+        <div slot="en">📷 Photo albums</div>
+        <div slot="es">📷 Álbumes de fotos</div>
+        <div slot="ru">📷 Фотоальбомы</div>
+    </LanguageBasedContent>
+
+  </div>
+
+  <div class="albums-grid">
+    {albums.map(album => (
+      <a
+        href={album.url}
+        target="_blank"
+        rel="noopener"
+        class="album-card"
+      >
+        <Image src={platformIcons[album.platform]} alt={album.platform} class="platform-icon" loading="eager" />
+        <span class="album-title">{album.title}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .albums-section {
+    margin: 2em 0;
+    padding: 1.2em 1.5em;
+    border-radius: 14px;
+    background: #eef6ff;
+    box-shadow: var(--box-shadow);
+  }
+
+  .albums-header {
+    font-weight: 700;
+    font-size: 1.15em;
+    margin-bottom: 0.9em;
+  }
+
+  .albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1em;
+  }
+
+  .album-card {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.7em 0.9em;
+    background: #ffffff;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .album-card:hover {
+    background: #f3f7ff;
+    transform: translateY(-1px);
+  }
+
+  .platform-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .album-title {
+    font-weight: 500;
+    line-height: 1.3;
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+
+interface Props {
+  pros?: string[];
+  cons?: string[];
+  todo?: string[];
+}
+
+const { pros, cons, todo } = Astro.props;
+---
+
+<div class="proscons">
+  <div class="pros"><slot name="pros" /></div>
+  <div class="cons"><slot name="cons" /></div>
+</div>
+
+<style>
+.pros {
+	padding: 0em;
+	border-radius: 12px;
+	margin: 0em 0;
+	background: #e6f5e6;
+	border-left: 6px solid #3aa655;
+	border-right: 6px solid #3aa655;
+	padding-left: 1.2em;
+}
+
+.cons {
+	padding: 0em;
+	border-radius: 12px;
+	margin: 0em 0;
+	background: #fdeaea;
+	border-left: 6px solid #d9534f;
+	border-right: 6px solid #d9534f;
+	padding-left: 1.2em;
+}
+.proscons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	align-items: flex-start;
+	margin: 1.5em 0;
+}
+
+@media (max-width: 768px) {
+	.proscons {
+		grid-template-columns: 1fr;
+		gap: 1.2rem;
+	}
+}
+
+</style>

@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+
+import youtubeIcon from '../assets/icons/youtube.svg';
+import instagramIcon from '../assets/icons/instagram.svg';
+import googlePhotosIcon from "../assets/icons/google-photos.svg";
+import flickrIcon from "../assets/icons/flickr.svg";
+
+const { hideOnMobile = false } = Astro.props;
+
+
+---
+
+<div class={`social-links ${hideOnMobile ? 'hide-mobile' : ''}`}>
+    <a href="https://www.youtube.com/@nwt_world" target="_blank" rel="noopener">
+        <Image src={youtubeIcon} alt="YouTube" class="icon" loading="eager" />
+    </a>
+    <a href="https://www.instagram.com/nwt_world" target="_blank" rel="noopener">
+        <Image src={instagramIcon} alt="Instagram" class="icon" loading="eager" />
+    </a>
+    <a href="https://www.flickr.com/nwt_world" target="_blank" rel="noopener">
+        <Image src={flickrIcon} alt="Flickr" class="icon" loading="eager" />
+    </a>
+</div>
+
+<style>
+    .social-links {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+	}
+    .social-links a {
+		display: flex;
+	}
+
+    @media (max-width: 700px) {
+        .hide-mobile {
+            display: none;
+        }
+    }
+
+</style>

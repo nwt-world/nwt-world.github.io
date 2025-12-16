@@ -1,0 +1,38 @@
+---
+const { id } = Astro.props;
+---
+
+<div class="youtube-container">
+  <div class="youtube-wrapper">
+    <iframe
+      src={`https://www.youtube.com/embed/${id}`}
+      frameborder="0"
+      title="Not in use"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+<style>
+  .youtube-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 1.5em 0;
+    box-shadow: var(--box-shadow);
+  }
+  .youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .youtube-container {
+    max-width: 720px;      /* adjust to your liking */
+    margin: 2em auto;      /* centers horizontally */
+  }
+</style>

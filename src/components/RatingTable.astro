@@ -1,0 +1,84 @@
+---
+const { items } = Astro.props;
+
+// Helper to classify score
+function scoreClass(score) {
+  // If score is not a number → "10+" etc.
+  if (typeof score === "string" && score.includes("+")) {
+    return "winner";
+  }
+
+  const value = Number(score);
+
+  if (!isNaN(value)) {
+    if (value <= 4) return "low";
+    if (value >= 8) return "high";
+  }
+
+  return ""; // no extra class
+}
+
+---
+
+<div class="rating-grid">
+  {items.map(item => (
+    <div class="rating-card">
+      <div class="label" style="text-align: center;">{item.category}</div>
+      <div class={`score ${scoreClass(item.score)}`}>
+        {item.score}
+      </div>
+      {item.notes && <div class="note">{item.notes}</div>}
+    </div>
+  ))}
+</div>
+
+<style>
+  .rating-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 2em 0;
+  }
+
+  .rating-card {
+    padding: 1em;
+    background: var(--gray-lightest);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+  }
+
+  .label {
+    font-weight: bold;
+  }
+
+  .score {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 0.3em 0;
+    text-align: center;
+    color: var(--gray-dark);
+  }
+
+  /* Low score = red */
+  .score.low {
+    color: #d9534f;
+  }
+
+  /* High score = green */
+  .score.high {
+    color: #2e8b57;
+  }
+
+  /* Winner score = golden gradient */
+  .score.winner {
+    background: linear-gradient(90deg, #ffcc33, #ffdd66);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+  }
+
+  .note {
+    font-size: 0.9em;
+    color: var(--gray-dark);
+  }
+</style>

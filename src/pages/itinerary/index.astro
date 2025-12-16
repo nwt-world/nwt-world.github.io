@@ -1,0 +1,161 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import LanguageBasedContent from "../../components/LanguageBasedContent.svelte";
+import Placeholder from '../../assets/placeholder/country.svg';
+import { getLangFromId } from '../../lib/lang';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getItinerariesGroupedByCountry } from '../../lib/itinerary';
+
+const itineraries_en = await getItinerariesGroupedByCountry("en")
+const itineraries_es = await getItinerariesGroupedByCountry("es")
+const itineraries_ru = await getItinerariesGroupedByCountry("ru")
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 100%;
+			}
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				width: calc(32% - 1rem);
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			ul li img {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			ul li a:hover h3,
+			ul li a:hover .date {
+				color: rgb(var(--accent));
+			}
+			ul a:hover img {
+				box-shadow: var(--box-shadow);
+			}
+			.country-title {
+				text-align: center;
+			}
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<LanguageBasedContent client:load lang="en">
+					<div slot="en">
+						{Object.entries(itineraries_en).map(([country, posts]) => (
+							<section class="country-group">
+								<h2 class="country-title">
+								{country}
+								</h2>
+
+								<ul>
+								{posts.map((post) => (
+									<li>
+									<a href={`/itinerary/${post.id}/`}>
+										<Image
+										width={720}
+										height={360}
+										src={post.data.mainImage ?? Placeholder}
+										alt=""
+										loading="eager"
+										/>
+										<h3 class="title">{post.data.title}</h3>
+									</a>
+									</li>
+								))}
+								</ul>
+							</section>
+						))}
+					</div>
+					<div slot="es">
+						{Object.entries(itineraries_es).map(([country, posts]) => (
+							<section class="country-group">
+								<h2 class="country-title">{country}</h2>
+								<ul>
+								{posts.map((post) => (
+									<li>
+									<a href={`/itinerary/${post.id}/`}>
+										<Image
+										width={720}
+										height={360}
+										src={post.data.mainImage ?? Placeholder}
+										alt=""
+										loading="eager"
+										/>
+										<h3 class="title">{post.data.title}</h3>
+									</a>
+									</li>
+								))}
+								</ul>
+							</section>
+						))}
+					</div>
+					<div slot="ru">
+						{Object.entries(itineraries_ru).map(([country, posts]) => (
+							<section class="country-group">
+								<h2 class="country-title">{country}</h2>
+								<ul>
+								{posts.map((post) => (
+									<li>
+									<a href={`/itinerary/${post.id}/`}>
+										<Image
+										width={720}
+										height={360}
+										src={post.data.mainImage ?? Placeholder}
+										alt=""
+										loading="eager"
+										/>
+										<h3 class="title">{post.data.title}</h3>
+									</a>
+									</li>
+								))}
+								</ul>
+							</section>
+						))}
+					</div>
+				</LanguageBasedContent>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

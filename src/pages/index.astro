@@ -1,8 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import TopCountries from '../components/TopCountries.astro';
+import LanguageBasedContent from "../components/LanguageBasedContent.svelte";
+import mainImage from "../assets/nwt_banner.jpg";
+import WorldMap from "../components/WorldMap.astro";
+
 ---
 
 <!doctype html>
@@ -10,39 +16,322 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
+	<style>
+	.home {
+		width: calc(100% - 2em);
+		max-width: 100%;
+		margin: 0 auto;
+		padding: 2rem 1rem;
+	}
+
+	section {
+		margin-bottom: 3rem;
+	}
+
+	.subtitle {
+		max-width: 1080px;
+		font-size: 1.2rem;
+		color: #555;
+		margin-bottom: 1rem;
+		text-align: right;
+		font-style: italic;
+	}
+
+	.intro {
+		font-size: 1.05rem;
+		max-width: 700px;
+	}
+
+	h1 {
+		text-align: center;
+		margin: 0px 0 -10px 0;
+		font-size: 2rem;
+	}
+
+	h2 {
+		font-size: 1.4rem;
+		margin-bottom: 0.8rem;
+	}
+
+	p {
+		line-height: 1.6;
+	}
+
+	ul {
+		padding-left: 1.2rem;
+	}
+
+	.muted {
+		color: #666;
+		font-size: 0.95rem;
+	}
+	</style>
+
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+		<main class="home">
+
+			<!-- TODO: refactor this later! -->
+		<LanguageBasedContent client:load lang="en">
+			<div slot="en">
+
+		<!-- HERO -->
+		<section class="hero">
+			<h1>{SITE_TITLE}</h1>
+			<p class="subtitle">{SITE_DESCRIPTION}</p>
+			<div class="hero-image">
+			<Image width={720} height={360} src={mainImage} alt="Main image" loading="eager" />
+			</div>
+		</section>
+
+		<!-- ABOUT / PHILOSOPHY -->
+		<section class="about">
 			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
+				This site collects personal travel notes and country overviews, with an emphasis on natural beauty, tranquility, safety, and ease of travel.
 			</p>
+
 			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
+				It is ad-free, opinionated, and based on first-hand travel whenever possible, or careful comparison when not. No sponsored content. No “top 10 must-see” lists.
 			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
+		</section>
+
+		<!-- FOR WHOM -->
+		<section class="audience">
+			<h2>Who this site is for</h2>
+
+			<p>
+				This site is especially useful if you prefer quiet, nature-oriented destinations, travel independently, or consider long stays (weeks or months), including remote work.
+			</p>
+
+			<p>
+				For each country, you can explore hidden gems, travel itineraries,
+				safety advice, and photo or video albums.
+			</p>
+		</section>
+
+		<!-- MAP PLACEHOLDER -->
+		<section>
+			<WorldMap mapId="HOgEv" />
+			<p class="muted">
+				This map shows countries I’ve visited or plan to visit.
+				Detailed notes and travel advice are available on the
+				<a href="/country">Country pages</a>.
+			</p>
+		</section>
+
+		<!-- TOP CALM DESTINATIONS -->
+		<TopCountries
+			title="Top relaxing destinations"
+			lang="en"
+			countrySlugs={['maldives', 'seychelles', 'japan', 'switzerland']}
+		/>
+
+		<!-- TOP LONG-STAY COUNTRIES
+		<TopCountries
+			title="Top countries for long stays"
+			lang="en"
+			countrySlugs={['vietnam', 'portugal', 'argentina']}
+		/>-->
+
+		<!-- METHODOLOGY / DISCLAIMER -->
+		<section class="methodology">
+			<h2>How to read this site</h2>
+
+			<p>
+			Countries are rated based on personal experience or careful comparison, with emphasis on:
+			</p>
+
 			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
+			<li>safety and predictability</li>
+			<li>ease of travel</li>
+			<li>tranquility</li>
+			<li>natural value</li>
 			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
+
+			<p class="muted">
+			Ratings are subjective by design — the goal is clarity, not universality.
 			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		</section>
+		</div>
+			<div slot="es">
+				<!-- HERO -->
+				<section class="hero">
+					<h1>{SITE_TITLE}</h1>
+					<p class="subtitle">Lugares tranquilos. Naturaleza real. Joyas escondidas. Sin publicidad.</p>
+					<div class="hero-image">
+					<Image width={720} height={360} src={mainImage} alt="Imagen principal" loading="eager" /></div>
+				</section>
+
+				<!-- ABOUT / PHILOSOPHY -->
+				<section class="about">
+					<p>
+						Este sitio reúne notas de viaje personales y descripciones de países,
+						con énfasis en la belleza natural, la tranquilidad, la seguridad
+						y la facilidad para viajar.
+					</p>
+
+					<p>
+						Es un proyecto sin publicidad, con opiniones propias, y basado en viajes
+						de primera mano siempre que es posible, o en comparaciones cuidadosas cuando no.
+						Sin contenido patrocinado. Sin listas de “top 10 imperdibles”.
+					</p>
+				</section>
+
+				<!-- FOR WHOM -->
+				<section class="audience">
+					<h2>Para quién es este sitio</h2>
+
+					<p>
+						Este sitio es especialmente útil si preferís destinos tranquilos,
+						orientados a la naturaleza, viajás de forma independiente
+						o considerás estancias largas (semanas o meses), incluyendo trabajo remoto.
+					</p>
+
+					<p>
+						Para cada país podés explorar lugares poco conocidos, itinerarios de viaje,
+						consejos de seguridad y álbumes de fotos o videos.
+					</p>
+				</section>
+
+				<!-- MAP PLACEHOLDER -->
+				<section class="map">
+					<WorldMap mapId="BI9oo" />
+					<p class="muted">
+					Este mapa muestra países que he visitado o que planeo visitar.
+					Las notas detalladas y los consejos de viaje están disponibles en las
+					<a href="/country">páginas de países</a>.
+					</p>
+
+				</section>
+
+				<!-- TOP CALM DESTINATIONS -->
+				<TopCountries
+					title="Destinos más tranquilos"
+					lang="es"
+					countrySlugs={['maldives', 'seychelles', 'japan', 'switzerland']}
+				/>
+
+				<!-- TOP LONG-STAY COUNTRIES
+				<TopCountries
+					title="Países ideales para estancias largas"
+					lang="es"
+					countrySlugs={['vietnam', 'portugal', 'argentina']}
+				/>-->
+
+				<!-- METHODOLOGY / DISCLAIMER -->
+				<section class="methodology">
+					<h2>Cómo leer este sitio</h2>
+
+					<p>
+						Los países se evalúan en base a experiencias personales o comparaciones cuidadosas,
+						con énfasis en:
+					</p>
+
+					<ul>
+						<li>seguridad y previsibilidad</li>
+						<li>facilidad para viajar</li>
+						<li>tranquilidad</li>
+						<li>valor natural</li>
+					</ul>
+
+					<p class="muted">
+						Las valoraciones son subjetivas por diseño — el objetivo es la claridad,
+						no la universalidad.
+					</p>
+				</section>
+
+			</div>
+			<div slot="ru">
+
+				<!-- HERO -->
+				<section class="hero">
+					<h1>{SITE_TITLE}</h1>
+					<p class="subtitle">Релакс. Подлинная природа. Скрытые жемчужины. Никакой рекламы.</p>
+					<div class="hero-image">
+					<Image width={720} height={360} src={mainImage} alt="Главное изображение" loading="eager" /></div>
+				</section>
+
+				<!-- ABOUT / PHILOSOPHY -->
+				<section class="about">
+					<p>
+						Этот сайт собирает личные заметки о путешествиях и обзоры стран
+						с акцентом на природу, спокойствие, безопасность
+						и удобство путешествий.
+					</p>
+
+					<p>
+						Проект не содержит рекламы, отражает субъективное мнение автора
+						и основан на личном опыте путешествий.
+						Никакого спонсорского контента. Никаких списков «топ-10, которые обязательно нужно увидеть».
+					</p>
+				</section>
+
+				<!-- FOR WHOM -->
+				<section class="audience">
+					<h2>Для кого этот сайт</h2>
+
+					<p>
+						Этот сайт будет особенно полезен тем, кто предпочитает спокойные направления, путешествует самостоятельно
+						или рассматривает длительные поездки, в том числе с удалённой работой.
+					</p>
+
+					<p>
+						Для каждой страны здесь можно найти малоизвестные места,
+						примеры маршрутов, рекомендации по безопасности,
+						а также фото и видеоальбомы.
+					</p>
+				</section>
+
+				<!-- MAP PLACEHOLDER -->
+				<section class="map">
+					<WorldMap mapId="9fxqR" />
+					<p class="muted">
+						На карте показаны страны, которые я посетил или планирую посетить.
+						Подробные заметки и советы для путешествий доступны на
+						<a href="/country">странице стран</a>.
+					</p>
+
+
+				</section>
+
+				<!-- TOP CALM DESTINATIONS -->
+				<TopCountries
+					title="Самые спокойные направления"
+					lang="ru"
+					countrySlugs={['maldives', 'seychelles', 'japan', 'switzerland']}
+				/>
+
+				<!-- TOP LONG-STAY COUNTRIES
+				<TopCountries
+					title="Лучшие страны для длительного пребывания"
+					lang="ru"
+					countrySlugs={['vietnam', 'portugal', 'argentina']}
+				/> -->
+
+				<!-- METHODOLOGY / DISCLAIMER -->
+				<section class="methodology">
+					<h2>Как читать этот сайт</h2>
+
+					<p>
+						Оценки стран основаны на личном опыте и сравнительном анализе с акцентом на следующие критерии:
+					</p>
+
+					<ul>
+						<li>безопасность и предсказуемость</li>
+						<li>удобство путешествий</li>
+						<li>спокойствие</li>
+						<li>природная ценность</li>
+					</ul>
+
+					<p class="muted">
+						Оценки по своей природе субъективны — цель проекта в ясности, а не в универсальности.
+					</p>
+				</section>
+
+			</div>
+
+		</LanguageBasedContent>
+
 		</main>
 		<Footer />
 	</body>

@@ -1,0 +1,130 @@
+---
+title: Maldivas 🇲🇻
+tagline: ideal para relajarse en la playa
+order: 3
+name: maldives
+mainImage: '../../assets/maldives_logo.jpg'
+videoId: jIvT1NRsdj4
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import PhotoAlbums from "../../components/PhotoAlbums.astro";
+import WhatToDo from "../../components/WhatToDo.astro";
+
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - playas de nivel mundial
+    - esnórquel y vida marina excepcionales
+    - destino ideal para una relajación profunda
+    - tranquilidad incomparable
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - extremadamente caro
+    - pocas actividades más allá de los deportes acuáticos
+  </div>
+</ProsCons>
+
+---
+
+<PhotoAlbums
+  albums={[
+    {
+      title: "Las islas",
+      url: "https://www.instagram.com/p/Cej2MN4PQX8/",
+      platform: "instagram",
+    },
+    {
+      title: "Hidroavión",
+      url: "https://www.instagram.com/p/ChKVKbqonhT/",
+      platform: "instagram",
+    },
+    {
+      title: "Zorro volador",
+      url: "https://www.instagram.com/p/CfXBJnkKykZ/",
+      platform: "instagram",
+    }
+  ]}
+/>
+
+---
+
+## ☑️ Qué Hacer
+<WhatToDo
+  items={[
+    {  text: "esnórquel y buceo" },
+    {  text: "kayak" },
+    {  text: "pesca" },
+    {  text: "paseos y cruceros" },
+  ]}
+/>
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "10", notes: "uno de los mejores destinos del mundo para arrecifes y esnórquel" },
+    { category: "Infraestructura", score: "8", notes: "excelente infraestructura en los resorts; opciones muy limitadas en las islas locales" },
+    { category: "Costo", score: "1", notes: "uno de los destinos más caros" },
+    { category: "Seguridad", score: "10+", notes: "entorno extremadamente seguro y muy predecible en los resorts" },
+    { category: "Amabilidad", score: "10", notes: "cultura muy amable y enfocada en la hospitalidad" },
+    { category: "Tranquilidad", score: "10+", notes: "entre los lugares más tranquilos del mundo" },
+    { category: "Cultura", score: "2", notes: "muy pocos atractivos culturales; casi todo se encuentra solo en las islas locales" },
+    { category: "Experiencias únicas", score: "6", notes: "ubicación remota; los traslados son costosos y a veces dependen del clima" },
+    { category: "Clima", score: "9", notes: "cálido y soleado todo el año; el mar puede estar agitado en temporada de lluvias" },
+    { category: "Estadía prolongada", score: "2", notes: "excelente para vacaciones cortas; estadías largas se vuelven repetitivas y muy costosas" }
+  ]}
+/>
+
+---
+
+## 📝 Notas
+
+### 🏝️ Islas Locales vs Islas Resort
+Las islas locales (habitadas) pueden ser sorprendentemente accesibles en comparación con las islas resort.
+Suelen ofrecer:
+- buen esnórquel
+- hospedajes locales (“guesthouses”)
+- costos más bajos de comida y transporte
+
+Sin embargo, **carecen de la privacidad, exclusividad y tranquilidad** por las que los resorts son conocidos. Los resorts suelen ofrecer:
+- playas privadas
+- lagunas cristalinas
+- mayor protección marina
+- un nivel de confort significativamente superior
+
+Para una *experiencia clásica de Maldivas*, los resorts no tienen comparación.
+
+---
+
+### ✈️ Cómo Llegar a tu Isla (Traslados)
+Para llegar a tu isla generalmente necesitás uno de los siguientes medios de transporte:
+- **Lancha rápida** – la opción más económica; funciona principalmente para islas cercanas a Malé. El mar puede estar movido durante la temporada de lluvias.
+- **Vuelo doméstico + lancha corta** – utilizado para islas cerca de aeropuertos regionales. Más caro, pero más rápido y confiable que la lancha, con vistas aéreas espectaculares de los atolones.
+- **Hidroavión** – la opción más icónica y escénica, pero también la más costosa. Puede sufrir demoras o cancelaciones con mal clima, especialmente en época de monzones.
+
+Los traslados representan una parte importante del costo total del viaje—frecuentemente entre USD 150 y 500+ por persona por tramo.
+
+---
+
+### 🌤️ Mejor Época para Visitar
+- **Temporada alta:** diciembre–abril
+  - el mejor clima, mar calmo, esnórquel ideal
+  - también los meses más caros
+- **Temporadas intermedias:** mayo–junio y octubre–noviembre
+  - buena relación precio–calidad, algo de lluvia posible
+  - menos turistas; mejores chances de ver mantarrayas en algunas zonas
+- **Temporada de monzones:** julio–septiembre
+  - clima impredecible, mar más agitado
+  - precios más bajos pero visibilidad reducida bajo el agua
+
+---
+
+### 💡 Consejos Adicionales
+- El alcohol está disponible **solo** en las islas resort o en los liveaboards.
+- La vida marina es excepcional; muchas islas tienen arrecifes accesibles directamente desde la playa.
