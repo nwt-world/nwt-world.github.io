@@ -32,10 +32,11 @@ const posts_ru = (entries)
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				width: 960px;
+				width: 100%;
 			}
 			ul {
 				display: flex;
+				justify-content: center;
 				flex-wrap: wrap;
 				gap: 2rem;
 				list-style-type: none;
@@ -43,7 +44,7 @@ const posts_ru = (entries)
 				padding: 0;
 			}
 			ul li {
-				width: calc(50% - 1rem);
+				width: calc(32% - 1rem);
 			}
 			ul li * {
 				text-decoration: none;
