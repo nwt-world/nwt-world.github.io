@@ -9,7 +9,6 @@ const today = new Date();
 		<p class="copyright">
 			© {today.getFullYear()} Natural Wonders Travel
 		</p>
-
 		<div class="footer-links">
 			<a href="mailto:mystery.maynor@gmail.com" class="contact-link">
 				Contact
@@ -77,8 +76,9 @@ const today = new Date();
 		text-align: center;
 	}
 
-	.footer-inner > *::after {
+	.footer-inner > *:not(:last-child)::after {
 		content: "";
+		margin-left: 0rem;
 	}
 
 	.footer-links {

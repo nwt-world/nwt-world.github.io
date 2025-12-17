@@ -1,10 +1,11 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import HeaderPages from './HeaderPages.astro';
 import LanguageBasedContent from "./LanguageBasedContent.svelte";
 import { Image } from 'astro:assets';
 import SocialLinks from './SocialLinks.astro';
 
 import nwtLogo from '../assets/nwt.png';
+import HeaderLink from './HeaderLink.astro';
 
 ---
 
@@ -20,33 +21,32 @@ document.getElementById('lang-select').addEventListener('change', (e) => {
 	window.location.href = '/';
 });
 
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.mobile-menu');
+
+toggle?.addEventListener('click', () => {
+	if (!menu) return;
+
+	const isHidden = getComputedStyle(menu).display === 'none';
+
+	menu.style.display = isHidden ? 'flex' : 'none';
+	toggle.setAttribute('aria-expanded', String(isHidden));
+});
 </script>
 
 <header>
 	<nav>
+		<!-- MOBILE MENU BUTTON -->
+		<button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+			☰
+		</button>
+		<!-- MOBILE MENU PANEL -->
+		<div class="mobile-menu">
+			<HeaderPages />
+		</div>
 		<h2><a href="/"><Image class="main_logo" width={512} src={nwtLogo} alt="NWT" loading="eager" /></a></h2>
 		<div class="internal-links">
-			<HeaderLink href="/">
-				<LanguageBasedContent client:load lang="en">
-					<div slot="en">Home</div>
-					<div slot="es">Inicio</div>
-					<div slot="ru">Домой</div>
-				</LanguageBasedContent>
-			</HeaderLink>
-			<HeaderLink href="/country">
-			<LanguageBasedContent client:load lang="en">
-				<div slot="en">Countries</div>
-				<div slot="es">Países</div>
-				<div slot="ru">Страны</div>
-			</LanguageBasedContent>
-			</HeaderLink>
-			<HeaderLink href="/itinerary">
-			<LanguageBasedContent client:load lang="en">
-				<div slot="en">Itineraries</div>
-				<div slot="es">Itinerarios</div>
-				<div slot="ru">Маршруты</div>
-			</LanguageBasedContent>
-			</HeaderLink>
+			<HeaderPages />
 		</div>
 		<select id="lang-select" class="lang-select">
 			<option value="en">English</option>
@@ -134,9 +134,44 @@ document.getElementById('lang-select').addEventListener('change', (e) => {
 		border-color: #4f46e5;
 		box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
 	}
+	.menu-toggle {
+		display: none;
+		background: none;
+		border: none;
+		font-size: 1.4rem;
+		cursor: pointer;
+	}
+
+	.mobile-menu {
+		background: #bdcae7;
+		border-top: 1px solid #e0e4f2;
+		display: none;
+		flex-direction: column;
+		padding: 0.5rem 1rem;
+	}
+
+	.mobile-menu a {
+		padding: 0.6rem 0;
+		text-decoration: none;
+		color: #000;
+		font-size: 1rem;
+	}
+
+	.mobile-menu a + a {
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
 
     @media (max-width: 1200px) {
 		.main_logo {
+			display: none;
+		}
+	}
+    @media (max-width: 500px) {
+		.menu-toggle {
+			display: flex;
+		}
+		.internal-links{
 			display: none;
 		}
 	}
