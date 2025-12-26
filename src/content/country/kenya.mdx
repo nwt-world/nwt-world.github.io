@@ -1,0 +1,44 @@
+---
+title: Kenya 🇰🇪
+tagline: iconic safaris and African landscapes
+order: 401
+name: kenya
+badge: Outstanding nature
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - world-class wildlife and safaris
+    - diverse landscapes: savanna, lakes, mountains
+    - strong “once in a lifetime” experiences
+    - well-developed safari tourism
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - safety concerns outside tourist routes
+    - limited infrastructure in rural areas
+    - cities can be chaotic and stressful
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { text: "Safari in Maasai Mara or Amboseli" },
+    { text: "See Mount Kilimanjaro from Amboseli" },
+    { text: "Visit Rift Valley lakes" },
+    { text: "Short coastal stay (Diani, Watamu)" },
+  ]}
+/>
+
+## 📝 Notes
+
+Works best as a structured trip rather than free-form travel.

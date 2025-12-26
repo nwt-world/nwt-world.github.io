@@ -1,0 +1,45 @@
+---
+title: Brazil 🇧🇷
+tagline: vast, vibrant, and deeply unequal
+order: 302
+name: brazil
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - enormous geographic and cultural diversity
+    - iconic natural sites: beaches, rainforest, waterfalls
+    - warm and expressive culture
+    - strong regional food traditions
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - serious safety concerns in many cities
+    - strong inequality and infrastructure gaps
+    - chaotic urban environments
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { text: "Iguaçu Falls" },
+    { text: "Selected coastal areas and islands" },
+    { text: "Nature-focused regions away from megacities" },
+    { text: "Short, targeted trips rather than full exploration" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+
+Best approached selectively, focusing on nature and safer regions.

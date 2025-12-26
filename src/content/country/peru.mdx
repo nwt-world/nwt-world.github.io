@@ -1,0 +1,46 @@
+---
+title: Peru 🇵🇪
+tagline: ancient civilizations and dramatic Andes
+order: 301
+name: peru
+badge: Rich history & culture
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - rich history and ancient sites
+    - Andes mountains, volcanoes, and high-altitude landscapes
+    - affordable travel and food
+    - very diverse geography
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - safety varies strongly by region
+    - infrastructure uneven outside main tourist areas
+    - altitude may be challenging
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { text: "Cusco and Machu Picchu" },
+    { text: "Sacred Valley and Andean villages" },
+    { text: "Arequipa and surrounding volcanoes" },
+    { text: "Lake Titicaca region" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+
+Best combined with slow travel to avoid altitude and crowds.
