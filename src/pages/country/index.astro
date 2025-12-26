@@ -117,7 +117,6 @@ const posts_ru = (entries)
 						posts_en.map((post) => (
 							<li>
 								<a href={`/country/${post.id}/`} class="country-card">
-
 									<Image width={720} height={360} src={post.data.mainImage ?? placeholder_en} alt="" loading="eager" />
 									<div class="title-row">
 										<h3 class="title">{post.data.title}</h3>
@@ -139,9 +138,7 @@ const posts_ru = (entries)
 						posts_es.map((post) => (
 							<li>
 								<a href={`/country/${post.id}/`}>
-									{post.data.mainImage && (
-										<Image width={720} height={360} src={post.data.mainImage ?? placeholder_es} alt="" loading="eager" />
-									)}
+									<Image width={720} height={360} src={post.data.mainImage ?? placeholder_es} alt="" loading="eager" />
 									<h3 class="title">{post.data.title}</h3>
 								</a>
 							</li>
@@ -153,9 +150,7 @@ const posts_ru = (entries)
 						posts_ru.map((post) => (
 							<li>
 								<a href={`/country/${post.id}/`}>
-									{post.data.mainImage && (
-										<Image width={720} height={360} src={post.data.mainImage ?? placeholder_ru} alt="" loading="eager" />
-									)}
+									<Image width={720} height={360} src={post.data.mainImage ?? placeholder_ru} alt="" loading="eager" />
 									<h3 class="title">{post.data.title}</h3>
 								</a>
 							</li>
