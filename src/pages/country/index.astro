@@ -5,23 +5,25 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import LanguageBasedContent from "../../components/LanguageBasedContent.svelte";
-import PlaceholderCountry from '../../assets/placeholder/country.svg';
 import { getLangFromId } from '../../lib/lang';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
+import placeholder_en from '../../assets/placeholder/country_en.png';
+import placeholder_es from '../../assets/placeholder/country_es.png';
+import placeholder_ru from '../../assets/placeholder/country_ru.png';
 
 const entries = await getCollection('country');
 
 const posts_en = (entries)
-  .filter(e => getLangFromId(e.id) === "en")
+  .filter(e => getLangFromId(e.id) === "en" && !e.data.hide )
   .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
 
 const posts_es = (entries)
-  .filter(e => getLangFromId(e.id) === "es")
+  .filter(e => getLangFromId(e.id) === "es" && !e.data.hide )
   .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
 
 const posts_ru = (entries)
-  .filter(e => getLangFromId(e.id) === "ru")
+  .filter(e => getLangFromId(e.id) === "ru" && !e.data.hide )
   .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
 
 ---
@@ -73,6 +75,27 @@ const posts_ru = (entries)
 			ul a:hover img {
 				box-shadow: var(--box-shadow);
 			}
+
+			.title-row {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+
+			.title {
+				margin: 0;
+				font-size: 1.3rem;
+			}
+
+			.badge {
+				margin-left: auto;
+				font-size: 0.85rem;
+				padding: 0.15em 0.55em;
+				border-radius: 999px;
+				background: #eef6ff;
+				color: #2b5dab;
+				white-space: nowrap;
+			}
 			@media (max-width: 720px) {
 				ul {
 					gap: 0.5em;
@@ -93,10 +116,19 @@ const posts_ru = (entries)
 					{
 						posts_en.map((post) => (
 							<li>
-								<a href={`/country/${post.id}/`}>
+								<a href={`/country/${post.id}/`} class="country-card">
 
-									<Image width={720} height={360} src={post.data.mainImage ?? PlaceholderCountry} alt="" loading="eager" />
-									<h3 class="title">{post.data.title}</h3>
+									<Image width={720} height={360} src={post.data.mainImage ?? placeholder_en} alt="" loading="eager" />
+									<div class="title-row">
+										<h3 class="title">{post.data.title}</h3>
+
+										{post.data.badge && (
+											<span class="badge">
+											{post.data.badge}
+											</span>
+										)}
+									</div>
+
 								</a>
 							</li>
 						))
@@ -108,7 +140,7 @@ const posts_ru = (entries)
 							<li>
 								<a href={`/country/${post.id}/`}>
 									{post.data.mainImage && (
-										<Image width={720} height={360} src={post.data.mainImage} alt="" loading="eager" />
+										<Image width={720} height={360} src={post.data.mainImage ?? placeholder_es} alt="" loading="eager" />
 									)}
 									<h3 class="title">{post.data.title}</h3>
 								</a>
@@ -122,7 +154,7 @@ const posts_ru = (entries)
 							<li>
 								<a href={`/country/${post.id}/`}>
 									{post.data.mainImage && (
-										<Image width={720} height={360} src={post.data.mainImage} alt="" loading="eager" />
+										<Image width={720} height={360} src={post.data.mainImage ?? placeholder_ru} alt="" loading="eager" />
 									)}
 									<h3 class="title">{post.data.title}</h3>
 								</a>

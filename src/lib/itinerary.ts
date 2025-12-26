@@ -102,3 +102,46 @@ export async function getItinerariesGroupedByCountry(
 
   return result;
 }
+
+export interface ItineraryWithCountry {
+  itinerary: ItineraryEntry;
+  country: CountryEntry;
+}
+
+export async function getItinerariesWithCountry(
+  lang: string
+): Promise<ItineraryWithCountry[]> {
+  const itineraries = await getCollection("itinerary");
+  const countries = await getCollection("country");
+
+  // Index countries by slug + lang for fast lookup
+  const countryIndex = new Map<string, CountryEntry>();
+
+  for (const country of countries) {
+    if (parseLangFromId(country.id) === lang) {
+      countryIndex.set(country.data.name, country);
+    }
+  }
+
+  const result: ItineraryWithCountry[] = [];
+
+  for (const itinerary of itineraries) {
+    if (parseLangFromId(itinerary.id) !== lang || itinerary.data.hide) continue;
+
+    const countrySlug = itinerary.data.country;
+    if (!countrySlug) continue;
+
+    const country = countryIndex.get(countrySlug);
+    if (!country) continue;
+
+    result.push({ itinerary, country });
+  }
+
+  result.sort(
+    (a, b) =>
+      (a.itinerary.data.order ?? 9999) -
+      (b.itinerary.data.order ?? 9999)
+  );
+
+  return result;
+}

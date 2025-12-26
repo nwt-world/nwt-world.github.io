@@ -7,6 +7,9 @@ import Header from '../components/Header.astro';
 import YouTube from '../components/YouTube.astro';
 import LanguageBasedContent from "../components/LanguageBasedContent.svelte";
 import { getItinerariesByCountry } from '../lib/itinerary';
+import placeholder_en from '../assets/placeholder/country_en.png';
+import placeholder_es from '../assets/placeholder/country_es.png';
+import placeholder_ru from '../assets/placeholder/country_ru.png';
 
 type Props = CollectionEntry<'country'>['data'];
 
@@ -64,28 +67,28 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 			.last-updated-on {
 				font-style: italic;
 			}
-			  .itineraries {
-    margin-top: 2em;
-  }
+			    .itineraries {
+				margin-top: 2em;
+			}
 
-  .itinerary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1em;
-  }
+			.itinerary-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+				gap: 1em;
+			}
 
-  .itinerary-card {
-	padding: 1rem 1.25rem;
+			.itinerary-card {
+				padding: 1rem 1.25rem;
 
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    text-decoration: none;
-    color: inherit;
-  }
+				border-radius: 8px;
+				border: 1px solid #ddd;
+				text-decoration: none;
+				color: inherit;
+			}
 
-  .itinerary-card:hover {
-    background: #f9f9f9;
-  }
+			.itinerary-card:hover {
+				background: #f9f9f9;
+			}
 
 		</style>
 	</head>
@@ -96,9 +99,17 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 			<article>
 				<h1>{title}</h1>
 				<div class="tagline">{tagline}</div>
-				<div class="hero-image">
-					{mainImage && <Image width={1020} height={510} src={mainImage} loading="eager" alt="" />}
-				</div>
+				<LanguageBasedContent client:load lang="en">
+					<div class="hero-image" slot="en">
+						<Image width={1020} height={510} src={mainImage ?? placeholder_en} loading="eager" alt="" />
+					</div>
+					<div class="hero-image" slot="es">
+						<Image width={1020} height={510} src={mainImage ?? placeholder_es} loading="eager" alt="" />
+					</div>
+					<div class="hero-image" slot="ru">
+						<Image width={1020} height={510} src={mainImage ?? placeholder_ru} loading="eager" alt="" />
+					</div>
+				</LanguageBasedContent>
 
 				{videoId &&
 					<h2 style="text-align: center;">

@@ -63,6 +63,21 @@ const countryDataRu = await getCountryByName(country, "ru");
 			.last-updated-on {
 				font-style: italic;
 			}
+			.country-name {
+				color: #111;
+				text-decoration: none;
+				font-weight: 600;
+				transition: color 0.15s ease, background-size 0.25s ease;
+				background-image: linear-gradient(currentColor, currentColor);
+				background-size: 0 1px;
+				background-position: 0 100%;
+				background-repeat: no-repeat;
+			}
+
+			.country-name:hover {
+				color: #1e5bbf;
+			}
+
 		</style>
 	</head>
 
@@ -77,13 +92,13 @@ const countryDataRu = await getCountryByName(country, "ru");
 				</div>
 				<LanguageBasedContent client:load lang="en">
 					<h2 slot="en">
-						Country: <a href={`/country/${countryDataEn.id}/`}>{countryDataEn.data.title}</a>
+						Country: <a class="country-name" href={`/country/${countryDataEn.id}/`}>{countryDataEn.data.title}</a>
 					</h2>
 					<h2 slot="es">
-						País: <a href={`/country/${countryDataEs.id}/`}>{countryDataEs.data.title}</a>
+						País: <a class="country-name" href={`/country/${countryDataEs.id}/`}>{countryDataEs.data.title}</a>
 					</h2>
 					<h2 slot="ru">
-						Страна: <a href={`/country/${countryDataRu.id}/`}>{countryDataRu.data.title}</a>
+						Страна: <a class="country-name" href={`/country/${countryDataRu.id}/`}>{countryDataRu.data.title}</a>
 					</h2>
 				</LanguageBasedContent>
 
