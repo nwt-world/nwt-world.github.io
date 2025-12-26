@@ -8,6 +8,8 @@ const country = defineCollection({
 			title: z.string(),
 			tagline: z.string(),
 			name: z.string(),
+			badge: z.string().optional(),
+			hide: z.boolean().optional(),
 			order: z.number().int().optional(),
 			mainImage: image().optional(),
 			videoId: z.string().optional()
@@ -22,8 +24,9 @@ const itinerary = defineCollection({
 			tagline: z.string(),
 			name: z.string(),
 			country: z.string(),
+			hide: z.boolean().optional(),
 			order: z.number().int().optional(),
-			mainImage: image().optional(),
+			mainImage: image(),
 			videoId: z.string().optional()
 		}),
 });
