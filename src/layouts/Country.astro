@@ -76,18 +76,37 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 				grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 				gap: 1em;
 			}
-
 			.itinerary-card {
-				padding: 1rem 1.25rem;
-
-				border-radius: 8px;
+				display: flex;
+				flex-direction: column;
+				border-radius: 10px;
+				overflow: hidden;
 				border: 1px solid #ddd;
 				text-decoration: none;
 				color: inherit;
+				content-visibility: auto;
+			}
+
+			.card-image {
+				width: 100%;
+				height: 160px;
+				object-fit: cover;
+			}
+
+			.card-title {
+				font-size: 1rem;
+				text-align: center;
+			}
+
+			.card-content {
+				padding: 0.4rem 1rem;
+				font-size: 0.9rem;
+				opacity: 0.9;
 			}
 
 			.itinerary-card:hover {
 				background: #f9f9f9;
+				transform: translateY(-2px);
 			}
 
 		</style>
@@ -135,8 +154,16 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 								<div class="itinerary-grid">
 								{itineraries_en.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
-									<h3 style="text-align: center;">{it.data.title}</h3>
-									{it.data.tagline && <p>{it.data.tagline}</p>}
+										<Image
+											src={it.data.mainImage}
+											width={360}
+											height={240}
+											alt={it.data.title}
+											loading="lazy"
+											class="card-image"
+										/>
+										<h3 class="card-title">{it.data.title}</h3>
+										<div class="card-content">{it.data.tagline}</div>
 									</a>
 								))}
 								</div>
@@ -151,8 +178,16 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 								<div class="itinerary-grid">
 								{itineraries_es.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
-									<h3 style="text-align: center;">{it.data.title}</h3>
-									{it.data.tagline && <p>{it.data.tagline}</p>}
+										<Image
+											src={it.data.mainImage}
+											width={360}
+											height={240}
+											alt={it.data.title}
+											loading="lazy"
+											class="card-image"
+										/>
+										<h3 class="card-title">{it.data.title}</h3>
+										<div class="card-content">{it.data.tagline}</div>
 									</a>
 								))}
 								</div>
@@ -167,8 +202,16 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 								<div class="itinerary-grid">
 								{itineraries_ru.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
-									<h3 style="text-align: center;">{it.data.title}</h3>
-									{it.data.tagline && <p>{it.data.tagline}</p>}
+										<Image
+											src={it.data.mainImage}
+											width={360}
+											height={240}
+											alt={it.data.title}
+											loading="lazy"
+											class="card-image"
+										/>
+										<h3 class="card-title">{it.data.title}</h3>
+										<div class="card-content">{it.data.tagline}</div>
 									</a>
 								))}
 								</div>
