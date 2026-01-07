@@ -1,0 +1,45 @@
+---
+title: Brasil 🇧🇷
+tagline: vasto, vibrante y profundamente desigual
+order: 302
+name: brazil
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - enorme diversidad geográfica y cultural  
+    - sitios naturales icónicos: playas, selva tropical y cataratas  
+    - cultura cálida y expresiva  
+    - fuertes tradiciones gastronómicas regionales  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - serias preocupaciones de seguridad en muchas ciudades  
+    - fuerte desigualdad y brechas de infraestructura  
+    - entornos urbanos caóticos  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué Hacer
+
+<WhatToDo
+  items={[
+    { text: "Cataratas del Iguazú" },
+    { text: "Zonas costeras e islas seleccionadas" },
+    { text: "Regiones enfocadas en la naturaleza, lejos de las megaciudades" },
+    { text: "Viajes cortos y bien focalizados en lugar de una exploración completa" },
+  ]}
+/>
+
+---
+
+## 📝 Notas
+
+Se disfruta mejor de forma selectiva, priorizando la naturaleza y las regiones más seguras.

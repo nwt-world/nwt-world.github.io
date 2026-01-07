@@ -1,0 +1,87 @@
+---
+title: Chipre 🇨🇾
+tagline: isla mediterránea tranquila con playas y una profundidad cultural ligera
+order: 34
+name: cy
+mainImage: '../../assets/cyprus_logo.jpg'
+videoId0: YoutubeId
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+import PhotoAlbums from "../../components/PhotoAlbums.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - ambiente relajado y tranquilo, especialmente fuera de la temporada alta  
+    - buenas playas y aguas mediterráneas claras  
+    - destino seguro y predecible  
+    - isla compacta, fácil de recorrer en auto  
+    - clima veraniego agradable para viajes centrados en la playa  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - profundidad cultural limitada en comparación con Europa continental  
+    - menos accesible en costos que la cercana Turquía  
+    - la naturaleza es agradable, pero no dramática  
+  </div>
+</ProsCons>
+
+---
+
+<PhotoAlbums
+  albums={[
+    {
+      title: "Limassol",
+      url: "https://photos.app.goo.gl/DG9KWp5mF1uJuVkK8",
+      platform: "google",
+    }
+  ]}
+/>
+
+---
+
+## ☑️ Qué Hacer
+
+<WhatToDo
+  items={[
+    { icon: "🏖️", text: "Pasar tiempo en playas mediterráneas y pueblos costeros" },
+    { icon: "🏛️", text: "Visitar sitios arqueológicos y ciudades históricas" },
+    { icon: "🌄", text: "Explorar colinas interiores y zonas rurales más tranquilas" },
+  ]}
+/>
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "6", notes: "costas y colinas agradables, pero con poca diversidad" },
+    { category: "Infraestructura", score: "8", notes: "buenas rutas, servicios e instalaciones turísticas" },
+    { category: "Costo", score: "6", notes: "notablemente más caro que Turquía y Europa del Este" },
+    { category: "Seguridad", score: "9", notes: "destino muy seguro y predecible" },
+    { category: "Amabilidad", score: "8", notes: "actitud local acogedora y relajada" },
+    { category: "Tranquilidad", score: "8", notes: "calma y ritmo lento fuera de los grandes complejos turísticos" },
+    { category: "Cultura", score: "6", notes: "algunos sitios históricos, pero profundidad limitada en general" },
+    { category: "Experiencias únicas", score: "5", notes: "agradable más que distintivo" },
+    { category: "Clima", score: "8", notes: "veranos calurosos y secos e inviernos suaves" },
+    { category: "Estadía prolongada", score: "7", notes: "cómodo para estadías extendidas si el presupuesto lo permite" }
+  ]}
+/>
+
+---
+
+## 📝 Notas
+
+### 🏖️ Playas y estaciones
+El verano es la principal temporada de viaje, centrada en la vida de playa y las ciudades costeras.  
+Fuera de los meses pico, la isla se vuelve más tranquila y apacible, atractiva para quienes priorizan la calma por sobre la actividad.
+
+---
+
+### 🚗 Exploración sencilla
+Chipre es compacta y muy adecuada para recorridos tranquilos en auto.  
+Las distancias cortas permiten combinar playas, pueblos y sitios arqueológicos sin presión.

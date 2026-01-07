@@ -1,0 +1,86 @@
+---
+title: España 🇪🇸
+tagline: cultura fuerte y un ritmo mediterráneo accesible
+order: 32
+name: es
+mainImage: '../../assets/spain_logo.jpg'
+videoId0: YoutubeId
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+import PhotoAlbums from "../../components/PhotoAlbums.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - identidad cultural fuerte con claras diferencias regionales  
+    - paisajes variados: costas, islas, montañas y mesetas interiores  
+    - ritmo social relajado y estilo de vida orientado al aire libre  
+    - excelente cultura gastronómica, especialmente en lo cotidiano  
+    - generalmente accesible en costos en comparación con gran parte de Europa occidental  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - masificación en grandes ciudades y zonas de playa populares  
+    - existe el hurto menor, especialmente en áreas turísticas  
+  </div>
+</ProsCons>
+
+---
+
+<PhotoAlbums
+  albums={[
+    {
+      title: "Barcelona",
+      url: "https://photos.app.goo.gl/LW5gijGd9bXgxW637",
+      platform: "google",
+    }
+  ]}
+/>
+
+---
+
+## ☑️ Qué Hacer
+
+<WhatToDo
+  items={[
+    { icon: "🏙️", text: "Explorar ciudades históricas y centros urbanos con gran riqueza cultural" },
+    { icon: "🏖️", text: "Relajarse en playas mediterráneas o visitar destinos insulares" },
+    { icon: "⛰️", text: "Descubrir regiones interiores, montañas y zonas rurales más tranquilas" },
+  ]}
+/>
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "8", notes: "costas, islas, montañas y regiones interiores diversas" },
+    { category: "Infraestructura", score: "8", notes: "buen transporte y servicios, especialmente entre grandes ciudades" },
+    { category: "Costo", score: "7", notes: "costos diarios razonables, aunque las zonas turísticas son más caras" },
+    { category: "Seguridad", score: "7", notes: "generalmente segura, pero se requiere atención frente a hurtos menores, sobre todo en playas" },
+    { category: "Amabilidad", score: "8", notes: "interacciones cotidianas abiertas, sociales y expresivas" },
+    { category: "Tranquilidad", score: "6", notes: "calma en pueblos pequeños; actividad y ruido en destinos populares" },
+    { category: "Cultura", score: "9", notes: "historia profunda, fuertes tradiciones regionales y cultura viva" },
+    { category: "Experiencias únicas", score: "8", notes: "identidades y estilos de vida regionales claramente diferenciados" },
+    { category: "Clima", score: "8", notes: "mayormente soleado, con veranos muy calurosos en el interior" },
+    { category: "Estadía prolongada", score: "8", notes: "cómoda y atractiva para estadías largas" }
+  ]}
+/>
+
+---
+
+## 📝 Notas
+
+### 🏖️ Ciudades, costas y equilibrio
+España ofrece un abanico amplio — desde ciudades culturales densas hasta pueblos costeros tranquilos y aldeas rurales.
+Los destinos más conocidos pueden sentirse saturados, especialmente en verano, pero alejarse un poco de las rutas principales suele revelar un país mucho más calmo y auténtico.
+
+---
+
+### 🌦️ Consideraciones climáticas
+Los veranos pueden ser extremadamente calurosos en las regiones interiores.
+La primavera y el otoño suelen ser las épocas más cómodas para recorrer el país, especialmente en viajes urbanos.
