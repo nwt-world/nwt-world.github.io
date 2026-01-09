@@ -6,6 +6,6 @@ import svelte from '@astrojs/svelte';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-	site: 'https://nwt-world.github.io',
+	site: 'https://naturalwonderstravel.com',
 	integrations: [mdx(), svelte()],
 });
