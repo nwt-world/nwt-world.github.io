@@ -18,7 +18,54 @@ document.getElementById('lang-select').value = saved;
 document.getElementById('lang-select').addEventListener('change', (e) => {
 	localStorage.setItem('lang', e.target.value);
 	document.documentElement.lang = e.target.value;
-	window.location.href = '/';
+
+	const newLang = e.target.value;
+	const supportedLangs = ['en', 'ru', 'es'];
+	const mainPages = ['itinerary', 'country'];
+	const defaultLang = 'en';
+	const path = window.location.pathname;
+	const hasTrailingSlash = path.length > 1 && path.endsWith('/');
+
+	// Split into segments, ignoring empty due to leading/trailing slashes
+	const segments = path.split('/').filter(Boolean);
+
+	// Root "/" => just go to "/"
+	if (segments.length === 0) {
+		window.location.href = '/';
+		return;
+	}
+
+	// Work on the last segment only (the "slug")
+	let last = segments[segments.length - 1];
+
+	// Check for main pages
+	for (const page of mainPages) {
+		if (last === page) {
+			window.location.href = '/' + page;
+			return;
+		}
+	}
+
+	// Remove existing "_xx" suffix if it matches one of supported langs
+	for (const lang of supportedLangs) {
+		const suffix = `_${lang}`;
+		if (last.endsWith(suffix)) {
+			last = last.slice(0, -suffix.length);
+			break;
+		}
+	}
+
+	// Add new suffix unless it's the default language
+	if (newLang !== defaultLang) {
+		last = `${last}_${newLang}`;
+	}
+
+	// Put it back
+	segments[segments.length - 1] = last;
+
+	// Rebuild URL
+	const newPath = '/' + segments.join('/') + (hasTrailingSlash ? '/' : '');
+	window.location.href = newPath;
 });
 
 const toggle = document.querySelector('.menu-toggle');
