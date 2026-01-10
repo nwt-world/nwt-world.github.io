@@ -7,5 +7,5 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
 	site: 'https://naturalwonderstravel.com',
-	integrations: [mdx(), svelte()],
+	integrations: [mdx(), svelte(), sitemap()],
 });
