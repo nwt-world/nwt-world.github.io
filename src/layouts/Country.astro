@@ -150,7 +150,7 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 					<div slot="en">
 						{itineraries_en.length > 0 && (
 							<section class="itineraries">
-								<h2>Itineraries</h2>
+								<h2 id="itinerary">Itineraries</h2>
 								<div class="itinerary-grid">
 								{itineraries_en.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
@@ -174,7 +174,7 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 					<div slot="es">
 						{itineraries_es.length > 0 && (
 							<section class="itineraries">
-								<h2>Itinerarios</h2>
+								<h2 id="itinerary">Itinerarios</h2>
 								<div class="itinerary-grid">
 								{itineraries_es.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
@@ -198,7 +198,7 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 					<div slot="ru">
 						{itineraries_ru.length > 0 && (
 							<section class="itineraries">
-								<h2>Маршруты</h2>
+								<h2 id="itinerary">Маршруты</h2>
 								<div class="itinerary-grid">
 								{itineraries_ru.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
