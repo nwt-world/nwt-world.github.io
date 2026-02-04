@@ -25,7 +25,8 @@ export async function getItinerariesByCountry(
 	return entries
 		.filter((e) =>
 			e.data.country === country &&
-			parseLangFromId(e.id) === lang
+			parseLangFromId(e.id) === lang &&
+      !e.data.hide
 		)
 		.sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
 }
