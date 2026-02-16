@@ -1,0 +1,45 @@
+---
+title: Namibia 🇳🇦
+tagline: vast deserts, wildlife, and one of Africa’s most surreal landscapes
+order: 402
+name: namibia
+mainImage0: '../../assets/namibia_logo.jpg'
+badge: Safari
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - some of the most dramatic desert landscapes on Earth  
+    - Etosha National Park offers accessible and rewarding wildlife viewing  
+    - very low population density → silence and open space  
+    - relatively safe and organized by African standards  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - long distances and demanding logistics  
+    - limited services outside main routes  
+    - not cheap  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🏜️", text: "See the red dunes of Sossusvlei and Deadvlei in the Namib Desert" },
+    { icon: "🦓", text: "Go on safaris in Etosha National Park" },
+    { icon: "🌊", text: "Visit the Skeleton Coast and Atlantic shipwreck landscapes" },
+    { icon: "🌄", text: "Explore canyons, rock formations, and wide open desert roads" },
+  ]}
+/>
+
+## 📝 Notes
+
+More about desert scenery and self-drive wildlife viewing than dense animal concentrations. Etosha offers accessible safari experiences, but Namibia stands out primarily for its surreal landscapes rather than classic Big Five density.
