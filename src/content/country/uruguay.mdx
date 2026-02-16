@@ -1,0 +1,37 @@
+---
+title: Uruguay 🇺🇾
+tagline: calm, safe, and quit South America
+order: 304
+name: uruguay
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - one of the safest and most stable countries in the region
+    - relaxed pace of life and low stress
+    - clean cities and good infrastructure
+    - pleasant coastline and beaches
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - nature is limited and not very dramatic
+    - relatively expensive for South America
+    - quiet to the point of being boring for some travelers
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🏙️", text: "Explore Montevideo and coastal rambla" },
+    { icon: "🏖️", text: "Beach towns: Punta del Este, Cabo Polonio" }
+  ]}
+/>

@@ -1,0 +1,42 @@
+---
+title: Costa Rica 🇨🇷
+tagline: compact rainforests, volcanoes, and wildlife-focused travel done right
+order: 311
+name: costa-rica
+mainImage0: '../../assets/costa_rica_logo.jpg'
+badge: Nature focus
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - one of the strongest wildlife destinations in Central America  
+    - compact geography: volcanoes, cloud forests, jungle, and beaches within short distances  
+    - well-developed eco-tourism infrastructure  
+    - politically stable and considered safe by regional standards  
+    - strong national park system and conservation culture  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - expensive compared to neighboring countries  
+    - tourist-oriented pricing is common  
+    - popular areas can feel crowded and commercial  
+    - car rental is often necessary for flexibility  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🌋", text: "Visit volcano regions like Arenal and explore lava landscapes" },
+    { icon: "🐒", text: "Spot wildlife in national parks and rainforest reserves" },
+    { icon: "🌫️", text: "Walk through cloud forests and hanging bridges" },
+    { icon: "🏖️", text: "Choose between Pacific surf beaches and calmer Caribbean coast" },
+  ]}
+/>

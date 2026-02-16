@@ -1,0 +1,37 @@
+---
+title: Uruguay 🇺🇾
+tagline: tranquilo, seguro y discreto en Sudamérica
+order: 304
+name: uruguay
+---
+
+import RatingTable from '../../components/RatingTable.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - uno de los países más seguros y estables de la región
+    - ritmo de vida relajado y bajo nivel de estrés
+    - ciudades limpias y buena infraestructura
+    - costa agradable y playas amplias
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - naturaleza limitada y poco dramática
+    - relativamente caro para estándares sudamericanos
+    - tan tranquilo que puede resultar aburrido para algunos viajeros
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🏙️", text: "Explorar Montevideo y su rambla costera" },
+    { icon: "🏖️", text: "Pueblos de playa: Punta del Este, Cabo Polonio" }
+  ]}
+/>

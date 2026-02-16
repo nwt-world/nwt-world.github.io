@@ -1,0 +1,41 @@
+---
+title: Panamá 🇵🇦
+tagline: el hub compacto de Centroamérica con selva tropical, ingeniería del canal y dos océanos
+order: 310
+name: panama
+mainImage0: '../../assets/panama_logo.jpg'
+badge: Hub estratégico
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - uno de los hubs aéreos mejor conectados de América Latina (fácil acceso desde Norteamérica, Sudamérica y Europa)  
+    - país compacto: selva, montañas, costa caribeña y costa pacífica a distancias relativamente cortas  
+    - relativamente estable y organizado según estándares regionales  
+    - capital moderna con infraestructura adecuada  
+    - funciona muy bien como base antes de explorar otros países de Centroamérica  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - las playas son buenas, pero no de nivel mundial en comparación con islas del Caribe  
+    - transporte público limitado fuera de Ciudad de Panamá  
+    - humedad constante durante todo el año  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🚢", text: "Visitar el Canal de Panamá" },
+    { icon: "🏙️", text: "Explorar Ciudad de Panamá: Casco Viejo y vistas del skyline" },
+    { icon: "🌿", text: "Descubrir selva tropical y fauna cerca de la capital" },
+    { icon: "🏝️", text: "Elegir entre islas del Caribe o playas del Pacífico" },
+  ]}
+/>

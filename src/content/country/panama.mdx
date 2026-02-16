@@ -1,0 +1,41 @@
+---
+title: Panama 🇵🇦
+tagline: Central America’s compact hub with rainforest, canal engineering, and two oceans
+order: 310
+name: panama
+mainImage0: '../../assets/panama_logo.jpg'
+badge: Strategic hub
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - one of Latin America’s best-connected air hubs (easy entry from North & South America, Europe)  
+    - compact country: rainforest, mountains, Caribbean and Pacific coasts within short distances  
+    - relatively stable and organized by regional standards  
+    - modern capital with decent infrastructure  
+    - works very well as a base before exploring other Central American countries  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - beaches are good, but not world-class compared to Caribbean islands  
+    - public transport outside Panama City is limited  
+    - humidity is constant year-round  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🚢", text: "Visit the Panama Canal" },
+    { icon: "🏙️", text: "Explore Panama City: Casco Viejo and skyline views" },
+    { icon: "🌿", text: "Experience rainforest and wildlife near the capital" },
+    { icon: "🏝️", text: "Choose between Caribbean islands or Pacific beaches" },
+  ]}
+/>

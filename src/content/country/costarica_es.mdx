@@ -1,0 +1,42 @@
+---
+title: Costa Rica 🇨🇷
+tagline: selvas compactas, volcanes y viajes centrados en la naturaleza bien organizados
+order: 311
+name: costa-rica
+mainImage0: '../../assets/costa_rica_logo.jpg'
+badge: Enfoque en naturaleza
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - uno de los destinos de vida silvestre más sólidos de Centroamérica  
+    - geografía compacta: volcanes, bosques nubosos, selva y playas a distancias relativamente cortas  
+    - infraestructura de ecoturismo bien desarrollada  
+    - estabilidad política y considerado seguro según estándares regionales  
+    - fuerte sistema de parques nacionales y cultura de conservación  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - caro en comparación con países vecinos  
+    - precios orientados al turismo son comunes  
+    - las zonas populares pueden sentirse concurridas y comerciales  
+    - el alquiler de coche suele ser necesario para mayor flexibilidad  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🌋", text: "Visitar regiones volcánicas como Arenal y explorar paisajes de lava" },
+    { icon: "🐒", text: "Observar fauna en parques nacionales y reservas de selva" },
+    { icon: "🌫️", text: "Recorrer bosques nubosos y puentes colgantes" },
+    { icon: "🏖️", text: "Elegir entre playas de surf en el Pacífico o la costa caribeña más tranquila" },
+  ]}
+/>
