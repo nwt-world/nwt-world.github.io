@@ -1,30 +1,54 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import LanguageBasedContent from "../../components/LanguageBasedContent.svelte";
+import CountryFilter from "../../components/CountryFilter.svelte";
+
 import { getLangFromId } from '../../lib/lang';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
-import placeholder_en from '../../assets/placeholder/country_en.png';
-import placeholder_es from '../../assets/placeholder/country_es.png';
-import placeholder_ru from '../../assets/placeholder/country_ru.png';
-
 const entries = await getCollection('country');
 
-const posts_en = (entries)
-  .filter(e => getLangFromId(e.id) === "en" && !e.data.hide )
-  .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
+function postsByLang(lang) {
+  return entries
+    .filter(e => getLangFromId(e.id) === lang && !e.data.hide)
+    .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
+}
 
-const posts_es = (entries)
-  .filter(e => getLangFromId(e.id) === "es" && !e.data.hide )
-  .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
+function badgesForPosts(posts) {
+  const counts = new Map<string, number>();
 
-const posts_ru = (entries)
-  .filter(e => getLangFromId(e.id) === "ru" && !e.data.hide )
-  .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
+  for (const p of posts) {
+    // badges can be `badges` (new) or `badge` (legacy)
+    const badges = (p.data?.badges ?? p.data?.badge ?? []) as string[];
+    for (const b of badges) {
+      counts.set(b, (counts.get(b) ?? 0) + 1);
+    }
+
+    // region is optional string
+    const region = p.data?.region as string | undefined;
+    if (region) {
+      counts.set(region, (counts.get(region) ?? 0) + 1);
+    }
+  }
+
+  return Array.from(counts.entries())
+    .sort((a, b) => {
+      const diff = b[1] - a[1]; // most-used first
+      return diff !== 0 ? diff : a[0].localeCompare(b[0]); // tie-break
+    })
+    .map(([tag]) => tag);
+}
+
+const posts_en = postsByLang("en");
+const posts_es = postsByLang("es");
+const posts_ru = postsByLang("ru");
+
+const badges_en = badgesForPosts(posts_en);
+const badges_es = badgesForPosts(posts_es);
+const badges_ru = badgesForPosts(posts_ru);
 
 ---
 
@@ -36,75 +60,6 @@ const posts_ru = (entries)
 			main {
 				width: 100%;
 			}
-			ul {
-				display: flex;
-				justify-content: center;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(32% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h3,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-
-			.title-row {
-				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
-			}
-
-			.title {
-				margin: 0;
-				font-size: 1.3rem;
-			}
-
-			.badge {
-				margin-left: auto;
-				font-size: 0.85rem;
-				padding: 0.15em 0.55em;
-				border-radius: 999px;
-				background: #eef6ff;
-				color: #2b5dab;
-				white-space: nowrap;
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-			}
 		</style>
 	</head>
 	<body>
@@ -112,66 +67,15 @@ const posts_ru = (entries)
 		<main>
 			<section>
 				<LanguageBasedContent client:load lang="en">
-				<ul slot="en">
-					{
-						posts_en.map((post) => (
-							<li>
-								<a href={`/country/${post.id}/`} class="country-card">
-									<Image width={720} height={360} src={post.data.mainImage ?? placeholder_en} alt="" loading="eager" />
-									<div class="title-row">
-										<h3 class="title">{post.data.title}</h3>
-
-										{post.data.badge && (
-											<span class="badge">
-											{post.data.badge}
-											</span>
-										)}
-									</div>
-
-								</a>
-							</li>
-						))
-					}
-				</ul>
-				<ul slot="es">
-					{
-						posts_es.map((post) => (
-							<li>
-								<a href={`/country/${post.id}/`}>
-									<Image width={720} height={360} src={post.data.mainImage ?? placeholder_es} alt="" loading="eager" />
-									<div class="title-row">
-										<h3 class="title">{post.data.title}</h3>
-										{post.data.badge && (
-											<span class="badge">
-											{post.data.badge}
-											</span>
-										)}
-									</div>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-				<ul slot="ru">
-					{
-						posts_ru.map((post) => (
-							<li>
-								<a href={`/country/${post.id}/`}>
-									<Image width={720} height={360} src={post.data.mainImage ?? placeholder_ru} alt="" loading="eager" />
-									<div class="title-row">
-										<h3 class="title">{post.data.title}</h3>
-
-										{post.data.badge && (
-											<span class="badge">
-											{post.data.badge}
-											</span>
-										)}
-									</div>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+				<div slot="en">
+					<CountryFilter client:load posts={posts_en} allBadges={badges_en} placeholder="/placeholder/country_en.png"/>
+				</div>
+				<div slot="es">
+					<CountryFilter client:load posts={posts_es} allBadges={badges_es} placeholder="/placeholder/country_es.png"/>
+				</div>
+				<div slot="ru">
+					<CountryFilter client:load posts={posts_ru} allBadges={badges_ru} placeholder="/placeholder/country_ru.png"/>
+				</div>
 				</LanguageBasedContent>
 			</section>
 		</main>

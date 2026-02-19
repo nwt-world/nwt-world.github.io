@@ -18,7 +18,7 @@ const {
 	tagline,
 	mainImage,
 	name,
-	videoId } = Astro.props;
+	videoId, badge, region } = Astro.props;
 
 const itineraries_en = await getItinerariesByCountry(name, "en")
 const itineraries_es = await getItinerariesByCountry(name, "es")
@@ -108,7 +108,48 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 				background: #f9f9f9;
 				transform: translateY(-2px);
 			}
+			
+			.meta-row {
+				max-width: 720px;
+				margin: 0.4em auto 1.1em auto;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-end; /* match tagline alignment */
+				gap: 0.35rem;
+			}
 
+			/* shared badge style */
+			.badge {
+				font-size: 0.85rem;
+				padding: 0.15em 0.55em;
+				border-radius: 999px;
+				background: #eef6ff;
+				color: #2b5dab;
+				white-space: nowrap;
+			}
+
+			/* region should look more "meta" than travel tags */
+			.badge-region {
+				background: #f3f4f6;
+				color: rgb(var(--gray-dark));
+				border: 1px solid #e6e6e6;
+			}
+
+			@media (max-width: 720px) {
+				.meta-row {
+					justify-content: flex-start;
+					overflow-x: auto;
+					flex-wrap: wrap;            /* single row */
+					-webkit-overflow-scrolling: touch;
+					padding: 0.25rem 0.25rem;
+					gap: 0.35rem;
+					scrollbar-width: none;        /* Firefox */
+				}
+				.meta-row::-webkit-scrollbar {
+					display: none;
+				}
+			}
 		</style>
 	</head>
 
@@ -118,6 +159,17 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 			<article>
 				<h1>{title}</h1>
 				<div class="tagline">{tagline}</div>
+
+				<div class="meta-row" aria-label="Tags">
+					{badge.length > 0 && (
+					<div class="badges">
+						{badge.map((b) => (
+						<span class="badge">{b}</span>
+						))}
+					</div>
+					)}
+				</div>
+
 				<LanguageBasedContent client:load lang="en">
 					<div class="hero-image" slot="en">
 						<Image width={1020} height={510} src={mainImage ?? placeholder_en} loading="eager" alt="" />

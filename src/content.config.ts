@@ -8,11 +8,15 @@ const country = defineCollection({
 			title: z.string(),
 			tagline: z.string(),
 			name: z.string(),
-			badge: z.string().optional(),
+			badge: z
+				.union([z.string(), z.array(z.string())])
+				.optional()
+				.transform((v) => (v === undefined ? undefined : Array.isArray(v) ? v : [v])),
 			hide: z.boolean().optional(),
 			order: z.number().int().optional(),
 			mainImage: image().optional(),
-			videoId: z.string().optional()
+			videoId: z.string().optional(),
+			region: z.string().optional(),
 		}),
 });
 
