@@ -40,7 +40,7 @@ const platformIcons = {
         rel="noopener"
         class="album-card"
       >
-        <Image src={platformIcons[album.platform]} alt={album.platform} class="platform-icon" loading="eager" />
+        <Image src={platformIcons[album.platform]} alt={album.platform} class="platform-icon" loading="lazy" />
         <span class="album-title">{album.title}</span>
       </a>
     ))}

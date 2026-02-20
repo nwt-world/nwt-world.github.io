@@ -6,17 +6,23 @@ import instagramIcon from '../assets/icons/instagram.svg';
 import googlePhotosIcon from "../assets/icons/google-photos.svg";
 import flickrIcon from "../assets/icons/flickr.svg";
 
-const { hideOnMobile = false } = Astro.props;
+const { hideOnMobile = false , isFooter = false} = Astro.props;
 
 
 ---
 
 <div class={`social-links ${hideOnMobile ? 'hide-mobile' : ''}`}>
     <a href="https://www.youtube.com/@nwt_world" target="_blank" rel="noopener">
-        <Image src={youtubeIcon} alt="YouTube" class="icon" loading="eager" />
+        <Image src={youtubeIcon} alt="YouTube" class="icon"
+            loading={isFooter ? "lazy" : "eager"}
+            fetchpriority={isFooter ? "auto" : "high"}
+        />
     </a>
     <a href="https://www.instagram.com/nwt_world" target="_blank" rel="noopener">
-        <Image src={instagramIcon} alt="Instagram" class="icon" loading="eager" />
+        <Image src={instagramIcon} alt="Instagram" class="icon"
+            loading={isFooter ? "lazy" : "eager"}
+            fetchpriority={isFooter ? "auto" : "high"}
+        />
     </a>
 </div>
 
