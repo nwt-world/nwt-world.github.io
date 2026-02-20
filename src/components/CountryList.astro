@@ -1,61 +1,51 @@
-<script lang="ts">
-  export let posts: any[] = [];
-  export let placeholder = "";
+---
+import { Image } from "astro:assets";
 
-  const MAX_BADGES_DESKTOP = 3;
-  const MAX_BADGES_MOBILE = 2;
+const MAX_BADGES_DESKTOP = 3;
+const MAX_BADGES_MOBILE = 2;
 
-  function imgSrc(post: any): string {
-    // Astro content image may be an object with `src`
-    const src = post?.data?.mainImage?.src;
-    return src ?? placeholder;
-  }
-</script>
+const { posts, placeholder } = Astro.props;
+---
 
-<ul>
-  <!--
-  {#each posts as post}
-    <p>{post.data.title} - {post.data.badge}</p>  
-  {/each}-->
-  {#each posts as post}
-    {@const badges = (post.data?.badges ?? post.data?.badge ?? []) as string[]}
-    {@const desktopBadges = badges.slice(0, MAX_BADGES_DESKTOP)}
-    {@const mobileBadges = badges.slice(0, MAX_BADGES_MOBILE)}
+<ul id="country-grid">
+  {posts.map((post, i) => {
+    const badges = post.data.badges ?? post.data.badge ?? [];
+    const region = post.data.region ? [post.data.region] : [];
+    const tags = [...badges, ...region].join(",");
 
-    <li>
-      <a href={`/country/${post.id}/`} class="country-card">
-        <img
-          width="720"
-          height="360"
-          src={imgSrc(post)}
-          alt=""
-          loading="lazy"
-        />
+    const desktopBadges = badges.slice(0, MAX_BADGES_DESKTOP);
+    const mobileBadges = badges.slice(0, MAX_BADGES_MOBILE);
 
-        <div class="title-row">
-          <h3 class="title">{post.data.title}</h3>
+    return (
+      <li data-tags={tags}>
+        <a href={`/country/${post.id}/`} class="country-card">
+          <Image
+            width={720}
+            height={360}
+            src={post.data.mainImage ?? placeholder}
+            alt={post.data.title}
+            loading={i < 6 ? "eager" : "lazy"}
+            fetchpriority={i < 6 ? "high" : "auto"}
+          />
 
-          {#if badges.length > 0}
-            <div class="badges" aria-label="Badges">
-              <!-- mobile set -->
-              <div class="badges-set badges-mobile">
-                {#each mobileBadges as b}
-                  <span class="badge">{b}</span>
-                {/each}
+          <div class="title-row">
+            <h3 class="title">{post.data.title}</h3>
+
+            {badges.length > 0 && (
+              <div class="badges" aria-label="Badges">
+                <div class="badges-set badges-mobile">
+                  {mobileBadges.map((b) => <span class="badge">{b}</span>)}
+                </div>
+                <div class="badges-set badges-desktop">
+                  {desktopBadges.map((b) => <span class="badge">{b}</span>)}
+                </div>
               </div>
-
-              <!-- desktop set -->
-              <div class="badges-set badges-desktop">
-                {#each desktopBadges as b}
-                  <span class="badge">{b}</span>
-                {/each}
-              </div>
-            </div>
-          {/if}
-        </div>
-      </a>
-    </li>
-  {/each}
+            )}
+          </div>
+        </a>
+      </li>
+    );
+  })}
 </ul>
 
 <style>

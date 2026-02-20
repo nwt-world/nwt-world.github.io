@@ -5,9 +5,14 @@ import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import LanguageBasedContent from "../../components/LanguageBasedContent.svelte";
 import CountryFilter from "../../components/CountryFilter.svelte";
+import CountryList from "../../components/CountryList.astro";
 
 import { getLangFromId } from '../../lib/lang';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+import placeholder_en from '../../assets/placeholder/country_en.png';
+import placeholder_es from '../../assets/placeholder/country_es.png';
+import placeholder_ru from '../../assets/placeholder/country_ru.png';
 
 const entries = await getCollection('country');
 
@@ -68,13 +73,16 @@ const badges_ru = badgesForPosts(posts_ru);
 			<section>
 				<LanguageBasedContent client:load lang="en">
 				<div slot="en">
-					<CountryFilter client:load posts={posts_en} allBadges={badges_en} placeholder="/placeholder/country_en.png"/>
+					<CountryFilter client:load posts={posts_en} allBadges={badges_en} />
+					<CountryList posts={posts_en} placeholder={placeholder_en} />
 				</div>
 				<div slot="es">
-					<CountryFilter client:load posts={posts_es} allBadges={badges_es} placeholder="/placeholder/country_es.png"/>
+					<CountryFilter client:load posts={posts_es} allBadges={badges_es} />
+					<CountryList posts={posts_es} placeholder={placeholder_es} />
 				</div>
 				<div slot="ru">
-					<CountryFilter client:load posts={posts_ru} allBadges={badges_ru} placeholder="/placeholder/country_ru.png"/>
+					<CountryFilter client:load posts={posts_ru} allBadges={badges_ru} />
+					<CountryList posts={posts_ru} placeholder={placeholder_ru} />
 				</div>
 				</LanguageBasedContent>
 			</section>

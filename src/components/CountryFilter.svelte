@@ -1,5 +1,4 @@
 <script lang="ts">
-  import CountryList from "./CountryList.svelte";
   import { onMount } from "svelte";
 
   export let lang = "en";
@@ -17,6 +16,14 @@
   onMount(() => {
     const isMobile = window.matchMedia("(max-width: 720px)").matches;
     showChips = !isMobile;
+    parseFromUrl();
+    applyDomFilter();
+
+    window.addEventListener("popstate", () => {
+      parseFromUrl();
+      applyDomFilter();
+    });
+
   });
 
   $: if (selected.size > 0) showChips = true;
@@ -63,10 +70,38 @@
 
   export let posts: any[] = [];
   export let allBadges: string[] = [];
-  export let placeholder: string = "";
 
   let mode: "OR" | "AND" = "OR";
   let selected = new Set<string>();
+
+  let shownCount = 0;
+  function applyDomFilter() {
+    if (typeof window === "undefined") return;
+
+    const items = document.querySelectorAll<HTMLLIElement>("#country-grid li");
+    const selectedArr = Array.from(selected);
+
+    let visible = 0;
+
+    items.forEach((li) => {
+      const raw = li.dataset.tags ?? "";
+      const tags = raw.split(",").map((s) => s.trim()).filter(Boolean);
+      const set = new Set(tags);
+
+      const ok =
+        selectedArr.length === 0
+          ? true
+          : mode === "AND"
+            ? selectedArr.every((x) => set.has(x))
+            : selectedArr.some((x) => set.has(x));
+
+      li.style.display = ok ? "" : "none";
+      if (ok) visible += 1;
+    });
+
+    shownCount = visible;
+  }
+
 
   function parseFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -98,28 +133,12 @@
     writeToUrl();
   }
 
-  if (typeof window !== "undefined") {
-    parseFromUrl();
-    window.addEventListener("popstate", parseFromUrl);
+  // re-apply whenever filters change
+  $: if (typeof window !== "undefined") {
+    // depends on selected+mode
+    selected, mode;
+    applyDomFilter();
   }
-
-  $: selectedArr = Array.from(selected);
-
-  $: filtered = posts.filter((p) => {
-    if (selected.size === 0) return true;
-
-    const values = new Set<string>();
-
-    const badges = (p.data?.badges ?? p.data?.badge ?? []) as string[];
-    for (const x of badges) values.add(x);
-
-    const region = p.data?.region as string | undefined;
-    if (region) values.add(region);
-
-    return mode === "AND"
-      ? selectedArr.every((x) => values.has(x))
-      : selectedArr.some((x) => values.has(x));
-  });
 </script>
 
 <div class="filter">
@@ -139,7 +158,8 @@
       {t.mode}: {modeLabel}
     </button>
 
-    <span class="meta">{t.showing(filtered.length, posts.length)}</span>
+    <span class="meta">{t.showing(shownCount, posts.length)}</span>
+
   </div>
 
   {#if showChips}
@@ -152,9 +172,6 @@
     </div>
   {/if}
 </div>
-
-
-<CountryList posts={filtered} placeholder={placeholder} />
 
 <style>
   .controls {
