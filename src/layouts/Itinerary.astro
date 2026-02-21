@@ -15,7 +15,7 @@ const {
 	tagline,
 	country,
 	mainImage,
-	videoId } = Astro.props;
+	videoId,badge } = Astro.props;
 
 const countryDataEn = await getCountryByName(country, "en");
 const countryDataEs = await getCountryByName(country, "es");
@@ -63,6 +63,25 @@ const countryDataRu = await getCountryByName(country, "ru");
 			.last-updated-on {
 				font-style: italic;
 			}
+			.badge {
+				font-size: 0.85rem;
+				padding: 0.15em 0.55em;
+				border-radius: 999px;
+				background: #eef6ff;
+				color: #2b5dab;
+				white-space: nowrap;
+			}
+
+			.meta-row {
+				max-width: 720px;
+				margin: 0.4em auto 1.1em auto;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-end; /* match tagline alignment */
+				gap: 0.35rem;
+			}
+
 			.country-name {
 				color: #111;
 				text-decoration: none;
@@ -87,6 +106,15 @@ const countryDataRu = await getCountryByName(country, "ru");
 			<article>
 				<h1>{title}</h1>
 				<div class="tagline">{tagline}</div>
+				<div class="meta-row" aria-label="Tags">
+					{badge.length > 0 && (
+					<div class="badges">
+						{badge.map((b) => (
+						<span class="badge">{b}</span>
+						))}
+					</div>
+					)}
+				</div>
 				<div class="hero-image">
 					{mainImage && <Image width={1020} height={510} src={mainImage} loading="eager" alt="" />}
 				</div>
@@ -110,8 +138,7 @@ const countryDataRu = await getCountryByName(country, "ru");
 							<div slot="es">Video</div>
 							<div slot="ru">Видео</div>
 						</LanguageBasedContent>
-
-						</h2>
+					</h2>
 					<YouTube id={videoId} />
 				}
 

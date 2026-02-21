@@ -6,10 +6,82 @@ import Header from '../../components/Header.astro';
 import LanguageBasedContent from "../../components/LanguageBasedContent.svelte";
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import { getItinerariesWithCountry } from '../../lib/itinerary';
+import ItineraryFilter from '../../components/ItineraryFilter.svelte';
+import ItineraryList from '../../components/ItineraryList.astro';
 
 const itineraries_en = await getItinerariesWithCountry("en")
 const itineraries_es = await getItinerariesWithCountry("es")
 const itineraries_ru = await getItinerariesWithCountry("ru")
+
+function tagsForItineraries(items) {
+  const counts = new Map<string, number>();
+  for (const { itinerary } of items) {
+    for (const t of (itinerary.data.badge ?? [])) {
+      counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+  }
+  return Array.from(counts.entries())
+    .sort((a, b) => (b[1] - a[1]) || a[0].localeCompare(b[0]))
+    .map(([t]) => t);
+}
+
+function tagsForItinerariesWithCountries(
+  items,
+  minItinerariesPerCountry: number,
+  opts?: { useCountryTitle?: boolean; countryPrefix?: string }
+) {
+  // 1) count itineraries per country
+  const countryCounts = new Map<string, number>();
+  for (const { country } of items) {
+    const key = country.data.title;
+    countryCounts.set(key, (countryCounts.get(key) ?? 0) + 1);
+  }
+
+  // 2) decide which country tags are eligible
+  const eligibleCountries = new Set<string>();
+  for (const [k, n] of countryCounts.entries()) {
+    if (n >= minItinerariesPerCountry) eligibleCountries.add(k);
+  }
+
+  // 3) count tags overall (itinerary tags + eligible country tags)
+  const tagCounts = new Map<string, number>();
+
+  for (const { itinerary, country } of items) {
+    // itinerary tags
+    for (const t of (itinerary.data.badge ?? [])) {
+      tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+    }
+
+    // eligible country tag
+    const ck = country.data.title;
+    if (eligibleCountries.has(ck)) {
+      const countryTag = `${ck}`;
+      tagCounts.set(countryTag, (tagCounts.get(countryTag) ?? 0) + 1);
+    }
+  }
+
+  // 4) sort by frequency desc, then alpha
+  const tags = Array.from(tagCounts.entries())
+    .sort((a, b) => (b[1] - a[1]) || a[0].localeCompare(b[0]))
+    .map(([t]) => t);
+
+  return { tags, tagCounts, eligibleCountries };
+}
+
+const MIN_ITINERARIES_FOR_COUNTRY_TAG = 2;
+
+const { tags: tags_en } = tagsForItinerariesWithCountries(
+  itineraries_en,
+  MIN_ITINERARIES_FOR_COUNTRY_TAG
+);
+const { tags: tags_es } = tagsForItinerariesWithCountries(
+  itineraries_es,
+  MIN_ITINERARIES_FOR_COUNTRY_TAG
+);
+const { tags: tags_ru } = tagsForItinerariesWithCountries(
+  itineraries_ru,
+  MIN_ITINERARIES_FOR_COUNTRY_TAG
+);
 
 ---
 
@@ -100,67 +172,16 @@ const itineraries_ru = await getItinerariesWithCountry("ru")
 			<section>
 				<LanguageBasedContent client:load lang="en">
 					<div slot="en">
-						<ul class="itinerary-grid">
-						{itineraries_en.map(({ itinerary, country }) => (
-							<li class="itinerary-card">
-							<a href={`/itinerary/${itinerary.id}/`}>
-								<Image
-								width={720}
-								height={360}
-								src={itinerary.data.mainImage}
-								alt=""
-								loading="eager"
-								/>
-								<div class="card-header">
-								<h3 class="title">{itinerary.data.title}</h3>
-								<span class="country-badge">{country.data.title}</span>
-								</div>
-							</a>
-							</li>
-						))}
-						</ul>
+						<ItineraryFilter client:load allBadges={tags_en} totalCount={itineraries_en.length} lang='en'/>
+						<ItineraryList items={itineraries_en} />
 					</div>
 					<div slot="es">
-						<ul class="itinerary-grid">
-						{itineraries_es.map(({ itinerary, country }) => (
-							<li class="itinerary-card">
-							<a href={`/itinerary/${itinerary.id}/`}>
-								<Image
-								width={720}
-								height={360}
-								src={itinerary.data.mainImage}
-								alt=""
-								loading="eager"
-								/>
-								<div class="card-header">
-								<h3 class="title">{itinerary.data.title}</h3>
-								<span class="country-badge">{country.data.title}</span>
-								</div>
-							</a>
-							</li>
-						))}
-						</ul>
+						<ItineraryFilter client:load allBadges={tags_es} totalCount={itineraries_es.length} lang='es'/>
+						<ItineraryList items={itineraries_es} />
 					</div>
 					<div slot="ru">
-						<ul class="itinerary-grid">
-						{itineraries_ru.map(({ itinerary, country }) => (
-							<li class="itinerary-card">
-							<a href={`/itinerary/${itinerary.id}/`}>
-								<Image
-								width={720}
-								height={360}
-								src={itinerary.data.mainImage}
-								alt=""
-								loading="eager"
-								/>
-								<div class="card-header">
-								<h3 class="title">{itinerary.data.title}</h3>
-								<span class="country-badge">{country.data.title}</span>
-								</div>
-							</a>
-							</li>
-						))}
-						</ul>
+						<ItineraryFilter client:load allBadges={tags_ru} totalCount={itineraries_ru.length} lang='en'/>
+						<ItineraryList items={itineraries_ru} />
 					</div>
 				</LanguageBasedContent>
 			</section>

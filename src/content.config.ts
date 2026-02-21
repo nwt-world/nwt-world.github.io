@@ -28,6 +28,10 @@ const itinerary = defineCollection({
 			tagline: z.string(),
 			name: z.string(),
 			country: z.string(),
+			badge: z
+				.union([z.string(), z.array(z.string())])
+				.optional()
+				.transform((v) => (v === undefined ? [] : Array.isArray(v) ? v : [v])),
 			hide: z.boolean().optional(),
 			order: z.number().int().optional(),
 			mainImage: image(),
