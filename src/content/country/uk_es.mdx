@@ -1,0 +1,37 @@
+---
+title: Reino Unido 🇬🇧
+tagline: historia profunda y paisajes muy regionales
+order: 604
+name: uk
+badge: [cultura, ciudad, fácil, hub]
+region: Europa
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - museos excepcionales y gran profundidad histórica, especialmente en ciudades principales  
+    - regiones muy diversas: costas, brezales, highlands y parques nacionales  
+    - entorno fácil por el idioma y sistemas de viaje claros  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - caro, especialmente el alojamiento en ciudades populares  
+    - el clima suele ser gris e impredecible  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🏛️", text: "Enfócate en museos, historia y barrios en ciudades principales" },
+    { icon: "🌊", text: "Explora caminatas costeras y paisajes de acantilados" },
+    { icon: "⛰️", text: "Suma un parque nacional o una región de highlands para naturaleza más tranquila" },
+  ]}
+/>

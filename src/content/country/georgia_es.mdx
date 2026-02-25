@@ -1,0 +1,39 @@
+---
+title: Georgia 🇬🇪
+tagline: Montañas del Cáucaso, pueblos antiguos y gran relación calidad-precio en un país compacto
+order: 701
+name: georgia
+badge: [montañas, cultura, senderismo, económico]
+region: Post-soviético
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - paisajes de montaña imponentes en el Cáucaso, con acceso relativamente fácil desde las ciudades  
+    - gran profundidad cultural: pueblos antiguos, monasterios e identidad local distintiva  
+    - excelente relación calidad-precio en comparación con Europa  
+    - hospitalidad cálida y una cultura gastronómica muy viva  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - la calidad de la infraestructura varía mucho fuera de las rutas principales  
+    - conducir puede sentirse caótico; el transporte público es irregular en regiones montañosas  
+    - el clima en el Cáucaso es cambiante y depende mucho de la visibilidad  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "⛰️", text: "Base cerca del Cáucaso para senderismo y miradores (p. ej., región de Kazbegi)" },
+    { icon: "🏛️", text: "Visita monasterios, pueblos antiguos y regiones históricas" },
+    { icon: "🍷", text: "Explora regiones vinícolas y la cultura gastronómica local" },
+  ]}
+/>

@@ -1,0 +1,39 @@
+---
+title: Portugal 🇵🇹
+tagline: Atlantic coast, calm cities, and islands
+order: 600
+name: portugal
+badge: [culture, beach, islands]
+region: Europe
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - relaxed pace with strong food and everyday culture  
+    - varied coastlines and scenic road trips  
+    - good value compared to much of Western Europe  
+    - excellent island add-ons (Madeira, Azores) for nature and hikes  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - popular areas can be crowded in peak season  
+    - nature on the mainland is pleasant but less dramatic than alpine countries  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🏙️", text: "Explore Lisbon and Porto for historic neighborhoods and viewpoints" },
+    { icon: "🌊", text: "Follow the Atlantic coast for beaches, cliffs, and small towns" },
+    { icon: "🏝️", text: "Add Madeira or the Azores for hiking and ocean scenery" },
+    { icon: "🍷", text: "Enjoy regional food culture and simple everyday travel" },
+  ]}
+/>

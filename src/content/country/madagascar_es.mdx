@@ -1,0 +1,44 @@
+---
+title: Madagascar 🇲🇬
+tagline: vida silvestre y paisajes salvajes que no existen en ningún otro lugar
+order: 412
+name: madagascar
+mainImage0: '../../assets/madagascar_logo.jpg'
+badge: [vida silvestre, selva, islas, playa, complicado]
+region: África
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - uno de los destinos de vida silvestre más únicos del planeta (lémures, baobabs, especies endémicas)  
+    - fuerte sensación de naturaleza “real”: sin pulir, sin puesta en escena  
+    - enorme variedad: selvas, paisajes secos, playas e islas como Nosy Be  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - logística difícil, trayectos largos por carretera e infraestructura limitada  
+    - la seguridad y la fiabilidad varían según la región; la planificación importa  
+    - el viaje es más lento y más cansador que en islas cercanas  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🦎", text: "Ver fauna endémica en parques nacionales (lémures, camaleones, baobabs)" },
+    { icon: "🌳", text: "Visitar paisajes icónicos como la Avenida de los Baobabs" },
+    { icon: "🏝️", text: "Usar Nosy Be / islas cercanas para playas y excursiones de día" },
+  ]}
+/>
+
+---
+
+## 📝 Notas
+Madagascar es único porque su naturaleza es verdaderamente irrepetible: muchas especies existen solo aquí.

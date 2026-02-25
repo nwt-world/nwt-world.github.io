@@ -1,0 +1,39 @@
+---
+title: Nueva Zelanda 🇳🇿
+tagline: tranquila, segura y con naturaleza muy concentrada
+order: 501
+name: new-zealand
+badge: [montañas, lagos, senderismo, ruta escénica, caro]
+region: Oceanía
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - uno de los países con mejor “naturaleza por día”: montañas, lagos, fiordos y volcanes  
+    - muy seguro, tranquilo y bien organizado  
+    - excelente senderismo y miradores con buena infraestructura de senderos  
+    - baja densidad de población en muchas regiones → pocas multitudes fuera de los hotspots  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - caro en alojamiento, comida y transporte  
+    - distancias largas; un auto suele ser esencial para el mejor ritmo del viaje  
+    - el clima es cambiante y puede afectar la visibilidad y las caminatas  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🌋", text: "Explora paisajes volcánicos y zonas geotermales en la Isla Norte" },
+    { icon: "🏔️", text: "Dedica la mayor parte del tiempo a la Isla Sur por montañas, lagos y grandes paisajes" },
+    { icon: "🥾", text: "Haz senderos a miradores y tramos cortos de las Great Walks" },
+  ]}
+/>

@@ -1,0 +1,41 @@
+---
+title: Iceland 🇮🇸
+tagline: volcano land of waterfalls and black sand
+order: 601
+name: iceland
+badge: [volcanoes, waterfalls, glaciers, expensive]
+region: Europe
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - extremely distinctive landscapes: volcanic fields, waterfalls, glaciers, black sand  
+    - easy-to-build road-trip routes with strong tourist infrastructure  
+    - high safety and predictable logistics  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - very expensive and can feel crowded on the main ring-road route  
+    - weather changes fast and can disrupt plans  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🌋", text: "Focus on volcanic landscapes, geothermal areas, and waterfalls" },
+    { icon: "🧊", text: "Add glaciers, lagoons, and black-sand beaches" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+Iceland is unique because its landscapes feel non-Earth-like even on short routes.

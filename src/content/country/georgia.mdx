@@ -1,0 +1,39 @@
+---
+title: Georgia 🇬🇪
+tagline: Caucasus mountains, old towns, and strong value in a compact country
+order: 701
+name: georgia
+badge: [mountains, culture, hiking, budget]
+region: Post-Soviet
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - powerful mountain scenery in the Caucasus with relatively easy access from cities  
+    - strong cultural depth: old towns, monasteries, and distinctive local identity  
+    - excellent value for money compared to Europe  
+    - warm hospitality and lively food culture  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - infrastructure quality varies strongly outside main routes  
+    - driving can feel chaotic; public transport is uneven in mountain regions  
+    - weather in the Caucasus is variable and visibility-dependent  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "⛰️", text: "Base near the Caucasus for hikes and viewpoints (e.g., Kazbegi region)" },
+    { icon: "🏛️", text: "Visit monasteries, old towns, and historic regions" },
+    { icon: "🍷", text: "Explore wine regions and local food culture" },
+  ]}
+/>

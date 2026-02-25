@@ -1,0 +1,39 @@
+---
+title: Portugal 🇵🇹
+tagline: costa atlántica, ciudades tranquilas e islas
+order: 600
+name: portugal
+badge: [cultura, playa, islas]
+region: Europa
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - ritmo relajado con muy buena gastronomía y cultura cotidiana  
+    - costas variadas y rutas escénicas  
+    - buena relación calidad-precio frente a gran parte de Europa occidental  
+    - excelentes islas como extra (Madeira, Azores) para naturaleza y caminatas  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - las zonas populares pueden estar concurridas en temporada alta  
+    - la naturaleza en el continente es agradable, pero menos dramática que en países alpinos  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🏙️", text: "Explora Lisboa y Oporto por barrios históricos y miradores" },
+    { icon: "🌊", text: "Recorre la costa atlántica por playas, acantilados y pueblos" },
+    { icon: "🏝️", text: "Suma Madeira o las Azores para caminatas y paisajes oceánicos" },
+    { icon: "🍷", text: "Disfruta la gastronomía regional y un viaje cotidiano y simple" },
+  ]}
+/>

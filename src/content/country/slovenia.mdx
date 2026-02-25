@@ -1,0 +1,36 @@
+---
+title: Slovenia 🇸🇮
+tagline: compact alpine-country feel with lakes, caves, and calm logistics
+order: 605
+name: slovenia
+badge: [mountains, lakes, hiking, budget]
+region: Europe
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - compact and easy: mountains, lakes, caves, and small towns close together  
+    - clean, safe, and calm travel style with good infrastructure  
+    - great value compared to nearby alpine destinations  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - peak summer can bring crowds to top spots  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "⛰️", text: "Explore the Julian Alps and mountain viewpoints" },
+    { icon: "🏞️", text: "Visit Lake Bled and quieter lake regions" },
+    { icon: "🕳️", text: "See karst caves and dramatic underground landscapes" },
+  ]}
+/>

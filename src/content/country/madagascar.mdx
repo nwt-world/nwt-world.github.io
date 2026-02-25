@@ -1,0 +1,44 @@
+---
+title: Madagascar 🇲🇬
+tagline: raw wildlife and landscapes found nowhere else
+order: 412
+name: madagascar
+mainImage0: '../../assets/madagascar_logo.jpg'
+badge: [wildlife, rainforest, islands, beach, challenging]
+region: Africa
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - one of the most unique wildlife destinations on Earth (lemurs, baobabs, endemic species)  
+    - strong “real” nature feeling — not polished, not staged  
+    - huge variety: rainforests, dry landscapes, beaches, and islands like Nosy Be  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - difficult logistics, long drives, and limited infrastructure  
+    - safety and reliability vary by region; planning matters  
+    - travel is slower and more tiring than nearby islands  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🦎", text: "See endemic wildlife in national parks (lemurs, chameleons, baobabs)" },
+    { icon: "🌳", text: "Visit iconic landscapes like the Avenue of the Baobabs" },
+    { icon: "🏝️", text: "Use Nosy Be / nearby islands for beaches and day trips" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+Madagascar is unique because its nature is truly one-of-a-kind — many species exist only here.

@@ -1,0 +1,41 @@
+---
+title: Austria 🇦🇹
+tagline: Alpine scenery with clean cities, culture, and effortless logistics
+order: 603
+name: austria
+badge: [mountains, culture, hiking, easy]
+region: Europe
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - classic Alps: lakes, valleys, and viewpoints with excellent trails  
+    - strong cultural depth in cities (music, museums, architecture)  
+    - very safe, organized, and easy to travel by public transport  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - relatively expensive, especially in alpine regions  
+    - winter can feel long and gray outside ski season  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "⛰️", text: "Base in alpine regions for hikes, lakes, and mountain viewpoints" },
+    { icon: "🏙️", text: "Visit Vienna and Salzburg for culture, architecture, and museums" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+Austria is unique because it offers high-quality Alpine landscapes with European-level order and logistics.

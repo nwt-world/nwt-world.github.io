@@ -1,0 +1,36 @@
+---
+title: Noruega 🇳🇴
+tagline: fiordos y grandes paisajes de montaña en uno de los países más tranquilos de Europa
+order: 602
+name: norway
+badge: [montañas, fiordos, senderismo, caro]
+region: Europa
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - fiordos dramáticos, acantilados y paisajes alpinos costeros  
+    - entorno de viaje extremadamente seguro, tranquilo y predecible  
+    - excelente senderismo y miradores con infraestructura cuidada  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - uno de los países más caros de Europa  
+    - el clima es variable y depende de la visibilidad  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🏞️", text: "Visita regiones de fiordos con rutas escénicas y cruces en ferry" },
+    { icon: "🥾", text: "Haz senderismo hacia miradores clásicos y senderos por crestas" },
+  ]}
+/>

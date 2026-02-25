@@ -1,0 +1,39 @@
+---
+title: New Zealand 🇳🇿
+tagline: calm, safe, and nature-dense
+order: 501
+name: new-zealand
+badge: [mountains, lakes, hiking, road trip, expensive]
+region: Oceania
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - one of the strongest “nature-per-day” countries: mountains, lakes, fjords, volcanoes  
+    - very safe, calm, and well-organized  
+    - excellent hiking and viewpoints with good trail infrastructure  
+    - low population density in many regions → minimal crowds outside hotspots  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - expensive across accommodation, food, and transport  
+    - long distances; a car is often essential for the best flow  
+    - weather is changeable and can affect visibility and hikes  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🌋", text: "Explore North Island volcanic landscapes and geothermal regions" },
+    { icon: "🏔️", text: "Spend most time on South Island for mountains, lakes, and big scenery" },
+    { icon: "🥾", text: "Hike viewpoint trails and short Great Walk segments" },
+  ]}
+/>

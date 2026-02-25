@@ -1,0 +1,41 @@
+---
+title: Islandia 🇮🇸
+tagline: tierra de volcanes, cascadas y arena negra
+order: 601
+name: iceland
+badge: [volcanes, cascadas, glaciares, caro]
+region: Europa
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - paisajes extremadamente distintivos: campos volcánicos, cascadas, glaciares y arena negra  
+    - rutas tipo road trip fáciles de armar, con muy buena infraestructura turística  
+    - alta seguridad y logística predecible  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - muy caro y puede sentirse concurrido en la ruta principal de la Ring Road  
+    - el clima cambia rápido y puede alterar los planes  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🌋", text: "Enfócate en paisajes volcánicos, zonas geotermales y cascadas" },
+    { icon: "🧊", text: "Suma glaciares, lagunas y playas de arena negra" },
+  ]}
+/>
+
+---
+
+## 📝 Notas
+Islandia es única porque sus paisajes se sienten “de otro planeta” incluso en rutas cortas.

@@ -1,0 +1,44 @@
+---
+title: Nepal 🇳🇵
+tagline: Himalayan views
+order: 509
+name: nepal
+mainImage0: '../../assets/nepal_logo.jpg'
+badge: [mountains, hiking, culture, challenging]
+region: Asia
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - some of the world’s strongest mountain scenery (Himalayan scale)  
+    - rewarding cultural layer in Kathmandu Valley and historic towns  
+    - many routes exist beyond extreme treks if planned thoughtfully  
+    - generally affordable compared to other mountain destinations  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - mountain visibility is seasonal; timing matters  
+    - altitude requires slow pacing and acclimatization  
+    - infrastructure is basic; travel can be slow and tiring  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🌄", text: "Visit mountain basins and ridge trails with classic Himalayan panoramas" },
+    { icon: "🏛️", text: "Explore Kathmandu Valley cultural sites and historic towns" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+Nepal is unique because it offers true Himalayan scale that no other destination can replicate.

@@ -1,0 +1,38 @@
+---
+title: Kyrgyzstan 🇰🇬
+tagline: high-mountain lakes and landscapes
+order: 704
+name: kyrgyzstan
+badge: [mountains, lakes, hiking, challenging]
+region: Post-Soviet
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - strong mountain scenery with lakes, valleys, and high passes  
+    - “raw” nature feeling with low crowds and open space  
+    - generally affordable and well-suited for slow travel  
+    - clear cultural identity around mountain life and traditions  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - basic infrastructure outside main routes  
+    - weather changes fast in the mountains; planning and flexibility matter  
+    - comfort level is lower than in more developed mountain destinations  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🏔️", text: "Explore mountain valleys and lakes (Issyk-Kul region and beyond)" },
+    { icon: "🥾", text: "Do day hikes or multi-day treks with simple logistics" },
+  ]}
+/>

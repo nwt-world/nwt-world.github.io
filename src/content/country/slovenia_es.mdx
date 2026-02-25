@@ -1,0 +1,36 @@
+---
+title: Eslovenia 🇸🇮
+tagline: un país alpino compacto con lagos, cuevas y logística tranquila
+order: 605
+name: slovenia
+badge: [montañas, lagos, senderismo, económico]
+region: Europa
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - compacto y fácil: montañas, lagos, cuevas y pueblos pequeños muy cerca entre sí  
+    - estilo de viaje limpio, seguro y tranquilo con buena infraestructura  
+    - excelente relación calidad-precio frente a destinos alpinos cercanos  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - el pico del verano puede traer multitudes a los lugares más famosos  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "⛰️", text: "Explora los Alpes Julianos y miradores de montaña" },
+    { icon: "🏞️", text: "Visita el Lago Bled y zonas de lagos más tranquilas" },
+    { icon: "🕳️", text: "Ve cuevas kársticas y paisajes subterráneos dramáticos" },
+  ]}
+/>

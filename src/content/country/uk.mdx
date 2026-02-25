@@ -1,0 +1,37 @@
+---
+title: United Kingdom 🇬🇧
+tagline: deep history and highly regional landscapes
+order: 604
+name: uk
+badge: [culture, city, easy, hub]
+region: Europe
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - exceptional museums and historic depth, especially in major cities  
+    - diverse regions: coasts, moors, highlands, and national parks  
+    - easy language environment and clear travel systems  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - expensive, especially accommodation in popular cities  
+    - weather is often gray and unpredictable  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🏛️", text: "Focus on museums, history, and neighborhoods in major cities" },
+    { icon: "🌊", text: "Explore coastal walks and cliff scenery" },
+    { icon: "⛰️", text: "Add a national park or highland region for quieter nature time" },
+  ]}
+/>

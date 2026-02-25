@@ -1,0 +1,45 @@
+---
+title: Japan 🇯🇵
+tagline: ultra-convenient travel with volcano views, deep culture, and islands
+order: 500
+name: japan
+mainImage0: '../../assets/japan_logo.jpg'
+badge: [culture, volcanoes, city, easy, islands]
+region: Asia
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - world-class infrastructure: fast trains, clear logistics, and high safety  
+    - deep cultural heritage alongside modern city life  
+    - volcano landscapes and iconic viewpoints (Fuji and beyond)  
+    - island diversity (from subtropical Okinawa to northern coasts)  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - expensive compared to most of Asia  
+    - popular areas can be crowded, especially in peak seasons  
+    - weather and visibility are seasonal (volcano views are not guaranteed)  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🏙️", text: "Explore major cities for modern life, food, and museums" },
+    { icon: "🗻", text: "See Mount Fuji viewpoints and nearby lakes / valleys" },
+    { icon: "🏝️", text: "Add an island segment (Okinawa or other coastal/island regions)" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+Japan is unique because it combines maximum convenience with real nature (including volcanoes) and dense cultural depth in one trip.

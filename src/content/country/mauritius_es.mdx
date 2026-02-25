@@ -1,0 +1,45 @@
+---
+title: Mauricio 🇲🇺
+tagline: lagunas tranquilas y una isla tropical cómoda con caminatas reales
+order: 410
+name: mauritius
+mainImage0: '../../assets/mauritius_logo.jpg'
+badge: [islas, playa, tranquilidad, esnórquel, senderismo]
+region: Islas del Océano Índico
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - isla fácil, segura y cómoda para viajar por cuenta propia  
+    - lagunas claras para nadar, hacer snorkel y pasar días en barco  
+    - caminatas reales y miradores (Le Morne, Black River Gorges)  
+    - buena infraestructura y variedad de alojamientos  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Contras</h2>
+    - menos orientada a naturaleza salvaje  
+    - puede sentirse repetitiva si te quedas demasiado tiempo en una sola zona  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ Qué hacer
+
+<WhatToDo
+  items={[
+    { icon: "🌊", text: "Nada, haz snorkel y relájate en lagunas tranquilas (costas oeste y sur)" },
+    { icon: "⛰️", text: "Haz la caminata a Le Morne Brabant y explora miradores en Black River Gorges" },
+    { icon: "⛵", text: "Haz un paseo en barco (catamarán / islas / snorkel)" },
+    { icon: "🚗", text: "Haz un circuito escénico por Chamarel y miradores del suroeste" },
+  ]}
+/>
+
+---
+
+## 📝 Notas
+Mauricio es único porque combina el confort de playa con caminatas reales y miradores en un entorno seguro y bien organizado.

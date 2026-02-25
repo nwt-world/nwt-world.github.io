@@ -1,0 +1,45 @@
+---
+title: Mauritius 🇲🇺
+tagline: calm lagoons and a comfortable tropical island with real hikes
+order: 410
+name: mauritius
+mainImage0: '../../assets/mauritius_logo.jpg'
+badge: [islands, beach, relax, snorkeling, hiking]
+region: Indian Ocean Islands
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - easy, safe, and comfortable island for independent travel  
+    - clear lagoons for swimming, snorkeling, and boat days  
+    - real hiking and viewpoints (Le Morne, Black River Gorges)  
+    - good infrastructure and accommodation choice  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - less about wild nature 
+    - can feel repetitive if staying too long in one area  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🌊", text: "Swim, snorkel, and relax in calm lagoons (west and south coasts)" },
+    { icon: "⛰️", text: "Hike Le Morne Brabant and explore Black River Gorges viewpoints" },
+    { icon: "⛵", text: "Take a bot trip (catamaran / islands / snorkeling)" },
+    { icon: "🚗", text: "Do a scenic loop through Chamarel and southwest viewpoints" },
+  ]}
+/>
+
+---
+
+## 📝 Notes
+Mauritius is unique because it combines beach comfort with real hiking and viewpoints in a safe, well-organized setting.

@@ -1,0 +1,36 @@
+---
+title: Norway 🇳🇴
+tagline: fjords and big mountain scenery in one of Europe’s calmest countries
+order: 602
+name: norway
+badge: [mountains, fjords, hiking, expensive]
+region: Europe
+---
+
+import ProsCons from '../../components/ProsCons.astro';
+import WhatToDo from "../../components/WhatToDo.astro";
+
+<ProsCons>
+  <div slot="pros">
+    <h2>✔️ Pros</h2>
+    - dramatic fjords, cliffs, and alpine coastal landscapes  
+    - extremely safe, calm, and predictable travel environment  
+    - excellent hiking and viewpoints with clean infrastructure  
+  </div>
+  <div slot="cons">
+    <h2>⛔ Cons</h2>
+    - one of the most expensive countries in Europe  
+    - weather is variable and visibility-dependent  
+  </div>
+</ProsCons>
+
+---
+
+## ☑️ What to Do
+
+<WhatToDo
+  items={[
+    { icon: "🏞️", text: "See fjord regions with scenic drives and ferry crossings" },
+    { icon: "🥾", text: "Hike to classic viewpoints and ridge trails" },
+  ]}
+/>
