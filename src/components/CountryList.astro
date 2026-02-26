@@ -4,135 +4,238 @@ import { Image } from "astro:assets";
 const MAX_BADGES_DESKTOP = 3;
 const MAX_BADGES_MOBILE = 2;
 
-const { posts, placeholder } = Astro.props;
+const {
+  gridId = "country-grid",
+  pinned = [],
+  visited = [],
+  planned = [],
+  placeholder,
+} = Astro.props;
+
+// For eager-loading only the first 6 images across ALL rendered items
+let globalImageIndex = 0;
+
+// unify pinned + visited (pinned first)
+const topPosts = [...pinned, ...visited];
+const hasPlanned = planned?.length > 0;
 ---
 
-<ul id="country-grid">
-  {posts.map((post, i) => {
-    const badges = post.data.badges ?? post.data.badge ?? [];
-    const region = post.data.region ? [post.data.region] : [];
-    const tags = [...badges, ...region].join(",");
+<div id={gridId}>
+  <!-- TOP: pinned + visited -->
+  <section class="country-section" data-section="top">
+    <ul class="country-grid" aria-label="Countries">
+      {topPosts.map((post) => {
+        const i = globalImageIndex++;
 
-    const desktopBadges = badges.slice(0, MAX_BADGES_DESKTOP);
-    const mobileBadges = badges.slice(0, MAX_BADGES_MOBILE);
+        const badges = post.data.badges ?? post.data.badge ?? [];
+        const region = post.data.region ? [post.data.region] : [];
+        const tags = [...badges, ...region].join(",");
 
-    return (
-      <li data-tags={tags}>
-        <a href={`/country/${post.id}/`} class="country-card">
-          <Image
-            width={720}
-            height={360}
-            src={post.data.mainImage ?? placeholder}
-            alt={post.data.title}
-            loading={i < 6 ? "eager" : "lazy"}
-            fetchpriority={i < 6 ? "high" : "auto"}
-          />
+        const desktopBadges = badges.slice(0, MAX_BADGES_DESKTOP);
+        const mobileBadges = badges.slice(0, MAX_BADGES_MOBILE);
 
-          <div class="title-row">
-            <h3 class="title">{post.data.title}</h3>
+        const isPinned = post.data.pinned === true;
 
-            {badges.length > 0 && (
-              <div class="badges" aria-label="Badges">
-                <div class="badges-set badges-mobile">
-                  {mobileBadges.map((b) => <span class="badge">{b}</span>)}
-                </div>
-                <div class="badges-set badges-desktop">
-                  {desktopBadges.map((b) => <span class="badge">{b}</span>)}
-                </div>
+        return (
+          <li
+            data-tags={tags}
+            data-score={post.data.score ?? 0}
+            data-sort-title={post.data.title}
+            data-pinned={isPinned ? "1" : "0"}
+          >
+            <a href={`/country/${post.id}/`} class="country-card">
+              <Image
+                width={720}
+                height={360}
+                src={post.data.mainImage ?? placeholder}
+                alt={post.data.title}
+                loading={i < 6 ? "eager" : "lazy"}
+                fetchpriority={i < 6 ? "high" : "auto"}
+              />
+
+              <div class="title-row">
+                <h3 class="title">
+                  {post.data.title}
+                  {isPinned && (
+                    <span class="pin" title="Pinned" aria-label="Pinned">
+                      📌
+                    </span>
+                  )}
+                </h3>
+
+                {badges.length > 0 && (
+                  <div class="badges" aria-label="Badges">
+                    <div class="badges-set badges-mobile">
+                      {mobileBadges.map((b) => <span class="badge">{b}</span>)}
+                    </div>
+                    <div class="badges-set badges-desktop">
+                      {desktopBadges.map((b) => <span class="badge">{b}</span>)}
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </a>
-      </li>
-    );
-  })}
-</ul>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <!-- separator between visited/top and planned -->
+  {hasPlanned && <hr class="separator" aria-hidden="true" />}
+
+  <!-- PLANNED -->
+  {hasPlanned && (
+    <section class="country-section" data-section="planned">
+      <ul class="country-grid" aria-label="Planned countries">
+        {planned.map((post) => {
+          const i = globalImageIndex++;
+
+          const badges = post.data.badges ?? post.data.badge ?? [];
+          const region = post.data.region ? [post.data.region] : [];
+          const tags = [...badges, ...region].join(",");
+
+          const desktopBadges = badges.slice(0, MAX_BADGES_DESKTOP);
+          const mobileBadges = badges.slice(0, MAX_BADGES_MOBILE);
+
+          return (
+            <li
+              data-tags={tags}
+              data-score={post.data.score ?? 0}
+              data-sort-title={post.data.title}
+              data-pinned="0"
+            >
+              <a href={`/country/${post.id}/`} class="country-card">
+                <Image
+                  width={720}
+                  height={360}
+                  src={post.data.mainImage ?? placeholder}
+                  alt={post.data.title}
+                  loading={i < 6 ? "eager" : "lazy"}
+                  fetchpriority={i < 6 ? "high" : "auto"}
+                />
+
+                <div class="title-row">
+                  <h3 class="title">{post.data.title}</h3>
+
+                  {badges.length > 0 && (
+                    <div class="badges" aria-label="Badges">
+                      <div class="badges-set badges-mobile">
+                        {mobileBadges.map((b) => <span class="badge">{b}</span>)}
+                      </div>
+                      <div class="badges-set badges-desktop">
+                        {desktopBadges.map((b) => <span class="badge">{b}</span>)}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )}
+</div>
 
 <style>
   main {
     width: 100%;
   }
-  ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+
+  .separator {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    margin: 1.2rem auto;
+    width: min(980px, 92%);
+  }
+
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
     gap: 2rem;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    justify-content: center;
   }
-  ul li {
-    width: calc(32% - 1rem);
+
+@media (max-width: 1200px) {
+  .country-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
   }
-  ul li * {
+}
+
+@media (max-width: 850px) {
+  .country-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5em;
+  }
+}
+
+  .country-grid li {
+    width: auto;
+  }
+
+  .country-grid li * {
     text-decoration: none;
     transition: 0.2s ease;
   }
-  ul li img {
+
+  .country-grid li img {
     margin-bottom: 0.5rem;
     border-radius: 12px;
   }
-  ul li a {
+
+  .country-grid li a {
     display: block;
-  }
-  .title {
-    margin: 0;
-    color: rgb(var(--black));
-    line-height: 1;
-  }
-  .date {
-    margin: 0;
-    color: rgb(var(--gray));
-  }
-  ul li a:hover h3,
-  ul li a:hover .date {
-    color: rgb(var(--accent));
-  }
-  ul a:hover img {
-    box-shadow: var(--box-shadow);
-  }
-
-  .title-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .title {
-    margin: 0;
-    font-size: 1.3rem;
-  }
-
-  @media (max-width: 720px) {
-    ul {
-      gap: 0.5em;
-    }
-    ul li {
-      width: 100%;
-      text-align: center;
-    }
   }
 
   .title-row {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    flex-wrap: nowrap;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 1.3rem;
+    color: rgb(var(--black));
+    line-height: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .badges {
     margin-left: auto;
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
   }
 
-  /* set containers */
+  .pin {
+    margin-left: 0.4rem;
+    font-size: 0.95em;
+    opacity: 0.85;
+  }
+
+  .country-grid li a:hover h3 {
+    color: rgb(var(--accent));
+  }
+
+  .country-grid a:hover img {
+    box-shadow: var(--box-shadow);
+  }
+
   .badges-set {
     display: flex;
     gap: 0.35rem;
     flex-wrap: nowrap;
   }
 
-  /* show desktop by default */
   .badges-mobile {
     display: none;
   }
@@ -156,5 +259,22 @@ const { posts, placeholder } = Astro.props;
     background: #eef6ff;
     color: #2b5dab;
     white-space: nowrap;
+  }
+
+  @media (max-width: 850px) {
+    .country-grid {
+      gap: 0.5em;
+    }
+
+    .country-grid li {
+      width: 100%;
+      text-align: left;
+    }
+
+    .badges {
+      margin-left: auto;
+      justify-content: flex-end;
+      width: auto;
+    }
   }
 </style>

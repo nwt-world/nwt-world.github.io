@@ -1,92 +1,147 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
 import LanguageBasedContent from "../../components/LanguageBasedContent.svelte";
 import CountryFilter from "../../components/CountryFilter.svelte";
 import CountryList from "../../components/CountryList.astro";
 
-import { getLangFromId } from '../../lib/lang';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getLangFromId } from "../../lib/lang";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 
-import placeholder_en from '../../assets/placeholder/country_en.png';
-import placeholder_es from '../../assets/placeholder/country_es.png';
-import placeholder_ru from '../../assets/placeholder/country_ru.png';
+import placeholder_en from "../../assets/placeholder/country_en.png";
+import placeholder_es from "../../assets/placeholder/country_es.png";
+import placeholder_ru from "../../assets/placeholder/country_ru.png";
 
-const entries = await getCollection('country');
+const entries = await getCollection("country");
 
-function postsByLang(lang) {
-  return entries
-    .filter(e => getLangFromId(e.id) === lang && !e.data.hide)
-    .sort((a, b) => (a.data.order ?? 1000) - (b.data.order ?? 1000));
+function postsByLang(lang: string) {
+  return entries.filter((e) => getLangFromId(e.id) === lang && !e.data.hide);
+}
+
+function localeForLang(lang: string) {
+  // keep simple; adjust if you use 'es-AR' etc.
+  if (lang === "es") return "es";
+  if (lang === "ru") return "ru";
+  return "en";
+}
+
+function sortedPostsByLang(lang: string) {
+  const filtered = postsByLang(lang);
+  const locale = localeForLang(lang);
+
+  const byTitleAZ = (a, b) =>
+    (a.data.title ?? "").localeCompare(b.data.title ?? "", locale, {
+      sensitivity: "base",
+    });
+
+  const pinned = filtered.filter((e) => e.data.pinned === true).sort(byTitleAZ);
+
+  const visited = filtered
+    .filter((e) => e.data.pinned !== true)
+    .filter((e) => e.data.planned !== true)
+    .sort(byTitleAZ);
+
+  const planned = filtered
+    .filter((e) => e.data.pinned !== true)
+    .filter((e) => e.data.planned === true)
+    .sort(byTitleAZ);
+
+  return { pinned, visited, planned };
 }
 
 function badgesForPosts(posts) {
   const counts = new Map<string, number>();
 
   for (const p of posts) {
-    // badges can be `badges` (new) or `badge` (legacy)
     const badges = (p.data?.badges ?? p.data?.badge ?? []) as string[];
-    for (const b of badges) {
-      counts.set(b, (counts.get(b) ?? 0) + 1);
-    }
+    for (const b of badges) counts.set(b, (counts.get(b) ?? 0) + 1);
 
-    // region is optional string
     const region = p.data?.region as string | undefined;
-    if (region) {
-      counts.set(region, (counts.get(region) ?? 0) + 1);
-    }
+    if (region) counts.set(region, (counts.get(region) ?? 0) + 1);
   }
 
   return Array.from(counts.entries())
     .sort((a, b) => {
-      const diff = b[1] - a[1]; // most-used first
-      return diff !== 0 ? diff : a[0].localeCompare(b[0]); // tie-break
+      const diff = b[1] - a[1];
+      return diff !== 0 ? diff : a[0].localeCompare(b[0]);
     })
     .map(([tag]) => tag);
 }
 
+function placeholderByLang(lang: string) {
+  if (lang === "es") return placeholder_es;
+  if (lang === "ru") return placeholder_ru;
+  return placeholder_en;
+}
+
+// Flat lists for filters
 const posts_en = postsByLang("en");
 const posts_es = postsByLang("es");
 const posts_ru = postsByLang("ru");
 
+// Grouped lists for display
+const grouped_en = sortedPostsByLang("en");
+const grouped_es = sortedPostsByLang("es");
+const grouped_ru = sortedPostsByLang("ru");
+
+// Filter options
 const badges_en = badgesForPosts(posts_en);
 const badges_es = badgesForPosts(posts_es);
 const badges_ru = badgesForPosts(posts_ru);
-
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 100%;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<LanguageBasedContent client:load lang="en">
-				<div slot="en">
-					<CountryFilter client:load posts={posts_en} allBadges={badges_en} />
-					<CountryList posts={posts_en} placeholder={placeholder_en} />
-				</div>
-				<div slot="es">
-					<CountryFilter client:load posts={posts_es} allBadges={badges_es} />
-					<CountryList posts={posts_es} placeholder={placeholder_es} />
-				</div>
-				<div slot="ru">
-					<CountryFilter client:load posts={posts_ru} allBadges={badges_ru} />
-					<CountryList posts={posts_ru} placeholder={placeholder_ru} />
-				</div>
-				</LanguageBasedContent>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <LanguageBasedContent client:load lang="en">
+			<div slot="en">
+			<CountryFilter client:load lang="en" posts={posts_en} allBadges={badges_en} gridId="country-grid-en" />
+			<CountryList
+				gridId="country-grid-en"
+				pinned={grouped_en.pinned}
+				visited={grouped_en.visited}
+				planned={grouped_en.planned}
+				placeholder={placeholder_en}
+			/>
+			</div>
+
+			<div slot="es">
+			<CountryFilter client:load lang="es" posts={posts_es} allBadges={badges_es} gridId="country-grid-es" />
+			<CountryList
+				gridId="country-grid-es"
+				pinned={grouped_es.pinned}
+				visited={grouped_es.visited}
+				planned={grouped_es.planned}
+				placeholder={placeholder_es}
+			/>
+			</div>
+
+			<div slot="ru">
+			<CountryFilter client:load lang="ru" posts={posts_ru} allBadges={badges_ru} gridId="country-grid-ru" />
+			<CountryList
+				gridId="country-grid-ru"
+				pinned={grouped_ru.pinned}
+				visited={grouped_ru.visited}
+				planned={grouped_ru.planned}
+				placeholder={placeholder_ru}
+			/>
+			</div>
+        </LanguageBasedContent>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>

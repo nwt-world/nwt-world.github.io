@@ -13,10 +13,12 @@ const country = defineCollection({
 				.optional()
 				.transform((v) => (v === undefined ? undefined : Array.isArray(v) ? v : [v])),
 			hide: z.boolean().optional(),
-			order: z.number().int().optional(),
 			mainImage: image().optional(),
 			videoId: z.string().optional(),
 			region: z.string().optional(),
+			pinned: z.boolean().optional(),
+			planned: z.boolean().optional(),
+			score: z.number().int().optional(), // from 0 to 10
 		}),
 });
 
