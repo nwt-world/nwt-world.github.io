@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
@@ -8,6 +7,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import { getItinerariesWithCountry } from '../../lib/itinerary';
 import ItineraryFilter from '../../components/ItineraryFilter.svelte';
 import ItineraryList from '../../components/ItineraryList.astro';
+
+import placeholder_en from "../../assets/placeholder/country_en.png";
+import placeholder_es from "../../assets/placeholder/country_es.png";
+import placeholder_ru from "../../assets/placeholder/country_ru.png";
 
 const itineraries_en = await getItinerariesWithCountry("en")
 const itineraries_es = await getItinerariesWithCountry("es")
@@ -173,15 +176,15 @@ const { tags: tags_ru } = tagsForItinerariesWithCountries(
 				<LanguageBasedContent client:load lang="en">
 					<div slot="en">
 						<ItineraryFilter client:load allBadges={tags_en} totalCount={itineraries_en.length} lang='en'/>
-						<ItineraryList items={itineraries_en} />
+						<ItineraryList items={itineraries_en} placeholder={placeholder_en} />
 					</div>
 					<div slot="es">
 						<ItineraryFilter client:load allBadges={tags_es} totalCount={itineraries_es.length} lang='es'/>
-						<ItineraryList items={itineraries_es} />
+						<ItineraryList items={itineraries_es} placeholder={placeholder_es} />
 					</div>
 					<div slot="ru">
 						<ItineraryFilter client:load allBadges={tags_ru} totalCount={itineraries_ru.length} lang='en'/>
-						<ItineraryList items={itineraries_ru} />
+						<ItineraryList items={itineraries_ru}  placeholder={placeholder_ru} />
 					</div>
 				</LanguageBasedContent>
 			</section>

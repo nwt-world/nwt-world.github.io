@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-const { items, gridId = "itinerary-grid", eagerCount = 6 } = Astro.props;
+const { items, placeholder, gridId = "itinerary-grid", eagerCount = 6 } = Astro.props;
 ---
 
 <!-- 
@@ -23,7 +23,7 @@ const { items, gridId = "itinerary-grid", eagerCount = 6 } = Astro.props;
           <Image
             width={720}
             height={360}
-            src={itinerary.data.mainImage}
+            src={itinerary.data.mainImage ?? placeholder}
             alt=""
             loading={i < eagerCount ? "eager" : "lazy"}
             fetchpriority={i < eagerCount ? "high" : "auto"}

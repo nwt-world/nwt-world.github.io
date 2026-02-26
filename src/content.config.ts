@@ -35,8 +35,10 @@ const itinerary = defineCollection({
 				.optional()
 				.transform((v) => (v === undefined ? [] : Array.isArray(v) ? v : [v])),
 			hide: z.boolean().optional(),
-			order: z.number().int().optional(),
-			mainImage: image(),
+			pinned: z.boolean().optional(),
+			planned: z.boolean().optional(),
+			score: z.number().int().min(0).max(10).optional(),
+			mainImage: image().optional(),
 			videoId: z.string().optional()
 		}),
 });

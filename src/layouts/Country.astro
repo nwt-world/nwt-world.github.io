@@ -207,7 +207,7 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 								{itineraries_en.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
 										<Image
-											src={it.data.mainImage}
+											src={it.data.mainImage ?? placeholder_en}
 											width={360}
 											height={240}
 											alt={it.data.title}
@@ -231,7 +231,7 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 								{itineraries_es.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
 										<Image
-											src={it.data.mainImage}
+											src={it.data.mainImage ?? placeholder_es}
 											width={360}
 											height={240}
 											alt={it.data.title}
@@ -255,7 +255,7 @@ const itineraries_ru = await getItinerariesByCountry(name, "ru")
 								{itineraries_ru.map((it) => (
 									<a class="itinerary-card" href={`/itinerary/${it.id}`}>
 										<Image
-											src={it.data.mainImage}
+											src={it.data.mainImage ?? placeholder_ru}
 											width={360}
 											height={240}
 											alt={it.data.title}
