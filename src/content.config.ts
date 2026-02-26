@@ -18,7 +18,7 @@ const country = defineCollection({
 			region: z.string().optional(),
 			pinned: z.boolean().optional(),
 			planned: z.boolean().optional(),
-			score: z.number().int().optional(), // from 0 to 10
+			score: z.number().int().min(0).max(10).optional()
 		}),
 });
 
