@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import TopCountries from '../components/TopCountries.astro';
+import TopItineraries from '../components/TopItineraries.astro';
 import LanguageBasedContent from "../components/LanguageBasedContent.svelte";
 import mainImage from "../assets/nwt_banner.jpg";
 import WorldMap from "../components/WorldMap.astro";
@@ -121,27 +122,27 @@ import WorldMap from "../components/WorldMap.astro";
 
 		<!-- Short lists for quick access -->
 		<TopCountries
-			title="Destinations well suited for calm travel"
+			title="Calm islands for beaches & snorkeling"
 			lang="en"
-			countrySlugs={['maldives', 'seychelles', 'switzerland']}
+			countrySlugs={['maldives', 'seychelles', 'mauritius', 'aruba']}
 		/>
 
 		<TopCountries
-			title="Countries suitable for long stays"
+			title="Long-stay friendly countries (comfort & infrastructure)"
 			lang="en"
-			countrySlugs={['vietnam', 'thailand', 'argentina']}
+			countrySlugs={['vietnam', 'thailand', 'malaysia', 'uae']}
 		/>
 
-		<TopCountries
-			title="Destinations with exceptional nature"
+		<TopItineraries
+			title="Scenic multi-region itineraries"
 			lang="en"
-			countrySlugs={['chile', 'sa', 'indonesia']}
+			slugs={['chile-core', 'south-africa-garden-route-kruger', 'philippines-cebu', 'norway-oslo-bergen-fjords']}
 		/>
 
-		<TopCountries
-			title="Countries rich in culture and history"
+		<TopItineraries
+			title="Argentina: high-impact itineraries"
 			lang="en"
-			countrySlugs={['italy', 'egypt', 'peru']}
+			slugs={['argentina-iguazu', 'argentina-salta-jujuy', 'argentina-bariloche', 'argentina-el-calafate']}
 		/>
 
 		<!-- METHODOLOGY / DISCLAIMER -->
@@ -149,19 +150,31 @@ import WorldMap from "../components/WorldMap.astro";
 			<h2>How to read this site</h2>
 
 			<p>
-			Countries are rated based on personal experience or careful comparison, with emphasis on:
+				This site is curated around a simple idea: choose destinations that make travel feel calm,
+				predictable, and worth the effort — especially for independent travelers and long stays.
+			</p>
+
+			<p>
+				Countries are selected and reviewed based on a few practical priorities:
 			</p>
 
 			<ul>
-			<li>safety and predictability</li>
-			<li>ease of travel</li>
-			<li>tranquility</li>
-			<li>natural value</li>
+				<li>safety and predictability</li>
+				<li>ease of travel (logistics, infrastructure, comfort)</li>
+				<li>tranquility (low stress, low crowd pressure)</li>
+				<li>natural value (landscapes, wildlife, unique nature)</li>
 			</ul>
 
-			<p class="muted">
-			Ratings are subjective by design — the goal is clarity, not universality.
+			<p>
+				Itineraries are designed as compact, realistic routes that help you see the highlights
+				without rushing. They focus on:
 			</p>
+
+			<ul>
+				<li>high-impact places with efficient pacing</li>
+				<li>simple logistics</li>
+				<li>solo-friendly planning and long-stay flexibility</li>
+			</ul>
 		</section>
 		</div>
 			<div slot="es">
@@ -215,29 +228,28 @@ import WorldMap from "../components/WorldMap.astro";
 
 				</section>
 
-				<!-- Short lists for quick access -->
 				<TopCountries
-					title="Destinations well suited for calm travel"
+					title="Islas tranquilas: playas y snorkel"
 					lang="es"
-					countrySlugs={['maldives', 'seychelles', 'switzerland']}
+					countrySlugs={['maldives', 'seychelles', 'mauritius', 'aruba']}
 				/>
 
 				<TopCountries
-					title="Countries suitable for long stays"
+					title="Países ideales para estancias largas (comodidad e infraestructura)"
 					lang="es"
-					countrySlugs={['vietnam', 'thailand', 'argentina']}
+					countrySlugs={['vietnam', 'thailand', 'malaysia', 'uae']}
 				/>
 
-				<TopCountries
-					title="Destinations with exceptional nature"
+				<TopItineraries
+					title="Rutas escénicas por varias regiones"
 					lang="es"
-					countrySlugs={['chile', 'sa', 'indonesia']}
+					slugs={['chile-core', 'south-africa-garden-route-kruger', 'philippines-cebu', 'norway-oslo-bergen-fjords']}
 				/>
 
-				<TopCountries
-					title="Countries rich in culture and history"
+				<TopItineraries
+					title="Argentina: itinerarios de alto impacto"
 					lang="es"
-					countrySlugs={['italy', 'egypt', 'peru']}
+					slugs={['argentina-iguazu', 'argentina-salta-jujuy', 'argentina-bariloche', 'argentina-el-calafate']}
 				/>
 
 				<!-- METHODOLOGY / DISCLAIMER -->
@@ -245,21 +257,31 @@ import WorldMap from "../components/WorldMap.astro";
 					<h2>Cómo leer este sitio</h2>
 
 					<p>
-						Los países se evalúan en base a experiencias personales o comparaciones cuidadosas,
-						con énfasis en:
+						Este sitio está curado en torno a una idea simple: elegir destinos que hagan que viajar se sienta tranquilo,
+						predecible y que realmente valga la pena — especialmente para viajeros independientes y estancias largas.
+					</p>
+
+					<p>
+						Los países se seleccionan y se revisan en base a algunas prioridades prácticas:
 					</p>
 
 					<ul>
 						<li>seguridad y previsibilidad</li>
-						<li>facilidad para viajar</li>
-						<li>tranquilidad</li>
-						<li>valor natural</li>
+						<li>facilidad para viajar (logística, infraestructura, comodidad)</li>
+						<li>tranquilidad (bajo estrés, poca presión turística)</li>
+						<li>valor natural (paisajes, fauna, naturaleza única)</li>
 					</ul>
 
-					<p class="muted">
-						Las valoraciones son subjetivas por diseño — el objetivo es la claridad,
-						no la universalidad.
+					<p>
+						Los itinerarios están diseñados como rutas compactas y realistas que te ayudan a ver lo mejor
+						sin apurarte. Se enfocan en:
 					</p>
+
+					<ul>
+						<li>lugares de alto impacto con un ritmo eficiente</li>
+						<li>logística simple</li>
+						<li>planificación amigable para viajar solo y flexibilidad para estancias largas</li>
+					</ul>
 				</section>
 
 			</div>
@@ -313,29 +335,28 @@ import WorldMap from "../components/WorldMap.astro";
 
 				</section>
 
-				<!-- Short lists for quick access -->
 				<TopCountries
-					title="Идеально для спокойного отдыха"
+					title="Спокойные острова: пляжи и снорклинг"
 					lang="ru"
-					countrySlugs={['maldives', 'seychelles', 'switzerland']}
+					countrySlugs={['maldives', 'seychelles', 'mauritius', 'aruba']}
 				/>
 
 				<TopCountries
-					title="Подходит для длительного проживания"
+					title="Страны для длительного пребывания (комфорт и инфраструктура)"
 					lang="ru"
-					countrySlugs={['vietnam', 'thailand', 'argentina']}
+					countrySlugs={['vietnam', 'thailand', 'malaysia', 'uae']}
 				/>
 
-				<TopCountries
-					title="Направления с уникальной природой"
+				<TopItineraries
+					title="Живописные маршруты по разным регионам"
 					lang="ru"
-					countrySlugs={['chile', 'sa', 'indonesia']}
+					slugs={['chile-core', 'south-africa-garden-route-kruger', 'philippines-cebu', 'norway-oslo-bergen-fjords']}
 				/>
 
-				<TopCountries
-					title="Страны с богатой историей и культурой"
+				<TopItineraries
+					title="Аргентина: наиболее известные маршруты"
 					lang="ru"
-					countrySlugs={['italy', 'egypt', 'peru']}
+					slugs={['argentina-iguazu', 'argentina-salta-jujuy', 'argentina-bariloche', 'argentina-el-calafate']}
 				/>
 
 				<!-- METHODOLOGY / DISCLAIMER -->
@@ -343,18 +364,24 @@ import WorldMap from "../components/WorldMap.astro";
 					<h2>Как читать этот сайт</h2>
 
 					<p>
-						Оценки стран основаны на личном опыте и сравнительном анализе с акцентом на следующие критерии:
+						Здесь собраны страны, которые действительно имеет смысл посетить
+						особенно самостоятельно (без турпакетов) и для длительного пребывания.
+					</p>
+
+					<p>
+						Страны выбираются и оцениваются на основе нескольких практичных критериев:
 					</p>
 
 					<ul>
 						<li>безопасность и предсказуемость</li>
-						<li>удобство путешествий</li>
+						<li>удобство путешествий (логистика, инфраструктура, комфорт)</li>
 						<li>спокойствие</li>
-						<li>природа</li>
+						<li>уникальная природа (ландшафты, животные, уникальные места)</li>
 					</ul>
 
-					<p class="muted">
-						Оценки по своей природе субъективны.
+					<p>
+						Представленные маршруты составлены компактными и реалистичными для того,
+						чтобы увидеть ключевые места без спешки.
 					</p>
 				</section>
 

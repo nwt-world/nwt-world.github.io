@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { getLangFromId } from '../lib/lang';
+
+import placeholder_en from "../assets/placeholder/country_en.png";
+import placeholder_es from "../assets/placeholder/country_es.png";
+import placeholder_ru from "../assets/placeholder/country_ru.png";
+
+const {
+  title,
+  slugs = [],
+  lang = 'en',
+} = Astro.props;
+
+const fallbackImage =
+  lang === 'es' ? placeholder_es :
+  lang === 'ru' ? placeholder_ru :
+  placeholder_en;
+
+const entries = await getCollection('itinerary');
+
+const selectedItineraries = entries
+  .filter((e) => getLangFromId(e.id) === lang && slugs.includes(e.data.name))
+  .sort((a, b) => slugs.indexOf(a.data.name) - slugs.indexOf(b.data.name));
+---
+
+<section class="top-itineraries">
+  <h2>{title}</h2>
+
+  <ul class="grid">
+    {selectedItineraries.map((itinerary) => (
+      <li class="card">
+        <a class="card-link" href={`/itinerary/${itinerary.id}/`}>
+            <div class="thumb">
+              <Image
+                src={itinerary.data.mainImage ?? fallbackImage}
+                alt={itinerary.data.title}
+                width={700}
+                height={420}
+                loading="lazy"
+              />
+            </div>
+
+
+          <div class="meta">
+            <div class="title">{itinerary.data.title}</div>
+
+            {itinerary.data.tagline && (
+              <div class="tagline">{itinerary.data.tagline}</div>
+            )}
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+.top-itineraries {
+  margin: 2em 0;
+}
+
+.top-itineraries h2 {
+  margin: 0 0 0.75em;
+}
+
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1em;
+}
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.thumb {
+  aspect-ratio: 16 / 9;
+  background: #f3f4f6;
+  overflow: hidden;
+}
+
+.thumb :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.meta {
+  padding: 0.9em 1em 1em;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.tagline {
+  margin-top: 0.35em;
+  font-size: 0.92rem;
+  color: #666;
+  line-height: 1.35;
+}
+
+/* Mobile tightening */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .meta {
+    padding: 0.8em 0.9em 0.9em;
+  }
+}
+</style>
