@@ -10,12 +10,30 @@ import LanguageBasedContent from "../components/LanguageBasedContent.svelte";
 import mainImage from "../assets/nwt_banner.jpg";
 import WorldMap from "../components/WorldMap.astro";
 
+const META = {
+  en: {
+    title: SITE_TITLE,
+    description:
+      "Calm, nature-first travel guides and itineraries: mountains, lakes, waterfalls, islands. Hidden gems, practical logistics, no ads.",
+  },
+  es: {
+    title: SITE_TITLE,
+    description:
+      "Guías y rutas con foco en naturaleza y calma: montañas, lagos, cascadas, islas. Joyas escondidas, logística clara, sin anuncios.",
+  },
+  ru: {
+    title: SITE_TITLE,
+    description:
+      "Маршруты и путеводители по спокойным природным местам: горы, озёра, водопады, острова. Скрытые жемчужины, понятная логистика, без рекламы.",
+  }
+} as const;
+
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={META.en.title} description={META.en.description} />
 	</head>
 	<style>
 	.home {
@@ -73,7 +91,7 @@ import WorldMap from "../components/WorldMap.astro";
 		<main class="home">
 
 			<!-- TODO: refactor this later! -->
-		<LanguageBasedContent client:load lang="en">
+		<LanguageBasedContent client:load lang="en" meta={META}>
 			<div slot="en">
 
 		<!-- HERO -->

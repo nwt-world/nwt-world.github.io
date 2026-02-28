@@ -6,7 +6,9 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import YouTube from '../components/YouTube.astro';
 import LanguageBasedContent from "../components/LanguageBasedContent.svelte";
+import { SITE_TITLE } from '../consts';
 import { getItinerariesByCountry } from '../lib/itinerary';
+import { buildMetaDescription } from '../lib/meta';
 import placeholder_en from '../assets/placeholder/country_en.png';
 import placeholder_es from '../assets/placeholder/country_es.png';
 import placeholder_ru from '../assets/placeholder/country_ru.png';
@@ -24,11 +26,12 @@ const itineraries_en = await getItinerariesByCountry(name, "en")
 const itineraries_es = await getItinerariesByCountry(name, "es")
 const itineraries_ru = await getItinerariesByCountry(name, "ru")
 
+const metaDescription = buildMetaDescription(tagline, badge, { region: region});
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={tagline} />
+		<BaseHead title=`${title} — ${SITE_TITLE}` description={metaDescription} />
 		<style>
 			main {
 				width: calc(100% - 2em);

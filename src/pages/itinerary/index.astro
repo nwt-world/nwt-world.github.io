@@ -3,11 +3,10 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import LanguageBasedContent from "../../components/LanguageBasedContent.svelte";
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { SITE_TITLE } from "../../consts";
 import { getItinerariesWithCountry } from '../../lib/itinerary';
 import ItineraryFilter from '../../components/ItineraryFilter.svelte';
 import ItineraryList from '../../components/ItineraryList.astro';
-
 import placeholder_en from "../../assets/placeholder/country_en.png";
 import placeholder_es from "../../assets/placeholder/country_es.png";
 import placeholder_ru from "../../assets/placeholder/country_ru.png";
@@ -86,12 +85,30 @@ const { tags: tags_ru } = tagsForItinerariesWithCountries(
   MIN_ITINERARIES_FOR_COUNTRY_TAG
 );
 
+const META = {
+  en: {
+    title: `Itineraries — ${SITE_TITLE}`,
+    description:
+      "Curated, nature-first travel itineraries with best season, logistics, and must-see highlights",
+  },
+  es: {
+    title: `Itinerarios — ${SITE_TITLE}`,
+    description:
+      "Itinerarios seleccionados, con foco en naturaleza: mejor temporada, logística y imperdibles",
+  },
+  ru: {
+    title: `Маршруты — ${SITE_TITLE}`,
+    description:
+      "Подборка маршрутов по разным странам: логистика, сезоны, достопримечательности, природа, спокойный отдых",
+  },
+};
+
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={META.en.title} description={META.en.description} />
 		<style>
 			main {
 				width: 100%;
@@ -173,7 +190,7 @@ const { tags: tags_ru } = tagsForItinerariesWithCountries(
 		<Header />
 		<main>
 			<section>
-				<LanguageBasedContent client:load lang="en">
+				<LanguageBasedContent client:load lang="en" meta={META}>
 					<div slot="en">
 						<ItineraryFilter client:load allBadges={tags_en} totalCount={itineraries_en.length} lang='en'/>
 						<ItineraryList items={itineraries_en} placeholder={placeholder_en} />
@@ -183,7 +200,7 @@ const { tags: tags_ru } = tagsForItinerariesWithCountries(
 						<ItineraryList items={itineraries_es} placeholder={placeholder_es} />
 					</div>
 					<div slot="ru">
-						<ItineraryFilter client:load allBadges={tags_ru} totalCount={itineraries_ru.length} lang='en'/>
+						<ItineraryFilter client:load allBadges={tags_ru} totalCount={itineraries_ru.length} lang='ru'/>
 						<ItineraryList items={itineraries_ru}  placeholder={placeholder_ru} />
 					</div>
 				</LanguageBasedContent>
