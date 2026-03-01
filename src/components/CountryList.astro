@@ -45,6 +45,7 @@ const hasPlanned = planned?.length > 0;
           >
             <a href={`/country/${post.id}/`} class="country-card">
               <Image
+                class="country-image"
                 width={720}
                 height={360}
                 src={post.data.mainImage ?? placeholder}
@@ -107,6 +108,7 @@ const hasPlanned = planned?.length > 0;
             >
               <a href={`/country/${post.id}/`} class="country-card">
                 <Image
+                  class="country-image"
                   width={720}
                   height={360}
                   src={post.data.mainImage ?? placeholder}
@@ -142,6 +144,8 @@ const hasPlanned = planned?.length > 0;
   main {
     width: 100%;
   }
+
+  
 
   .separator {
     border: 0;
@@ -277,4 +281,29 @@ const hasPlanned = planned?.length > 0;
       width: auto;
     }
   }
+  .country-grid li,
+  .country-card,
+  .title-row {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .badges {
+    flex: 0 1 auto;      /* was 0 0 auto */
+    min-width: 0;
+    max-width: 55%;
+  }
+
+  .badges-set {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .badge {
+    max-width: 10.5rem; /* tune */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* keep chips on one line, but clamp */
+  }
+
 </style>
