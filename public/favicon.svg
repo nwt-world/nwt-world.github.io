@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Natural Wonders Travel icon">
+  <circle cx="512" cy="512" r="512" fill="#337BE6"/>
+  <circle cx="512" cy="512" r="368" fill="#F6F6F6"/>
+  <polygon points="512,160 704,512 512,864 320,512" fill="#9c2aff"/>
+  <circle cx="512" cy="512" r="56" fill="#000000"/>
+  <!-- Subtle travel route inside the rhombus -->
+  <path
+    d="M512 170
+     C430 260 430 420 512 512
+     S594 764 512 854"
+    fill="none"
+    stroke="#50f5f5"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-opacity="0.85"
+  />
+
+</svg>
