@@ -192,16 +192,46 @@ const META = {
 			<section>
 				<LanguageBasedContent client:load lang="en" meta={META}>
 					<div slot="en">
-						<ItineraryFilter client:load allBadges={tags_en} totalCount={itineraries_en.length} lang='en'/>
-						<ItineraryList items={itineraries_en} placeholder={placeholder_en} />
+						<ItineraryFilter
+							client:load
+							allBadges={tags_en}
+							totalCount={itineraries_en.length}
+							lang="en"
+							gridId="itinerary-grid-en"
+						/>
+						<ItineraryList
+							items={itineraries_en}
+							placeholder={placeholder_en}
+							gridId="itinerary-grid-en"
+						/>
 					</div>
 					<div slot="es">
-						<ItineraryFilter client:load allBadges={tags_es} totalCount={itineraries_es.length} lang='es'/>
-						<ItineraryList items={itineraries_es} placeholder={placeholder_es} />
+						<ItineraryFilter
+							client:load
+							allBadges={tags_es}
+							totalCount={itineraries_es.length}
+							lang="es"
+							gridId="itinerary-grid-es"
+						/>
+						<ItineraryList
+							items={itineraries_es}
+							placeholder={placeholder_es}
+							gridId="itinerary-grid-es"
+						/>
 					</div>
 					<div slot="ru">
-						<ItineraryFilter client:load allBadges={tags_ru} totalCount={itineraries_ru.length} lang='ru'/>
-						<ItineraryList items={itineraries_ru}  placeholder={placeholder_ru} />
+						<ItineraryFilter
+							client:load
+							allBadges={tags_ru}
+							totalCount={itineraries_ru.length}
+							lang="ru"
+							gridId="itinerary-grid-ru"
+						/>
+						<ItineraryList
+							items={itineraries_ru}
+							placeholder={placeholder_ru}
+							gridId="itinerary-grid-ru"
+						/>
 					</div>
 				</LanguageBasedContent>
 			</section>

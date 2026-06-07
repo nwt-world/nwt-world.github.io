@@ -5,6 +5,8 @@
   export let allBadges: string[] = [];
   export let totalCount = 0;
   export let gridId = "itinerary-grid";
+  const SEARCH_PARAM = "q";
+  let query = "";
 
   // keep the same URL param name for consistency
   const PARAM = "badge";
@@ -23,6 +25,7 @@
       filters: "Filters",
       show: "Show",
       hide: "Hide",
+      searchPlaceholder: "Search",
     },
     es: {
       clear: "Limpiar",
@@ -33,6 +36,7 @@
       filters: "Filtros",
       show: "Mostrar",
       hide: "Ocultar",
+      searchPlaceholder: "Buscar",
     },
     ru: {
       clear: "Сбросить",
@@ -43,6 +47,7 @@
       filters: "Фильтры",
       show: "Показать",
       hide: "Скрыть",
+      searchPlaceholder: "Поиск",
     },
   } as const;
 
@@ -51,17 +56,36 @@
 
   let showChips = true;
 
+  function normalizeText(s: string) {
+    return s
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .trim();
+  }
+
   function parseFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    const raw = params.get(PARAM);
-    selected = new Set(raw ? raw.split(",").map(s => s.trim()).filter(Boolean) : []);
+    const rawBadges = params.get(PARAM);
+    selected = new Set(
+      rawBadges
+        ? rawBadges.split(",").map(s => s.trim()).filter(Boolean)
+        : []
+    );
+    query = params.get(SEARCH_PARAM) ?? "";
   }
 
   function writeToUrl() {
     const params = new URLSearchParams(window.location.search);
+
     const arr = Array.from(selected);
     if (arr.length) params.set(PARAM, arr.join(","));
     else params.delete(PARAM);
+
+    const q = query.trim();
+    if (q) params.set(SEARCH_PARAM, q);
+    else params.delete(SEARCH_PARAM);
+
     const qs = params.toString();
     history.replaceState({}, "", qs ? `${location.pathname}?${qs}` : location.pathname);
   }
@@ -75,24 +99,43 @@
 
   function clear() {
     selected = new Set();
+    query = "";
+    writeToUrl();
+  }
+
+  function onSearchInput() {
     writeToUrl();
   }
 
   function applyDomFilter() {
     const items = document.querySelectorAll<HTMLLIElement>(`#${gridId} li`);
     const selectedArr = Array.from(selected);
+    const normalizedQuery = normalizeText(query);
 
     let visible = 0;
+
     items.forEach((li) => {
-      const tags = (li.dataset.tags ?? "").split(",").map(s => s.trim()).filter(Boolean);
+      const tags = (li.dataset.tags ?? "")
+        .split(",")
+        .map(s => s.trim())
+        .filter(Boolean);
+
       const set = new Set(tags);
 
-      const ok =
+      const badgeOk =
         selectedArr.length === 0
           ? true
           : mode === "AND"
             ? selectedArr.every(x => set.has(x))
             : selectedArr.some(x => set.has(x));
+
+      const searchText = normalizeText(li.dataset.search ?? li.textContent ?? "");
+      const searchOk =
+        normalizedQuery.length === 0
+          ? true
+          : searchText.includes(normalizedQuery);
+
+      const ok = badgeOk && searchOk;
 
       li.style.display = ok ? "" : "none";
       if (ok) visible += 1;
@@ -123,8 +166,7 @@
   });
 
   $: if (typeof window !== "undefined") {
-    // react to changes
-    selected, mode;
+    selected, mode, query;
     applyDomFilter();
     if (selected.size > 0) showChips = true;
   }
@@ -132,6 +174,15 @@
 
 <div class="filter">
   <div class="controls">
+    <input
+      class="search"
+      type="search"
+      bind:value={query}
+      on:input={onSearchInput}
+      placeholder={t.searchPlaceholder}
+      aria-label={t.searchPlaceholder}
+    />
+
     <button type="button" class="btn" on:click={toggleChips}>
       {t.filters}: {showChips ? t.hide : t.show}
       {#if selected.size > 0}
@@ -139,7 +190,7 @@
       {/if}
     </button>
 
-    <button type="button" class="btn" on:click={clear} disabled={selected.size === 0}>
+    <button type="button" class="btn" on:click={clear} disabled={selected.size === 0 && query.trim() === ""}>
       {t.clear}
     </button>
 
@@ -221,6 +272,22 @@
   border: 1px solid #ddd;
   font-size: 0.75rem;
   line-height: 1.2;
+}
+
+.search {
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.9rem;
+  min-width: 200px;
+  max-width: 100%;
+}
+
+@media (max-width: 720px) {
+  .search {
+    width: 100%;
+  }
 }
 
   .chips { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.6rem; }

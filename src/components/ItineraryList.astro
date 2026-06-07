@@ -12,13 +12,23 @@ const { items, placeholder, gridId = "itinerary-grid", eagerCount = 6 } = Astro.
 
 <ul class="itinerary-grid" id={gridId}>
   {items.map(({ itinerary, country }, i) => {
-    const itTags = (itinerary.data.badge ?? []);
-    const countryTag = `${country.data.title}`; // slug
+    const itTags = itinerary.data.badge ?? [];
+    const countryTag = `${country.data.title}`;
     const tags = [...itTags, countryTag].join(",");
 
+    const searchText = [
+      itinerary.data.title,
+      country.data.title,
+      country.data.name,
+      itinerary.data.name,
+    ].filter(Boolean).join(" ");
 
     return (
-      <li class="itinerary-card" data-tags={tags}>
+      <li
+        class="itinerary-card"
+        data-tags={tags}
+        data-search={searchText}
+      >
         <a href={`/itinerary/${itinerary.id}/`}>
           <Image
             width={720}
