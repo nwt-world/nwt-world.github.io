@@ -1,33 +1,52 @@
 ---
 title: Uruguay 🇺🇾
-tagline: tranquilo, seguro y discreto en Sudamérica
-order: 304
+tagline: Sudamérica tranquila y segura
 name: uruguay
+mainImage: '../../assets/uruguay_logo.jpg'
 badge: [tranquilidad, playa, cultura, fácil]
-region: Sudamérica
-planned: true
+region: América del Sur
 score: 8
 ---
 
 import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
+import PhotoAlbums from "../../components/PhotoAlbums.astro";
 
 <ProsCons>
   <div slot="pros">
     <h2>✔️ Pros</h2>
-    - uno de los países más seguros y estables de la región
-    - ritmo de vida relajado y bajo nivel de estrés
-    - ciudades limpias y buena infraestructura
-    - costa agradable y playas amplias
+    - uno de los países más seguros y estables de América del Sur  
+    - ritmo de vida tranquilo y ambiente costero relajado  
+    - ciudades limpias, buena infraestructura y logística simple  
+    - escapada fácil desde <a href="/itinerary/argentina-buenos-aires_es">Buenos Aires</a>  
+    - buena mezcla de pueblos históricos, vida de capital y playas atlánticas  
   </div>
   <div slot="cons">
     <h2>⛔ Contras</h2>
-    - naturaleza limitada y poco dramática
-    - relativamente caro para estándares sudamericanos
-    - tan tranquilo que puede resultar aburrido para algunos viajeros
+    - relativamente caro para América del Sur  
+    - naturaleza limitada y pocos highlights grandes  
+    - no tiene suficiente variedad para un viaje largo independiente  
+    - el agua del océano no es cálida durante gran parte del año  
   </div>
 </ProsCons>
+
+---
+
+<PhotoAlbums
+  albums={[
+    {
+      title: "Colonia del Sacramento",
+      url: "https://www.instagram.com/p/DYBNObBDPby",
+      platform: "instagram",
+    },
+    {
+      title: "Punta del Este",
+      url: "https://www.instagram.com/p/DZDbDzVmKdW",
+      platform: "instagram",
+    }
+  ]}
+/>
 
 ---
 
@@ -35,7 +54,62 @@ import WhatToDo from "../../components/WhatToDo.astro";
 
 <WhatToDo
   items={[
-    { icon: "🏙️", text: "Explorar Montevideo y su rambla costera" },
-    { icon: "🏖️", text: "Pueblos de playa: Punta del Este, Cabo Polonio" }
+    { icon: "🏛️", text: "Visitar Colonia del Sacramento por un pueblo histórico tranquilo cerca de Buenos Aires" },
+    { icon: "🏙️", text: "Explorar Montevideo: rambla, mercados, museos y barrios costeros" },
+    { icon: "🏖️", text: "Pasar tiempo en la costa atlántica: Punta del Este, Piriápolis, La Paloma o Cabo Polonio" },
+    { icon: "🌅", text: "Considerar Carmelo como una opción tranquila junto al río, conectada con el Delta del Tigre" },
   ]}
 />
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "5", notes: "costa agradable, playas, vistas al río y campo, pero pocos grandes highlights naturales" },
+    { category: "Infraestructura", score: "8", notes: "buenas rutas, ferries, buses y servicios confiables para las rutas principales" },
+    { category: "Asequibilidad", score: "5", notes: "tranquilo y cómodo, pero caro para estándares sudamericanos" },
+    { category: "Seguridad", score: "9", notes: "uno de los países más seguros y predecibles de la región" },
+    { category: "Amabilidad", score: "8", notes: "ambiente social relajado, educado y fácil" },
+    { category: "Tranquilidad", score: "9", notes: "silencioso y de baja presión comparado con la mayoría de destinos regionales" },
+    { category: "Cultura", score: "7", notes: "Colonia histórica, vida urbana de Montevideo e identidad del Río de la Plata" },
+    { category: "Experiencias únicas", score: "5", notes: "funciona mejor como agregado cultural y costero tranquilo a Argentina" },
+    { category: "Clima", score: "7", notes: "suave en general, pero la temporada de playa es limitada y el océano suele ser fresco" },
+    { category: "Estancia larga", score: "6", notes: "cómodo y seguro, pero el costo y la variedad limitada reducen el atractivo para estadías largas" }
+  ]}
+/>
+
+---
+
+## 📝 Notas
+
+### 🌍 ¿Por qué visitar Uruguay?
+Uruguay no se trata de paisajes dramáticos ni de atracciones interminables.  
+Su fortaleza está en la calma, la seguridad, las ciudades limpias y la facilidad para viajar.
+
+Funciona mejor como una extensión relajada de un viaje por Argentina desde <a href="/itinerary/argentina-buenos-aires_es">Buenos Aires</a>.
+
+---
+
+### 🌤️ Temporadas
+- **Verano (diciembre–marzo):** mejor para pueblos de playa y viaje costero, pero los precios son más altos y las zonas populares están más concurridas.  
+- **Temporadas intermedias (primavera / otoño):** buenas para Colonia, Montevideo, caminatas costeras tranquilas y menos multitudes.  
+- **Invierno:** muy tranquilo y todavía fácil para viajes urbanos o históricos, pero no ideal para playas.  
+
+La costa atlántica no es tropical, y el océano es fresco durante gran parte del año.
+
+---
+
+### 🚌 Transporte / logística
+Los ferries conectan Buenos Aires con Colonia y Montevideo, mientras que la red de buses de Uruguay hace fácil continuar hacia Punta del Este y otros pueblos costeros.
+
+Enlaces útiles:
+- Buquebus: https://www.buquebus.com/
+- Colonia Express: https://www.coloniaexpress.com/
+- Urubus: https://www.urubus.com.uy/es/
+
+---
+
+### 💡 Para quién es este país
+Viajeros que ya están visitando Argentina y quieren una escapada tranquila, segura y culturalmente distinta, con logística fácil.

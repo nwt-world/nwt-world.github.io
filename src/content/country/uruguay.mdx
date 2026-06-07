@@ -1,33 +1,52 @@
 ---
 title: Uruguay 🇺🇾
-tagline: calm, safe, and quit South America
-order: 304
+tagline: calm and safe South America
 name: uruguay
+mainImage: '../../assets/uruguay_logo.jpg'
 badge: [relax, beach, culture, easy]
 region: South America
-planned: true
 score: 8
 ---
 
 import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
+import PhotoAlbums from "../../components/PhotoAlbums.astro";
 
 <ProsCons>
   <div slot="pros">
     <h2>✔️ Pros</h2>
-    - one of the safest and most stable countries in the region
-    - relaxed pace of life and low stress
-    - clean cities and good infrastructure
-    - pleasant coastline and beaches
+    - one of the safest and most stable countries in South America  
+    - calm pace of life and relaxed coastal atmosphere  
+    - clean cities, good infrastructure, and simple logistics  
+    - easy side trip from <a href="/itinerary/argentina-buenos-aires">Buenos Aires</a>  
+    - good mix of historic towns, capital-city life, and Atlantic beaches  
   </div>
   <div slot="cons">
     <h2>⛔ Cons</h2>
-    - nature is limited and not very dramatic
-    - relatively expensive for South America
-    - quiet to the point of being boring for some travelers
+    - relatively expensive for South America  
+    - limited nature and few major highlights  
+    - not enough variety for a long standalone trip  
+    - ocean water is not warm for much of the year  
   </div>
 </ProsCons>
+
+---
+
+<PhotoAlbums
+  albums={[
+    {
+      title: "Colonia del Sacramento",
+      url: "https://www.instagram.com/p/DYBNObBDPby",
+      platform: "instagram",
+    },
+    {
+      title: "Punta del Este",
+      url: "https://www.instagram.com/p/DZDbDzVmKdW",
+      platform: "instagram",
+    }
+  ]}
+/>
 
 ---
 
@@ -35,7 +54,62 @@ import WhatToDo from "../../components/WhatToDo.astro";
 
 <WhatToDo
   items={[
-    { icon: "🏙️", text: "Explore Montevideo and coastal rambla" },
-    { icon: "🏖️", text: "Beach towns: Punta del Este, Cabo Polonio" }
+    { icon: "🏛️", text: "Visit Colonia del Sacramento for a calm historic town close to Buenos Aires" },
+    { icon: "🏙️", text: "Explore Montevideo: rambla, markets, museums, and coastal neighborhoods" },
+    { icon: "🏖️", text: "Spend time on the Atlantic coast: Punta del Este, Piriápolis, La Paloma, or Cabo Polonio" },
+    { icon: "🌅", text: "Consider Carmelo as a quiet river-side option connected with the Tigre Delta" },
   ]}
 />
+
+---
+
+## 📊 Country Rating
+
+<RatingTable
+  items={[
+    { category: "Nature", score: "5", notes: "pleasant coastline, beaches, river views, and countryside, but limited major natural highlights" },
+    { category: "Infrastructure", score: "8", notes: "good roads, ferries, buses, and reliable services for the main routes" },
+    { category: "Affordability", score: "5", notes: "calm and comfortable, but expensive by South American standards" },
+    { category: "Safety", score: "9", notes: "one of the safest and most predictable countries in the region" },
+    { category: "Friendliness", score: "8", notes: "relaxed, polite, and easygoing social atmosphere" },
+    { category: "Tranquility", score: "9", notes: "quiet and low-pressure compared to most regional destinations" },
+    { category: "Culture", score: "7", notes: "historic Colonia, Montevideo city life, and Río de la Plata identity" },
+    { category: "Unique experiences", score: "5", notes: "best as a calm cultural and coastal addition to Argentina" },
+    { category: "Weather", score: "7", notes: "mild overall, but beach season is limited and the ocean is often cool" },
+    { category: "Long stay", score: "6", notes: "comfortable and safe, but cost and limited variety reduce long-stay appeal" }
+  ]}
+/>
+
+---
+
+## 📝 Notes
+
+### 🌍 Why Visit Uruguay?
+Uruguay is not about dramatic landscapes or endless attractions.  
+Its strength is calmness, safety, clean cities, and easy travel.
+
+It works best as a relaxed addition to an Argentina trip from <a href="/itinerary/argentina-buenos-aires">Buenos Aires</a>.
+
+---
+
+### 🌤️ Seasons
+- **Summer (December–March):** best for beach towns and coastal travel, but prices are higher and popular areas are busier.  
+- **Shoulder seasons (spring / autumn):** good for Colonia, Montevideo, calm coastal walks, and fewer crowds.  
+- **Winter:** very quiet and still easy for city or historic trips, but not ideal for beaches.  
+
+The Atlantic coast is not tropical, and the ocean is cool for much of the year.
+
+---
+
+### 🚌 Transport / Logistics
+Ferries connect Buenos Aires with Colonia and Montevideo, while Uruguay’s bus network makes it easy to continue to Punta del Este and other coastal towns.
+
+Useful links:
+- Buquebus: https://www.buquebus.com/
+- Colonia Express: https://www.coloniaexpress.com/
+- Urubus: https://www.urubus.com.uy/en/
+
+---
+
+### 💡 Who This Country Is For
+Travelers already visiting Argentina who want a calm, safe, and culturally different side trip with easy logistics.
