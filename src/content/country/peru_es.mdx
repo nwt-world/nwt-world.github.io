@@ -1,14 +1,14 @@
 ---
 title: Perú 🇵🇪
-tagline: historia inca, alta cordillera y rutas hacia Machu Picchu
+tagline: Machu Picchu, historia inca y paisajes de alta cordillera
 name: peru
-mainImage0: '../../assets/peru_logo.jpg'
+mainImage: '../../assets/mp_2_logo.jpg'
 badge: [cultura, montañas, senderismo, complicado]
 region: América del Sur
-planned: true
-score: 8
+score: 9
 ---
 
+import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
 
@@ -16,17 +16,17 @@ import WhatToDo from "../../components/WhatToDo.astro";
   <div slot="pros">
     <h2>✔️ Pros</h2>
     - uno de los destinos culturales más fuertes de América del Sur, centrado en la historia inca  
-    - paisajes andinos dramáticos, valles de altura, volcanes y lagos  
-    - Machu Picchu y el Valle Sagrado crean una ruta principal muy clara  
-    - generalmente económico una vez dentro del país  
-    - geografía muy diversa, con Amazonia y regiones costeras posibles como extensiones posteriores  
+    - Machu Picchu, Cusco y el Valle Sagrado crean una ruta principal clara y potente  
+    - paisajes andinos dramáticos, valles de altura, volcanes, lagos y miradores  
+    - generalmente económico  
+    - geografía diversa, con regiones amazónicas y costeras  
   </div>
   <div slot="cons">
     <h2>⛔ Contras</h2>
-    - la altitud es una limitación real alrededor de Cusco y en excursiones de alta cordillera  
+    - la altitud es una limitación real alrededor de Cusco, el Lago Titicaca y las excursiones de alta cordillera  
     - la logística de Machu Picchu requiere planificación anticipada  
     - la seguridad y la infraestructura varían mucho según la región  
-    - algunas rutas populares pueden sentirse concurridas y muy turísticas  
+    - las rutas populares pueden sentirse concurridas y muy turísticas  
   </div>
 </ProsCons>
 
@@ -39,8 +39,27 @@ import WhatToDo from "../../components/WhatToDo.astro";
     { icon: "🏛️", text: "Explorar Cusco, Machu Picchu y el Valle Sagrado" },
     { icon: "🏔️", text: "Visitar paisajes de alta cordillera: Montaña de Colores, Laguna Humantay y miradores de montaña" },
     { icon: "🌋", text: "Usar Arequipa como ciudad andina más tranquila con vistas de volcanes" },
-    { icon: "🌊", text: "Considerar el Lago Titicaca" },
-    { icon: "🌿", text: "Sumar regiones de Amazonia o costa" },
+    { icon: "🌊", text: "Considerar el Lago Titicaca como extensión cultural de altura" },
+    { icon: "🌿", text: "Visitar regiones costeras y la Amazonia" },
+  ]}
+/>
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "9", notes: "Andes, volcanes, lagos, Amazonia, costa y paisajes de alta cordillera" },
+    { category: "Infraestructura", score: "7", notes: "buena en las rutas turísticas principales; irregular fuera de ellas" },
+    { category: "Asequibilidad", score: "8", notes: "generalmente económico, aunque Machu Picchu y los tours suman costos" },
+    { category: "Seguridad", score: "7", notes: "manejable en rutas principales, pero varía mucho según ciudad y región" },
+    { category: "Amabilidad", score: "7", notes: "generalmente acogedor, especialmente en zonas enfocadas en turismo" },
+    { category: "Tranquilidad", score: "5", notes: "concurrido alrededor de los grandes highlights; más tranquilo en pueblos chicos y regiones secundarias" },
+    { category: "Cultura", score: "10", notes: "herencia inca, ciudades coloniales, cultura andina viva y profundidad arqueológica" },
+    { category: "Experiencias únicas", score: "10", notes: "Machu Picchu, Cusco, Valle Sagrado y rutas de alta cordillera son globalmente distintivos" },
+    { category: "Clima", score: "7", notes: "regional y estacional; los Andes requieren planificación entre temporada seca y lluviosa" },
+    { category: "Estancia larga", score: "7", notes: "muy gratificante, pero la altitud, la logística y la infraestructura irregular limitan la comodidad" }
   ]}
 />
 
@@ -49,22 +68,27 @@ import WhatToDo from "../../components/WhatToDo.astro";
 ## 📝 Notas
 
 ### 🌍 ¿Por qué visitar Perú?
-Perú es uno de los países más claros para “considerar sí o sí” en América del Sur si valorás historia antigua y paisajes de montaña.
+Perú es uno de los países más claros para “considerar sí o sí” en América del Sur si valorás historia antigua, montañas y paisajes de alta cordillera.
 
-Su principal fortaleza es la combinación de:
-- Cusco y herencia inca  
-- Machu Picchu  
-- pueblos y ruinas del Valle Sagrado  
-- excursiones de día y miradores de alta cordillera  
-
-El país tiene muchas otras regiones, pero la ruta de Cusco es el núcleo natural.
+Su principal fortaleza no es solo Machu Picchu en sí, sino toda la ruta andina alrededor: Cusco, el Valle Sagrado, ruinas, pueblos, miradores y excursiones de montaña.
 
 ---
 
 ### 🏔️ Altitud y ritmo
 Perú no conviene hacerlo apurado.
 
-Cusco, el Valle Sagrado, la Montaña de Colores, la Laguna Humantay y el Lago Titicaca implican altitud significativa.  
-El itinerario necesita tiempo de aclimatación, especialmente antes de caminatas por encima de 4.000–5.000 metros.
+Cusco, la Montaña de Colores, la Laguna Humantay, el Lago Titicaca y muchos miradores andinos implican altitud seria.  
+Necesitás tiempo para aclimatarte antes de hacer caminatas de altura o excursiones largas.
 
-Esta es una de las principales razones para planificar Perú con cuidado.
+---
+
+### ⚠️ Seguridad
+Perú es manejable en las rutas turísticas principales, pero la seguridad y la comodidad varían según la región.
+
+Cusco, el Valle Sagrado, Arequipa y los corredores turísticos clásicos suelen ser viables con atención normal.  
+Lima, los hubs de transporte y las regiones menos establecidas requieren más cautela.
+
+---
+
+### 💡 Para quién es este país
+Viajeros que buscan un viaje enfocado por América del Sur, construido alrededor de historia inca, Machu Picchu y paisajes de alta cordillera.

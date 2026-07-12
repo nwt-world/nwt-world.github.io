@@ -1,14 +1,14 @@
 ---
 title: Peru 🇵🇪
-tagline: Inca history, high Andes, and Machu Picchu routes
+tagline: Machu Picchu, Inca history, and high-Andes landscapes
 name: peru
-mainImage0: '../../assets/peru_logo.jpg'
+mainImage: '../../assets/mp_2_logo.jpg'
 badge: [culture, mountains, hiking, challenging]
 region: South America
-planned: true
-score: 8
+score: 9
 ---
 
+import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
 
@@ -16,17 +16,17 @@ import WhatToDo from "../../components/WhatToDo.astro";
   <div slot="pros">
     <h2>✔️ Pros</h2>
     - one of South America’s strongest cultural destinations, centered around Inca history  
-    - dramatic Andean landscapes, high-altitude valleys, volcanoes, and lakes  
-    - Machu Picchu and the Sacred Valley create a very clear main travel route  
-    - generally affordable once inside the country  
-    - very diverse geography, with Amazon and coastal regions possible as later extensions  
+    - Machu Picchu, Cusco, and the Sacred Valley create a clear and powerful main route  
+    - dramatic Andean landscapes, high-altitude valleys, volcanoes, lakes, and viewpoints  
+    - generally affordable  
+    - diverse geography with Amazon and coastal regions  
   </div>
   <div slot="cons">
     <h2>⛔ Cons</h2>
-    - altitude is a real constraint around Cusco and high-Andes excursions  
-    - logistics around Machu Picchu require advance planning  
+    - altitude is a real constraint around Cusco, Lake Titicaca, and high-Andes excursions  
+    - Machu Picchu logistics require advance planning  
     - safety and infrastructure vary strongly by region  
-    - some popular routes can feel crowded and heavily touristic  
+    - popular routes can feel crowded and heavily touristic  
   </div>
 </ProsCons>
 
@@ -39,8 +39,27 @@ import WhatToDo from "../../components/WhatToDo.astro";
     { icon: "🏛️", text: "Explore Cusco, Machu Picchu, and the Sacred Valley" },
     { icon: "🏔️", text: "Visit high-Andes landscapes: Rainbow Mountain, Humantay Lake, and mountain viewpoints" },
     { icon: "🌋", text: "Use Arequipa as a calmer Andean city with volcano views" },
-    { icon: "🌊", text: "Consider Lake Titicaca" },
-    { icon: "🌿", text: "Add Amazon or coastal regions" },
+    { icon: "🌊", text: "Consider Lake Titicaca as a high-altitude cultural extension" },
+    { icon: "🌿", text: "Visit coastal regions and Amazon" },
+  ]}
+/>
+
+---
+
+## 📊 Country Rating
+
+<RatingTable
+  items={[
+    { category: "Nature", score: "9", notes: "Andes, volcanoes, lakes, Amazon, coast, and high-altitude landscapes" },
+    { category: "Infrastructure", score: "7", notes: "good on main tourist routes; uneven outside them" },
+    { category: "Affordability", score: "8", notes: "generally affordable, though Machu Picchu and tours add costs" },
+    { category: "Safety", score: "7", notes: "manageable on main routes, but varies strongly by city and region" },
+    { category: "Friendliness", score: "7", notes: "generally welcoming, especially in tourism-focused areas" },
+    { category: "Tranquility", score: "5", notes: "crowded around major highlights; calmer in smaller towns and side regions" },
+    { category: "Culture", score: "10", notes: "Inca heritage, colonial cities, living Andean culture, and archaeological depth" },
+    { category: "Unique experiences", score: "10", notes: "Machu Picchu, Cusco, Sacred Valley, and high-Andes routes are globally distinctive" },
+    { category: "Weather", score: "7", notes: "regional and seasonal; the Andes require planning around dry and rainy periods" },
+    { category: "Long stay", score: "7", notes: "rewarding, but altitude, logistics, and uneven infrastructure limit comfort" }
   ]}
 />
 
@@ -49,22 +68,27 @@ import WhatToDo from "../../components/WhatToDo.astro";
 ## 📝 Notes
 
 ### 🌍 Why Visit Peru?
-Peru is one of the clearest “must-consider” countries in South America if you value ancient history and mountain scenery.
+Peru is one of the clearest “must-consider” countries in South America if you value ancient history, mountains, and high-altitude landscapes.
 
-Its main strength is the combination of:
-- Cusco and Inca heritage  
-- Machu Picchu  
-- Sacred Valley towns and ruins  
-- high-Andes day trips and viewpoints  
-
-The country has many other regions, but the Cusco route is the natural core.
+Its main strength is not only Machu Picchu itself, but the whole Andean route around it: Cusco, the Sacred Valley, ruins, villages, viewpoints, and mountain excursions.
 
 ---
 
 ### 🏔️ Altitude and Pacing
 Peru should not be rushed.
 
-Cusco, the Sacred Valley, Rainbow Mountain, Humantay Lake, and Lake Titicaca all involve significant altitude.  
-The itinerary needs acclimatization time, especially before hikes above 4,000–5,000 meters.
+Cusco, Rainbow Mountain, Humantay Lake, Lake Titicaca, and many Andean viewpoints involve serious altitude.  
+You need time to acclimatize before doing high-altitude hikes or long excursions.
 
-This is one of the main reasons to plan Peru carefully.
+---
+
+### ⚠️ Safety
+Peru is manageable on the main tourist routes, but safety and comfort vary by region.
+
+Cusco, Sacred Valley, Arequipa, and classic tourist corridors are generally workable with normal awareness.  
+Lima, transport hubs, and less established regions require more caution.
+
+---
+
+### 💡 Who This Country Is For
+Travelers who want a focused South America trip built around Inca history, Machu Picchu, and high-Andes landscapes.
