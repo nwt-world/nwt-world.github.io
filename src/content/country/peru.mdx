@@ -11,6 +11,8 @@ score: 9
 import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
+import PhotoAlbums from "../../components/PhotoAlbums.astro";
+
 
 <ProsCons>
   <div slot="pros">
@@ -29,6 +31,15 @@ import WhatToDo from "../../components/WhatToDo.astro";
     - popular routes can feel crowded and heavily touristic  
   </div>
 </ProsCons>
+
+---
+
+<PhotoAlbums
+  albums={[
+    { title: "Arequipa", url: "https://www.instagram.com/p/Datlqw5jGR0/", platform: "instagram" },
+    { title: "Cusco & Machu Picchu", url: "https://www.instagram.com/p/DbB7j9mmDRR/", platform: "instagram" }
+  ]}
+/>
 
 ---
 
