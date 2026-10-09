@@ -1,33 +1,32 @@
 ---
 title: Bolivia 🇧🇴
-tagline: paisajes surrealistas de altura con logística complicada
+tagline: Uyuni, alta cordillera y paisajes remotos con logística difícil
 name: bolivia
-mainImage1: '../../assets/bolivia_logo.jpg'
+mainImage: '../../assets/bolivia_logo.jpg'
 badge: [montañas, desierto, cultura, volcanes, complicado]
 region: América del Sur
-planned: true
 score: 7
 ---
 
+import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
 
 <ProsCons>
   <div slot="pros">
     <h2>✔️ Pros</h2>
-    - algunos de los paisajes más extremos y surrealistas de América del Sur  
-    - el Salar de Uyuni y el Altiplano son highlights verdaderamente de nivel mundial  
-    - fuerte sensación de lejanía, altitud y autenticidad  
-    - muy económico en comparación con Chile, Argentina o Perú  
-    - cultura de altura única y ciudades coloniales  
+    - algunos de los paisajes de altura más distintivos de América del Sur  
+    - el Salar de Uyuni y el Altiplano son experiencias realmente de nivel mundial  
+    - fuerte cultura indígena y ciudades históricas de altura  
+    - mucho menos pulido y orientado al turismo que los vecinos Perú o Chile  
+    - costos cotidianos relativamente bajos una vez dentro del país  
   </div>
   <div slot="cons">
     <h2>⛔ Contras</h2>
-    - poco confiable para viajar por protestas, cortes de ruta e inestabilidad política  
-    - infraestructura débil y comodidad limitada fuera de las rutas principales  
-    - la altitud, el frío y las condiciones duras son limitaciones serias  
-    - tiempos de viaje largos y logística básica  
-    - no es adecuado para estadías relajadas o largas  
+    - protestas, cortes de ruta, paros y faltantes de combustible pueden volver el viaje poco confiable  
+    - infraestructura débil y comodidad básica fuera de las rutas principales  
+    - la altitud es una limitación seria en gran parte del país  
+    - los viajes largos por ruta pueden ser cansadores e impredecibles  
   </div>
 </ProsCons>
 
@@ -38,10 +37,29 @@ import WhatToDo from "../../components/WhatToDo.astro";
 <WhatToDo
   items={[
     { icon: "🧂", text: "Visitar el Salar de Uyuni y los paisajes del Altiplano alrededor" },
-    { icon: "🌋", text: "Explorar lagunas, desiertos volcánicos y paisajes de altura cerca de la frontera con Chile" },
-    { icon: "🏙️", text: "Usar La Paz como principal puerta de entrada de altura" },
-    { icon: "🌊", text: "Considerar el Lago Titicaca y Copacabana como extensión cultural y escénica" },
-    { icon: "🏛️", text: "Sumar Sucre o Potosí por historia colonial y atmósfera de ciudad de montaña" },
+    { icon: "🌋", text: "Explorar lagunas de colores, desiertos volcánicos, géiseres y paisajes de altura cerca de la frontera con Chile" },
+    { icon: "🏙️", text: "Vivir La Paz y su dramático entorno urbano de gran altitud" },
+    { icon: "🌊", text: "Visitar el Lago Titicaca y Copacabana por paisaje y cultura de altura" },
+    { icon: "🏛️", text: "Sumar Sucre y Potosí por historia colonial y atmósfera de ciudad de montaña" },
+  ]}
+/>
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "10", notes: "salares, Altiplano, volcanes, lagos de altura, montañas y tierras bajas amazónicas" },
+    { category: "Infraestructura", score: "4", notes: "básica fuera de las grandes ciudades; viajar por ruta puede ser lento y poco confiable" },
+    { category: "Asequibilidad", score: "8", notes: "costos cotidianos bajos, aunque los tours remotos y el transporte interrumpido pueden sumar gastos" },
+    { category: "Seguridad", score: "5", notes: "conflictos sociales, cortes de ruta, delitos menores y algunas regiones de mayor riesgo requieren planificación" },
+    { category: "Amabilidad", score: "7", notes: "generalmente acogedor, con un carácter local e indígena muy fuerte" },
+    { category: "Tranquilidad", score: "5", notes: "los paisajes remotos son extremadamente tranquilos, pero el viaje en sí puede ser estresante" },
+    { category: "Cultura", score: "8", notes: "fuertes tradiciones indígenas, historia colonial e identidad de altura muy distintiva" },
+    { category: "Experiencias únicas", score: "10", notes: "Uyuni y el alto Altiplano están entre los paisajes más inusuales de América del Sur" },
+    { category: "Clima", score: "6", notes: "noches frías, altitud, sol fuerte y lluvias estacionales requieren preparación" },
+    { category: "Estancia larga", score: "3", notes: "los costos bajos ayudan, pero la altitud, la infraestructura y la confiabilidad del transporte reducen la comodidad" }
   ]}
 />
 
@@ -50,29 +68,18 @@ import WhatToDo from "../../components/WhatToDo.astro";
 ## 📝 Notas
 
 ### 🌍 ¿Por qué visitar Bolivia?
-Bolivia es uno de los países visualmente más extremos de América del Sur.
-Se siente ruda, simple y mucho menos pulida que los países cercanos.
-
----
-
-### ⚠️ Confiabilidad e inestabilidad social
-Bolivia no es solo “complicada”: puede volverse poco confiable logísticamente.
-Cortes de ruta, protestas, paros, faltantes de combustible y cierres repentinos de rutas pueden alterar el viaje con poco aviso.
-No armes un itinerario ajustado alrededor de Bolivia sin revisar primero la situación actual.
+Bolivia es una de las opciones más fuertes de América del Sur si el objetivo son paisajes inusuales más que comodidad.
+Su principal ventaja es que el país todavía se siente remoto y relativamente poco pulido. La experiencia se construye alrededor de la altitud, el espacio abierto, la cultura indígena y paisajes que muchas veces se sienten muy distintos de las rutas más accesibles de Perú, Chile o Argentina.
 
 ---
 
 ### 🏔️ Altitud y comodidad
-La mayoría de los lugares más fuertes de Bolivia son altos, fríos y remotos.
-
-Preparáte para:
-- altitud por encima de 3.500–4.500 metros  
-- alojamiento básico en rutas remotas  
-- trayectos largos  
-- calefacción y comodidad limitadas  
-- clima que puede sentirse duro incluso fuera del invierno  
+La altitud afecta mucho más que el senderismo.
+Muchas ciudades, rutas, miradores y paradas nocturnas están por encima de 3.500 metros, mientras que algunas excursiones suben bastante más de 4.000 metros. Las noches frías, el sol fuerte, el aire seco y el alojamiento básico pueden hacer que la experiencia sea más cansadora de lo que sugieren las distancias.
+La aclimatación y un ritmo realista importan incluso para viajeros que no planean caminatas difíciles.
 
 ---
 
-### 💡 Para quién es este país
-Viajeros que buscan paisajes extremos de alta montaña y están dispuestos a aceptar logística difícil, altitud y posibles interrupciones.
+### 💰 Costos
+Bolivia sigue siendo relativamente económica para alojamiento, comida y gastos cotidianos.
+Sin embargo, los lugares que hacen especial al país suelen ser remotos. Los tours 4x4 de varios días, habitaciones privadas, vuelos domésticos o cambios de transporte de último momento pueden subir el costo real del viaje.

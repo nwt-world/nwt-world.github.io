@@ -1,32 +1,33 @@
 ---
 title: Brasil 🇧🇷
-tagline: naturaleza inmensa y cultura con compromisos serios de seguridad
+tagline: playas atlánticas, naturaleza amazónica y cultura diversa, con importantes desafíos de seguridad
 name: brazil
-mainImage0: '../../assets/brazil_logo.jpg'
-badge: [selva, playa, vida silvestre]
+mainImage: '../../assets/brazil_logo.jpg'
+badge: [playa, selva, vida silvestre, cultura, complicado]
 region: América del Sur
-planned: true
 score: 8
 ---
 
+import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
 
 <ProsCons>
   <div slot="pros">
     <h2>✔️ Pros</h2>
-    - enorme diversidad geográfica y cultural en un país de escala continental  
-    - naturaleza icónica: Amazonia, Pantanal, Cataratas del Iguazú, playas, islas y montañas  
-    - cultura cálida y expresiva, con música, comida e identidad regional muy fuertes  
-    - muchas rutas se pueden armar alrededor de naturaleza en vez de grandes ciudades  
+    - uno de los mejores destinos de playa de América del Sur, desde Río de Janeiro y Florianópolis hasta el noreste tropical  
+    - variedad natural excepcional: selvas, humedales, cascadas, montañas, islas y vida silvestre  
+    - gran diversidad de culturas, gastronomía, música, arquitectura e identidades regionales  
+    - una amplia red de vuelos nacionales permite combinar regiones distantes con relativa facilidad  
+    - suficiente variedad tanto para viajes cortos y específicos como para recorridos mucho más largos  
   </div>
   <div slot="cons">
     <h2>⛔ Contras</h2>
-    - preocupaciones serias de seguridad en muchas ciudades y algunas regiones  
-    - crimen urbano, robos, estafas e incidentes violentos ocasionales requieren atención  
-    - la desigualdad y las brechas de infraestructura son visibles  
-    - las distancias largas hacen que la logística sea más complicada de lo que parece en el mapa  
-    - no es un destino tranquilo ni de baja presión para viajar de forma casual  
+    - importantes problemas de seguridad en muchas ciudades grandes y algunas regiones  
+    - el riesgo de delincuencia puede cambiar mucho según el barrio, la ruta y la hora del día  
+    - la calidad de la infraestructura varía considerablemente fuera de las principales zonas turísticas  
+    - las grandes distancias hacen que los viajes por varias regiones sean caros y requieran mucho tiempo  
+    - la desigualdad es muy visible y afecta la experiencia de viaje  
   </div>
 </ProsCons>
 
@@ -36,11 +37,29 @@ import WhatToDo from "../../components/WhatToDo.astro";
 
 <WhatToDo
   items={[
-    { icon: "🌈", text: "Visitar las Cataratas del Iguazú como uno de los highlights naturales más fuertes de América del Sur" },
-    { icon: "🐆", text: "Considerar el Pantanal para un viaje enfocado en vida silvestre" },
-    { icon: "🌿", text: "Explorar regiones amazónicas solo con planificación cuidadosa" },
-    { icon: "🏖️", text: "Elegir zonas costeras e islas concretas en vez de intentar cubrir toda la costa" },
-    { icon: "🏙️", text: "Usar Río de Janeiro o São Paulo de forma selectiva para cultura, miradores y conexiones" },
+    { icon: "🏖️", text: "Elegir una región de playa: Río de Janeiro, Florianópolis o algunas zonas de la costa noreste" },
+    { icon: "🌈", text: "Visitar las Cataratas del Iguazú, uno de los grandes atractivos naturales de América del Sur" },
+    { icon: "🌿", text: "Conocer la Amazonia por su selva tropical, ríos y biodiversidad" },
+    { icon: "🐆", text: "Considerar el Pantanal para un viaje centrado en la observación de vida silvestre" },
+  ]}
+/>
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "10", notes: "playas, selva amazónica, humedales del Pantanal, cascadas, montañas, islas y vida silvestre" },
+    { category: "Infraestructura", score: "7", notes: "buenos aeropuertos y vuelos nacionales; la calidad es irregular lejos de las rutas principales" },
+    { category: "Asequibilidad", score: "7", notes: "precios razonables en general, pero los principales destinos de playa y las temporadas altas pueden ser caros" },
+    { category: "Seguridad", score: "5", notes: "la delincuencia urbana grave y las grandes diferencias regionales requieren planificación cuidadosa" },
+    { category: "Amabilidad", score: "8", notes: "cultura sociable, expresiva y generalmente acogedora" },
+    { category: "Tranquilidad", score: "5", notes: "hay zonas naturales y playas tranquilas, pero las grandes ciudades exigen atención constante" },
+    { category: "Cultura", score: "9", notes: "música, gastronomía, arquitectura, festivales e identidades regionales muy marcadas" },
+    { category: "Experiencias únicas", score: "10", notes: "combinación excepcional de playas tropicales, ecosistemas amazónicos, humedales, grandes cataratas y una cultura de enorme diversidad" },
+    { category: "Clima", score: "8", notes: "muchas regiones de clima cálido, aunque las condiciones varían considerablemente dentro del país" },
+    { category: "Estancia larga", score: "6", notes: "la enorme variedad favorece los viajes largos, pero la seguridad y la logística entre regiones añaden dificultades" }
   ]}
 />
 
@@ -49,16 +68,24 @@ import WhatToDo from "../../components/WhatToDo.astro";
 ## 📝 Notas
 
 ### 🌍 ¿Por qué visitar Brasil?
-Brasil tiene un potencial enorme para viajar porque es casi un continente en sí mismo.
-Pero si buscás itinerarios tranquilos, conviene pensar en rutas bien planificadas hacia regiones específicas.
+Brasil ofrece una combinación difícil de encontrar en otros lugares de América del Sur.
+Para quienes ya están recorriendo el continente, suma experiencias que los países vecinos muchas veces no pueden ofrecer, especialmente playas tropicales, selva y grandes regiones para observar vida silvestre.
+
+---
+
+### 🏖️ Las playas como motivo principal del viaje
+Brasil merece considerarse como un gran destino de playa, no simplemente como un país con costa.
+Río de Janeiro combina playas, montañas y vida urbana; Florianópolis ofrece una alternativa más tranquila en el sur, y el noreste tiene extensas costas tropicales con muchas opciones donde alojarse.
 
 ---
 
 ### ⚠️ Seguridad
-Brasil no es un destino de baja atención.
-Puede ser muy gratificante, pero la seguridad tiene que influir en la ruta.
+La seguridad es la principal debilidad de Brasil como destino turístico.
+Los delitos violentos, los robos a mano armada, los hurtos, el crimen organizado y los secuestros ocasionales son riesgos reales en las grandes zonas urbanas. Las diferencias entre barrios más seguros y otros más peligrosos pueden ser muy marcadas.
+Por eso, Brasil requiere investigar las rutas y los barrios con más cuidado que otros destinos sudamericanos más tranquilos.
+Esto no significa que el país no se pueda visitar, pero la seguridad debe influir activamente en dónde te alojás, qué regiones incluís y con cuánta libertad te movés por las grandes ciudades.
 
 ---
 
 ### 💡 Para quién es este país
-Viajeros que buscan naturaleza a gran escala, vida silvestre y cultura — y que están dispuestos a planificar alrededor de la seguridad en vez de ignorarla.
+Viajeros que buscan buenas playas, naturaleza a gran escala, vida silvestre y cultura, y que están dispuestos a planificar con cuidado teniendo en cuenta la seguridad.

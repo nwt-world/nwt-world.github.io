@@ -1,32 +1,33 @@
 ---
 title: Brazil 🇧🇷
-tagline: vast nature and culture with serious safety trade-offs
+tagline: Atlantic beaches, Amazon nature, and diverse culture with serious safety concerns
 name: brazil
-mainImage0: '../../assets/brazil_logo.jpg'
-badge: [rainforest, beach, wildlife]
+mainImage: '../../assets/brazil_logo.jpg'
+badge: [beach, rainforest, wildlife, culture, challenging]
 region: South America
-planned: true
 score: 8
 ---
 
+import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import WhatToDo from "../../components/WhatToDo.astro";
 
 <ProsCons>
   <div slot="pros">
     <h2>✔️ Pros</h2>
-    - enormous geographic and cultural diversity across a continental-scale country  
-    - iconic nature: Amazon, Pantanal, Iguaçu Falls, beaches, islands, mountains  
-    - warm, expressive culture with strong music, food, and regional identity  
-    - many routes can be built around nature rather than big-city travel  
+    - one of South America’s strongest beach destinations, from Rio and Florianópolis to the tropical northeast  
+    - exceptional natural variety: rainforest, wetlands, waterfalls, mountains, islands, and wildlife  
+    - highly diverse culture, food, music, architecture, and regional identities  
+    - strong domestic flight network makes distant regions relatively easy to combine  
+    - enough variety for both short focused trips and much longer travel  
   </div>
   <div slot="cons">
     <h2>⛔ Cons</h2>
-    - serious safety concerns in many cities and some regions  
-    - urban crime, theft, scams, and occasional violent incidents require attention  
-    - inequality and infrastructure gaps are visible  
-    - long distances make logistics more complicated than the map suggests  
-    - not a calm or low-pressure destination for casual travel  
+    - serious safety concerns in many large cities and some regions  
+    - crime risk can change sharply by neighborhood, route, and time of day  
+    - infrastructure quality varies significantly outside major tourist areas  
+    - long distances make broad multi-region trips expensive and time-consuming  
+    - inequality is highly visible and affects the travel experience  
   </div>
 </ProsCons>
 
@@ -36,11 +37,29 @@ import WhatToDo from "../../components/WhatToDo.astro";
 
 <WhatToDo
   items={[
-    { icon: "🌈", text: "Visit Iguaçu Falls as one of South America’s strongest natural highlights" },
+    { icon: "🏖️", text: "Choose a beach region: Rio de Janeiro, Florianópolis, or selected parts of the northeast coast" },
+    { icon: "🌈", text: "Visit Iguaçu Falls as one of South America’s strongest natural landmarks" },
+    { icon: "🌿", text: "Experience the Amazon for rainforest, rivers, and biodiversity" },
     { icon: "🐆", text: "Consider the Pantanal for wildlife-focused travel" },
-    { icon: "🌿", text: "Explore Amazon regions only with careful planning" },
-    { icon: "🏖️", text: "Choose selected coastal areas and islands rather than trying to cover the whole coast" },
-    { icon: "🏙️", text: "Use Rio de Janeiro or São Paulo selectively for culture, viewpoints, and connections" },
+  ]}
+/>
+
+---
+
+## 📊 Country Rating
+
+<RatingTable
+  items={[
+    { category: "Nature", score: "10", notes: "beaches, Amazon rainforest, Pantanal wetlands, waterfalls, mountains, islands, and wildlife" },
+    { category: "Infrastructure", score: "7", notes: "good airports and domestic flights; quality becomes uneven away from major routes" },
+    { category: "Affordability", score: "7", notes: "reasonable overall, but major beach destinations and peak periods can be expensive" },
+    { category: "Safety", score: "5", notes: "serious urban crime and strong regional differences require active planning" },
+    { category: "Friendliness", score: "8", notes: "social, expressive, and generally welcoming culture" },
+    { category: "Tranquility", score: "5", notes: "quiet nature and beach areas exist, but large cities require constant awareness" },
+    { category: "Culture", score: "9", notes: "strong music, food, architecture, festivals, and highly distinct regional identities" },
+    { category: "Unique experiences", score: "10", notes: "rare combination of tropical beaches, Amazon ecosystems, wetlands, major waterfalls, and large-scale culture" },
+    { category: "Weather", score: "8", notes: "many warm-weather regions, but conditions vary greatly across the country" },
+    { category: "Long stay", score: "6", notes: "huge variety supports long travel, but safety and regional logistics add friction" }
   ]}
 />
 
@@ -49,16 +68,24 @@ import WhatToDo from "../../components/WhatToDo.astro";
 ## 📝 Notes
 
 ### 🌍 Why Visit Brazil?
-Brazil has enormous travel potential because it is almost a continent by itself.
-But if you consider calm itineraries, a well planned routes to specific regions should be considered. 
+Brazil offers a combination that is difficult to find elsewhere in South America.
+For travelers already moving through South America, Brazil adds experiences that neighboring countries often cannot replace, especially tropical beaches, rainforest, and large-scale wildlife regions.
+
+---
+
+### 🏖️ Beaches as a Main Reason to Visit
+Brazil should be considered a serious beach destination, not only a country with a coastline.
+Rio combines beaches with mountains and city life, Florianópolis offers a calmer southern option, and the northeast has long tropical coastlines with many possible bases.
 
 ---
 
 ### ⚠️ Safety
-Brazil is not a low-attention destination.
-Brazil can be rewarding, but safety must shape the route.
+Safety is Brazil’s main weakness as a travel destination.
+Violent crime, armed robbery, theft, organized crime, and occasional kidnapping are real concerns in major urban areas, and the difference between safer and riskier neighborhoods can be very sharp.
+Brazil therefore requires more route and neighborhood research than calmer South American destinations.
+This does not make the country unvisitable, but safety should actively influence where you stay, what regions you include, and how freely you move around large cities.
 
 ---
 
 ### 💡 Who This Country Is For
-Travelers who want large-scale nature, wildlife, and culture — and are willing to plan around safety rather than ignore it.
+Travelers who want strong beaches, large-scale nature, wildlife, and culture — and are comfortable planning carefully around safety.
