@@ -1,30 +1,30 @@
 ---
 title: Paraguay 🇵🇾
-tagline: Sudamérica auténtica, barata y poco turística
+tagline: Sudamérica tranquila, económica y poco turística
 name: paraguay
-mainImage0: '../../assets/paraguay_logo.jpg'
+mainImage: '../../assets/paraguay_logo.jpg'
 badge: [cultura, económico]
 region: América del Sur
-planned: true
 score: 6
 ---
 
+import RatingTable from '../../components/RatingTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
-import WhatToDo from "../../components/WhatToDo.astro";
+import WhatToDo from '../../components/WhatToDo.astro';
 
 <ProsCons>
   <div slot="pros">
     <h2>✔️ Pros</h2>
-    - uno de los países menos turísticos de América del Sur  
-    - mucho más barato que Uruguay, Chile o Argentina  
-    - buena escapada corta desde el norte de Argentina, especialmente por la zona de Encarnación  
+    - muy poco turismo internacional y casi ninguna aglomeración turística  
+    - comida, alojamiento y viajes cotidianos económicos  
+    - cultura guaraní propia y un importante patrimonio jesuítico  
   </div>
   <div slot="cons">
     <h2>⛔ Contras</h2>
-    - highlights grandes limitados y poco sightseeing clásico  
-    - menos pulido, menos predecible y más caótico que los países cercanos  
-    - requiere más conciencia práctica, especialmente en ciudades y hubs de transporte  
-    - el clima caluroso puede ser cansador fuera de los meses de invierno  
+    - relativamente pocas atracciones importantes o grandes atractivos naturales  
+    - infraestructura y servicios públicos irregulares  
+    - mucho calor y humedad durante gran parte del año  
+    - algunas zonas urbanas y fronterizas requieren mayor precaución  
   </div>
 </ProsCons>
 
@@ -34,9 +34,29 @@ import WhatToDo from "../../components/WhatToDo.astro";
 
 <WhatToDo
   items={[
-    { icon: "🏙️", text: "Pasar unos días en Asunción por calles antiguas, zonas ribereñas, mercados y vida urbana cotidiana" },
-    { icon: "🏛️", text: "Visitar Encarnación y las Misiones Jesuíticas cercanas como la parada cultural más fuerte" },
-    { icon: "🌊", text: "Usar la región del río Paraná para una experiencia de frontera más lenta y menos turística" },
+    { icon: "🏛️", text: "Explorar las misiones jesuíticas de Trinidad y Jesús de Tavarangüé" },
+    { icon: "🌅", text: "Caminar por la Costanera de Encarnación junto al Paraná y visitar la Playa San José" },
+    { icon: "🏙️", text: "Visitar Asunción por su centro histórico, museos y vida urbana cotidiana" },
+    { icon: "🌿", text: "Visitar el Parque Nacional Ybycuí para recorrer senderos de bosque y cascadas" },
+  ]}
+/>
+
+---
+
+## 📊 Calificación del país
+
+<RatingTable
+  items={[
+    { category: "Naturaleza", score: "5", notes: "ríos, bosques y paisajes rurales, pero pocos grandes atractivos naturales" },
+    { category: "Infraestructura", score: "6", notes: "las principales ciudades están conectadas; los servicios locales y espacios públicos tienen calidad irregular" },
+    { category: "Asequibilidad", score: "9", notes: "costos cotidianos bajos para los estándares sudamericanos" },
+    { category: "Seguridad", score: "7", notes: "las zonas habituales para visitantes son manejables; los riesgos aumentan en ciertas áreas urbanas y fronterizas" },
+    { category: "Amabilidad", score: "8", notes: "ambiente social generalmente relajado y cordial" },
+    { category: "Tranquilidad", score: "8", notes: "poco turismo y ritmo tranquilo fuera de las avenidas urbanas más transitadas" },
+    { category: "Cultura", score: "7", notes: "tradiciones guaraníes vivas, historia jesuítica e identidad regional" },
+    { category: "Experiencias únicas", score: "6", notes: "patrimonio jesuítico-guaraní y una cultura cotidiana poco influida por el turismo masivo" },
+    { category: "Clima", score: "5", notes: "veranos largos y calurosos; el invierno es más cómodo para caminar" },
+    { category: "Estancia larga", score: "6", notes: "costos bajos y vida tranquila, pero menos actividades y servicios irregulares" },
   ]}
 />
 
@@ -45,37 +65,12 @@ import WhatToDo from "../../components/WhatToDo.astro";
 ## 📝 Notas
 
 ### 🌍 ¿Por qué visitar Paraguay?
-Paraguay no es un destino de viaje pulido.  
-Ofrece una versión más barata, tranquila y local de América del Sur, con muy poco turismo masivo y pocos lugares diseñados específicamente para visitantes extranjeros.
+Paraguay vale la pena por su carácter local, más que por una larga lista de lugares turísticos. El turismo internacional es limitado, los precios son relativamente bajos y la vida cotidiana está menos orientada a los visitantes que en muchos países vecinos.
+El guaraní se habla ampliamente junto con el español, y las tradiciones siguen presentes en la vida diaria. Es una buena opción para una escapada cultural corta y tranquila, especialmente como complemento de un viaje por Argentina.
 
-Paraguay funciona mejor como:
-- una escapada cultural corta desde Argentina (por ejemplo, de Posadas a Encarnación y las Misiones Jesuíticas)  
-- unos días en Asunción
+### 🌤️ Clima
+**Mayo–agosto** suele ser el período más cómodo para caminar por las ciudades, con temperaturas más frescas y ocasionales frentes fríos.  
+**Noviembre–marzo** suele ser muy caluroso y húmedo; la primavera y el otoño tienen condiciones variables.
 
----
-
-### 🌤️ Temporadas
-El invierno es la temporada más cómoda para viajar: menos calor, menor humedad y caminatas urbanas más fáciles.
-El verano puede ser muy caluroso y húmedo, lo que hace que Paraguay se sienta más cansador de lo que parece en el mapa.
-
----
-
-### 🚌 Transporte / logística
-Los buses son la principal forma de moverse entre ciudades.  
-Asunción, Encarnación y Ciudad del Este están conectadas por rutas regulares de larga distancia.
-
-Enlaces útiles:
-- NSA: https://www.nsa.com.py/
-- Plataforma 10 Paraguay: https://www.plataforma10.com.py/
-- Estación de Buses de Asunción: https://eba.asuncion.gov.py/itinerarios/
-
----
-
-### ⚠️ Seguridad
-Paraguay requiere más atención que Uruguay o Chile.  
-No necesariamente es peligroso para un visitante cuidadoso, pero se siente menos pulido y menos predecible.
-
----
-
-### 💡 Para quién es este país
-Viajeros que buscan una escapada sudamericana barata, auténtica y poco turística.
+### ⚠️ Seguridad y condiciones de viaje
+Paraguay está menos desarrollado para el turismo que Uruguay o Chile, pero las principales zonas que visitan los viajeros suelen ser manejables. La infraestructura puede ser irregular y conviene tener especial precaución en algunos barrios urbanos y zonas fronterizas del norte y el este. Las principales limitaciones tienen más que ver con la calidad desigual de los servicios y la escasa infraestructura turística que con la dificultad para llegar a las ciudades principales.
